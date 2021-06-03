@@ -6,9 +6,14 @@ class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
-  username = db.Column(db.String(40), nullable = False, unique = True)
+  # username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
+  first_name = db.Column(db.String(255))
+  last_name = db.Column(db.String(255))
   hashed_password = db.Column(db.String(255), nullable = False)
+
+  orders = db.relationship("Order", back_populates="users")
+  loves = db.relationship("Love", back_populates="users")
 
 
   @property
@@ -28,6 +33,5 @@ class User(db.Model, UserMixin):
   def to_dict(self):
     return {
       "id": self.id,
-      "username": self.username,
       "email": self.email
     }

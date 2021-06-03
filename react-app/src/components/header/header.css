@@ -1,0 +1,17 @@
+
+
+#header-fixed {
+    top: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    min-height: 4.80769vw;
+    line-height:1.25;
+    background-color: #E4E4E8;
+    font-size: 20px;
+    font-family: oswald, helvetica;
+}
+
+#header-text {
+    margin-top: 2%
+}

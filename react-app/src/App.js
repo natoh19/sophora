@@ -8,6 +8,14 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
+import { loadStripe } from "@stripe/stripe-js";
+import HomePage from './components/homePage/HomePage'
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from './components/checkout/CheckoutForm'
+import Navbar from './components/navbar/Navbar'
+import './index.css'
+
+const promise = loadStripe("pk_test_51Iws9eDTZpv1JDZFarzSyEF2nqq9xenWCwbILooHMNrAgUCCN2WIATjKHDFiEZVqkqHUeiLsRzcV786iA4H9blPJ00yOk7hdYb");
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -27,24 +35,31 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
+      <Navbar />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/sign-up" exact>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} >
+
+        <ProtectedRoute path="/users/:userId" exact >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path="/" exact={true} >
+          <HomePage />
+        </Route>
+        <Route path="/checkout" exact>
+          <Elements stripe={promise}>
+          <CheckoutForm />
+          </Elements>
+        </Route>
+
       </Switch>
+
+
     </BrowserRouter>
   );
 }
