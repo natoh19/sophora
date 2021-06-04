@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect}  from 'react';
+import {useSelector, useDispatch} from 'react-redux'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,9 +12,12 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import * as session from '../../store/session'
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -26,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+      color: 'black'
     },
   },
   search: {
@@ -51,9 +56,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'black'
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'black',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -63,24 +69,29 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
+      color: 'black'
     },
   },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
+      color: 'black'
     },
   },
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
       display: 'none',
+      color: 'black'
     },
   },
 }));
 
-export default function Navbar() {
+export default function PrimarySearchAppBar() {
   const classes = useStyles();
+  const userInSession = useSelector(state => state.session.user)
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -88,6 +99,11 @@ export default function Navbar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleProfileMenuOpenTwo = (event) => {
+    alert("handleProfileMenuOpen2")
     setAnchorEl(event.currentTarget);
   };
 
@@ -103,6 +119,16 @@ export default function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleLogOut = (event) => {
+    dispatch(session.logout())
+  }
+
+  const handleLogOutTwo = (event) => {
+    alert("handle log out two")
+    dispatch(session.logout())
+  }
+
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -133,19 +159,19 @@ export default function Navbar() {
     >
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
+          <Badge color="secondary">
+            <FavoriteIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Loves</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+        <IconButton color="inherit">
+          <Badge color="secondary">
+            <ShoppingCartIcon/>
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Your Basket</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -154,27 +180,50 @@ export default function Navbar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <AccountCircle aria-hidden={false}/>
+        </IconButton>
+        <p>Profile</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          // aria-label="logout"
+          // aria-controls="primary-search-account-menu"
+          // aria-haspopup="true"
+          // color="inherit"
+        >
+          <DoubleArrowIcon aria-hidden={false}/>
         </IconButton>
         <p>Profile</p>
       </MenuItem>
     </Menu>
   );
 
+  let profileIcon;
+
+  if (userInSession) {
+    profileIcon = (
+      <AccountCircle user={userInSession} />
+    )
+  } else {
+    profileIcon = (
+      <DoubleArrowIcon/>
+    )
+  }
+
   return (
-    <div className={classes.grow}>
-      <AppBar position="static">
+    <div>
+      <AppBar style={{marginTop: 100, backgroundColor: 'white'}}>
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
-            color="inherit"
+            color="black"
             aria-label="open drawer"
           >
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+           Sephora
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -191,14 +240,14 @@ export default function Navbar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
+            <IconButton color="inherit">
+              <Badge color="secondary">
+                <ShoppingCartIcon/>
               </Badge>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+            <IconButton color="inherit">
+              <Badge color="secondary">
+                <FavoriteIcon/>
               </Badge>
             </IconButton>
             <IconButton
@@ -206,10 +255,11 @@ export default function Navbar() {
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              onClick={handleProfileMenuOpenTwo}
+              onClick={handleLogOutTwo}
               color="inherit"
             >
-              <AccountCircle />
+             {profileIcon}
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -217,10 +267,11 @@ export default function Navbar() {
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              onClick={handleProfileMenuOpen}
+              onClick={handleLogOut}
               color="inherit"
             >
-              <MoreIcon />
+              {profileIcon}
             </IconButton>
           </div>
         </Toolbar>

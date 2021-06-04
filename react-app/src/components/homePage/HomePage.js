@@ -23,16 +23,18 @@ export default function HomePage() {
 
     return (
 
-
-
-        <Header />
+        <>
 
 
 
-        //     {allProducts.map(product => (
-        //          <div key={product.id}>{product.name}</div>
-        //  ))}
+        {/* <Header /> */}
 
+
+
+             {allProducts.map(product => (
+                  <div key={product.id}>{product.name}</div>
+          ))}
+        </>
 
 
 
