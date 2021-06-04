@@ -25,12 +25,6 @@ export default function HomePage() {
 
         <>
 
-
-
-        {/* <Header /> */}
-
-
-
              {allProducts.map(product => (
                   <div key={product.id}>{product.name}</div>
           ))}

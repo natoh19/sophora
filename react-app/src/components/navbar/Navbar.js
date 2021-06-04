@@ -17,6 +17,9 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import * as session from '../../store/session'
+import {useHistory, Link} from 'react-router-dom'
+import PersonIcon from '@material-ui/icons/Person';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -92,6 +95,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const userInSession = useSelector(state => state.session.user)
   const dispatch = useDispatch();
+  const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -124,8 +128,11 @@ export default function PrimarySearchAppBar() {
     dispatch(session.logout())
   }
 
+  const handleLogin =(event) => {
+    history.push("/login")
+  }
+
   const handleLogOutTwo = (event) => {
-    alert("handle log out two")
     dispatch(session.logout())
   }
 
@@ -141,8 +148,8 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose} component = {Link} to="/MyAccount">My Account</MenuItem>
+      <MenuItem onClick={handleMenuClose} onClick = {handleLogOut}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -222,8 +229,8 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-           Sephora
+          <Typography className={classes.title} variant="h6" noWrap component = {Link} to="/" style= {{textDecorationLine: 'none'}}>
+           Sophora
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -250,29 +257,33 @@ export default function PrimarySearchAppBar() {
                 <FavoriteIcon/>
               </Badge>
             </IconButton>
+            {userInSession &&
             <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpenTwo}
-              onClick={handleLogOutTwo}
-              color="inherit"
-            >
-             {profileIcon}
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              onClick={handleLogOut}
               color="inherit"
             >
-              {profileIcon}
+              <AccountCircle />
             </IconButton>
+          }
+          </div>
+          <div className={classes.sectionDesktop}>
+            {!userInSession &&
+            <Button
+              variant="contained"
+              color="secondary"
+              // aria-controls={mobileMenuId}
+              // aria-haspopup="true"
+              onClick={handleLogin}
+              className={classes.button}
+              startIcon={<PersonIcon />}
+            >
+              Login
+            </Button>
+          }
           </div>
         </Toolbar>
       </AppBar>

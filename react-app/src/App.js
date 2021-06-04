@@ -14,6 +14,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from './components/checkout/CheckoutForm'
 import Navbar from './components/navbar/Navbar'
 import ProfilePage from './components/profilePage/ProfilePage'
+import CheckoutPage from './components/checkout/CheckoutPage'
+import Header from './components/header/Header'
 import './index.css'
 
 const promise = loadStripe("pk_test_51Iws9eDTZpv1JDZFarzSyEF2nqq9xenWCwbILooHMNrAgUCCN2WIATjKHDFiEZVqkqHUeiLsRzcV786iA4H9blPJ00yOk7hdYb");
@@ -36,8 +38,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Navbar />
+      <NavBar />
+      <Header />
       <Switch>
         <Route path="/" exact={true} >
           <HomePage />
@@ -58,6 +61,9 @@ function App() {
           <Elements stripe={promise}>
           <CheckoutForm />
           </Elements>
+        </Route>
+        <Route path="/order" exact>
+          <CheckoutPage />
         </Route>
 
       </Switch>

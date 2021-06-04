@@ -29,9 +29,7 @@ export const getAllProducts =() => async (dispatch) => {
 
     const products = await response.json()
 
-    console.log(products)
-
-    // dispatch(setAllProducts(products))
+    dispatch(setAllProducts(products.products))
 
     return products;
 }

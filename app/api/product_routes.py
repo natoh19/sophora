@@ -8,6 +8,6 @@ product_routes = Blueprint('products', __name__, url_prefix = '/api/products')
 @product_routes.route('/')
 def products():
     products = Product.query.all()
-    print('----------', {"products": [product.to_dict() for product in products]})
+    # print('----------', {"products": [product.to_dict() for product in products]})
     return {"products": [product.to_dict() for product in products]}
     # return 'Hello'

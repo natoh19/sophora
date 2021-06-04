@@ -39,6 +39,7 @@ export const authenticate = () => async (dispatch) => {
       })
     });
     const data = await response.json();
+    alert("user logged in")
     if (data.errors) {
         return data;
     }
@@ -55,6 +56,7 @@ export const authenticate = () => async (dispatch) => {
     });
 
     const data = await response.json();
+    alert("User logged out")
     dispatch(removeUser());
   };
 
