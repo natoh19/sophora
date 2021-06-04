@@ -2,8 +2,9 @@ import React, { useEffect} from "react";
 import Container from '@material-ui/core/Container';
 import Header from '../header/Header'
 import { useDispatch, useSelector } from "react-redux";
-import * as productStore from '../../store/product'
-import './homePage.css'
+import * as productStore from '../../store/product';
+import Products from '../product/Products';
+import './homePage.css';
 
 export default function HomePage() {
 
@@ -25,9 +26,7 @@ export default function HomePage() {
 
         <>
 
-             {allProducts.map(product => (
-                  <div key={product.id}>{product.name}</div>
-          ))}
+        <Products />
         </>
 
 

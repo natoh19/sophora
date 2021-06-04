@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-      color: 'black'
+      color: 'secondary'
     },
   },
   search: {
@@ -58,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'black'
+    color: 'secondary'
   },
   inputRoot: {
-    color: 'black',
+    color: 'secondary',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -71,21 +71,21 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
-      color: 'black'
+      color: 'secondary'
     },
   },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
-      color: 'black'
+      color: 'secondary'
     },
   },
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
       display: 'none',
-      color: 'black'
+      color: 'secondary'
     },
   },
 }));
@@ -146,6 +146,7 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      onClick={handleLogOut}>
     >
       <MenuItem component = {Link} to="/MyAccount">My Account</MenuItem>
       <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
@@ -212,7 +213,7 @@ export default function PrimarySearchAppBar() {
           <IconButton
             edge="start"
             className={classes.menuButton}
-            color="black"
+            color="secondary"
             aria-label="open drawer"
           >
             <MenuIcon />

@@ -60,8 +60,8 @@ export default function ProductCard({brand, summary, price, image_url, categoryI
                     <FavoriteIcon />
                 </IconButton>
                 <Tooltip title="Product Details">
-                    <IconButton aria-label="product details">
-                        <VisibilityIcon onClick={handleProductGridClick} />
+                    <IconButton aria-label="product details" onClick={handleProductGridClick}>
+                        <VisibilityIcon />
                     </IconButton>
                 </Tooltip>
                 <Button variant="outlined" onClick={handleProductGridClick} >Details</Button>
