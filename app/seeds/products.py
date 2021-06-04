@@ -4,9 +4,11 @@ from app.models import db, Product
 def seed_products():
 
     product1 = Product(
-        name="Maybelline Face Studio Master Hi-Light Light Booster Bronzer",
+        name="Light Booster Bronzer",
+        brand="Maybelline",
         categoryId=2,
-        image_url='https://cdnd.lystit.com/photos/2012/04/16/paul-smith-multi-striped-socks-product-1-3276627-727547536.jpeg',
+        image_url="https://d3t32hsnjxo7q6.cloudfront.net/i/2d46e82f21b11f658a4378abcbd1c31b_ra,w158,h184_pa,w158,h184.png",
+        summary="Light weight bronzer",
         description="Maybelline Face Studio Master Hi-Light Light Boosting bronzer formula",
         price=1400,
         quantity=13
@@ -16,9 +18,11 @@ def seed_products():
 
     product2 = Product(
         name="Maybelline Fit Me Bronzer",
+        brand="Maybelline",
         categoryId = 2,
         image_url="https://d3t32hsnjxo7q6.cloudfront.net/i/d4f7d82b4858c622bb3c1cef07b9d850_ra,w158,h184_pa,w158,h184.png",
-        description="Why You'll Love It! Lightweight pigments blend easily and wear evenly. Provides a natural, fade-proof bronzed color that leaves skin the way it was meant to be",
+        summary="Lightweight pigment",
+        description="Lightweight pigments blend easily and wear evenly. Provides a natural, fade-proof bronzed color that leaves skin the way it was meant to be",
         price=1800,
         quantity=13
     )
