@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function ProductCard({brand, summary, price, image_url, categoryId, id }) {
+export default function ProductCard({product}) {
     const classes = useStyles();
     const history = useHistory();
 
@@ -43,16 +43,16 @@ export default function ProductCard({brand, summary, price, image_url, categoryI
     return (
         <Card className={classes.root}>
             <CardHeader
-                title={brand}
-                subheader={summary}
+                title={product.brand}
+                subheader={product.summary}
             />
             <CardMedia
                 className={classes.media}
-                image={image_url}
+                image={product.image_url}
             />
             <CardContent>
                 <Typography variant="h6" color="textSecondary" component="h6" >
-                   {price}
+                   {product.price}
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
