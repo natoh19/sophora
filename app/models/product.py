@@ -6,9 +6,11 @@ class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
+    brand = db.Column(db.String(255))
     categoryId = db.Column(db.Integer, db.ForeignKey("categories.category_id"))
     image_url = db.Column(db.String(255))
-    description = db.Column(db.String(255))
+    summary = db.Column(db.String)
+    description = db.Column(db.String)
     price = db.Column(db.Integer)
     quantity = db.Column(db.Integer)
 
@@ -21,8 +23,10 @@ class Product(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "brand": self.brand,
             "categoryId": self.categoryId,
             "image_url": self.image_url,
+            "summary": self.summary,
             "description": self.description,
             "price": self.price,
             "quantity": self.quantity,

@@ -16,6 +16,8 @@ import Navbar from './components/navbar/Navbar'
 import ProfilePage from './components/profilePage/ProfilePage'
 import CheckoutPage from './components/checkout/CheckoutPage'
 import Header from './components/header/Header'
+import ProductCard from './components/product/ProductCard'
+import Products from './components/product/Products'
 import './index.css'
 
 const promise = loadStripe("pk_test_51Iws9eDTZpv1JDZFarzSyEF2nqq9xenWCwbILooHMNrAgUCCN2WIATjKHDFiEZVqkqHUeiLsRzcV786iA4H9blPJ00yOk7hdYb");
@@ -65,6 +67,16 @@ function App() {
         <Route path="/order" exact>
           <CheckoutPage />
         </Route>
+        <Route path="/productcard" exact>
+          <ProductCard />
+        </Route>
+        <Route path="/products" exact>
+          <Products />
+        </Route>
+        {/* <Route path="/products/:id">
+        <Product />
+
+        </Route> */}
 
       </Switch>
 

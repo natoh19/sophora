@@ -1,4 +1,4 @@
-import React, {useEffect}  from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -14,7 +14,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import * as session from '../../store/session'
 import {useHistory, Link} from 'react-router-dom'
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-      color: 'black'
+      color: 'secondary'
     },
   },
   search: {
@@ -59,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'black'
+    color: 'secondary'
   },
   inputRoot: {
-    color: 'black',
+    color: 'secondary',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -72,21 +71,21 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
-      color: 'black'
+      color: 'secondary'
     },
   },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
-      color: 'black'
+      color: 'secondary'
     },
   },
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
       display: 'none',
-      color: 'black'
+      color: 'secondary'
     },
   },
 }));
@@ -106,10 +105,10 @@ export default function PrimarySearchAppBar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleProfileMenuOpenTwo = (event) => {
-    alert("handleProfileMenuOpen2")
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleProfileMenuOpenTwo = (event) => {
+  //   alert("handleProfileMenuOpen2")
+  //   setAnchorEl(event.currentTarget);
+  // };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -120,9 +119,9 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
+  // const handleMobileMenuOpen = (event) => {
+  //   setMobileMoreAnchorEl(event.currentTarget);
+  // };
 
   const handleLogOut = (event) => {
     dispatch(session.logout())
@@ -132,9 +131,9 @@ export default function PrimarySearchAppBar() {
     history.push("/login")
   }
 
-  const handleLogOutTwo = (event) => {
-    dispatch(session.logout())
-  }
+  // const handleLogOutTwo = (event) => {
+  //   dispatch(session.logout())
+  // }
 
 
   const menuId = 'primary-search-account-menu';
@@ -147,75 +146,65 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      onClick={handleLogOut}>
     >
-      <MenuItem onClick={handleMenuClose} component = {Link} to="/MyAccount">My Account</MenuItem>
-      <MenuItem onClick={handleMenuClose} onClick = {handleLogOut}>Log Out</MenuItem>
+      <MenuItem component = {Link} to="/MyAccount">My Account</MenuItem>
+      <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge color="secondary">
-            <FavoriteIcon />
-          </Badge>
-        </IconButton>
-        <p>Loves</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit">
-          <Badge color="secondary">
-            <ShoppingCartIcon/>
-          </Badge>
-        </IconButton>
-        <p>Your Basket</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle aria-hidden={false}/>
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          // aria-label="logout"
-          // aria-controls="primary-search-account-menu"
-          // aria-haspopup="true"
-          // color="inherit"
-        >
-          <DoubleArrowIcon aria-hidden={false}/>
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
+  // const mobileMenuId = 'primary-search-account-menu-mobile';
+  // const renderMobileMenu = (
+  //   <Menu
+  //     anchorEl={mobileMoreAnchorEl}
+  //     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+  //     id={mobileMenuId}
+  //     keepMounted
+  //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+  //     open={isMobileMenuOpen}
+  //     onClose={handleMobileMenuClose}
+  //   >
+  //     <MenuItem>
+  //       <IconButton aria-label="show 4 new mails" color="inherit">
+  //         <Badge color="secondary">
+  //           <FavoriteIcon />
+  //         </Badge>
+  //       </IconButton>
+  //       <p>Loves</p>
+  //     </MenuItem>
+  //     <MenuItem>
+  //       <IconButton color="inherit">
+  //         <Badge color="secondary">
+  //           <ShoppingCartIcon/>
+  //         </Badge>
+  //       </IconButton>
+  //       <p>Your Basket</p>
+  //     </MenuItem>
+  //     <MenuItem onClick={handleProfileMenuOpen}>
+  //       <IconButton
+  //         aria-label="account of current user"
+  //         aria-controls="primary-search-account-menu"
+  //         aria-haspopup="true"
+  //         color="inherit"
+  //       >
+  //         <AccountCircle aria-hidden={false}/>
+  //       </IconButton>
+  //       <p>Profile</p>
+  //     </MenuItem>
+  //   </Menu>
+  // );
 
-  let profileIcon;
+  // let profileIcon;
 
-  if (userInSession) {
-    profileIcon = (
-      <AccountCircle user={userInSession} />
-    )
-  } else {
-    profileIcon = (
-      <DoubleArrowIcon/>
-    )
-  }
+  // if (userInSession) {
+  //   profileIcon = (
+  //     <AccountCircle user={userInSession} />
+  //   )
+  // } else {
+  //   profileIcon = (
+  //     <DoubleArrowIcon/>
+  //   )
+  // }
 
   return (
     <div>
@@ -224,7 +213,7 @@ export default function PrimarySearchAppBar() {
           <IconButton
             edge="start"
             className={classes.menuButton}
-            color="black"
+            color="secondary"
             aria-label="open drawer"
           >
             <MenuIcon />
@@ -287,7 +276,7 @@ export default function PrimarySearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
+      {/* {renderMobileMenu} */}
       {renderMenu}
     </div>
   );
