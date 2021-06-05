@@ -17,10 +17,12 @@ import { useParams } from "react-router-dom";
 import ImageGrid from './ImageGrid'
 import * as productStore from '../../store/product'
 import { ShoppingCart } from "@material-ui/icons";
-import {getSingleProduct} from '../../store/product'
+// import {getSingleProduct} from '../../store/product'
 import { makeStyles } from '@material-ui/core/styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import * as cartReducer from '../../store/cart'
+import CartModal from '../cart/cartModal'
 
 
 
@@ -32,18 +34,37 @@ export default function Product() {
   const product = useSelector(state => state.product.product);
   const { id } = useParams();
   const [selected, setSelected] = useState(0)
+  const [open, setOpen] = React.useState(false);
   const images = [product.image_url_main, product.imageOne, product.imageTwo]
+  const cart = useSelector(state => state.cart.products)
 
   useEffect(() => {
-    dispatch(getSingleProduct(id))
+    dispatch(productStore.getSingleProduct(id))
 
   }, [dispatch, id])
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
     },
   }));
+
+  const handleAdd = async(product) => {
+    dispatch(cartReducer.addProduct(product))
+  }
+
+  // onClick={
+  //   async () => {
+  //   dispatch(cartReducer.addProduct(product))
+  // }}
 
   const classes = useStyles();
 
@@ -68,15 +89,30 @@ export default function Product() {
               {/* <Divider /> */}
               <Box mt={2} style={{marginLeft: "30px"}}>
                 <Typography variant="h4">{product.name}</Typography>
+                <IconButton aria-label="love this item">
+                  <FavoriteIcon />
+                </IconButton>
                 <Typography variant="h6">{product.brand}</Typography>
                 <Typography variant="subtitle1">{product.description}</Typography>
                 <Typography variant="subtitle1">{`$${product.price/100}`}</Typography>
               </Box>
-              <Box>
-                <Button variant="contained" color="primary" className={classes.button} style={{marginTop: "auto", marginLeft: "30px"}} startIcon = {<AddShoppingCartIcon />}>Add To Cart</Button>
-                <IconButton aria-label="love this item">
-                  <FavoriteIcon />
-                </IconButton>
+              <Box >
+                <Box>
+                <Button  variant="contained" color="primary" className={classes.button}
+                style={{marginTop: "auto", marginLeft: "30px"}} startIcon = {<AddShoppingCartIcon />}
+                // onClick={handleAdd}
+                onClick={
+                  async () => {
+                   dispatch(cartReducer.addProduct(product))
+                }}
+                onClick={handleOpen}
+              >
+
+                  Add To Cart
+                  </Button>
+                  <CartModal open={open} onClose={handleClose} product={product}/>
+
+                </Box>
               </Box>
 
             </Grid>

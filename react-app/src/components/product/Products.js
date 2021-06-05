@@ -8,6 +8,7 @@ export default function Products() {
     const allProducts = useSelector(state => state.product.products)
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         dispatch(productStore.getAllProducts())
     }, [dispatch])
@@ -18,7 +19,6 @@ export default function Products() {
                 {allProducts.map(product => (
                     <Grid key={product.id}  item xs={12} sm={8} md={4}>
                     <ProductCard product={product} />
-                    {console.log('++++++++++', product)}
                     </Grid>
                 ))}
             </Grid>

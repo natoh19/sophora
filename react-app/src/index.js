@@ -31,6 +31,11 @@ import red from '@material-ui/core/colors/red';
 
 const store = configureStore();
 
+store.subscribe(() => {
+  const state = store.getState();
+  window.localStorage.setItem('cart', JSON.stringify(state.cart));
+});
+
 ReactDOM.render(
   <React.StrictMode>
     {/* <ThemeProvider theme={theme}> */}

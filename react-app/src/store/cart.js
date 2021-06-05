@@ -1,3 +1,5 @@
+import product from "./product";
+
 export const LOAD_CART = 'LOAD_CART';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
@@ -37,18 +39,21 @@ export const loadCart = products => ({
             products: action.payload
           };
           case ADD_PRODUCT:
-            if (state.products.some(product => product.id === action.payload.id)) {
+          //   if (state.products.some(product => product.id === action.payload.id)) {
 
-              return {
-                ...state,
-                products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
-              }
-            }
-            return {
-              ...state,
-              products: [...state.products, { ...action.payload, qty: 1 }]
+          //     return {
+          //       ...state,
+          //       products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
+          //     }
+          //   }
 
-            };
+
+          return {
+               ...state,
+               products: [...state.products, { ...action.payload, qty: 1 }]
+             };
+
+
         case REMOVE_PRODUCT:
           // alert('removed product')
           return {
