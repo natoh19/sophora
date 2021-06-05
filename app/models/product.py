@@ -8,7 +8,10 @@ class Product(db.Model):
     name = db.Column(db.String(255))
     brand = db.Column(db.String(255))
     categoryId = db.Column(db.Integer, db.ForeignKey("categories.category_id"))
-    image_url = db.Column(db.String(255))
+    image_url_main = db.Column(db.String(255))
+    imageOne=db.Column(db.String(255))
+    imageTwo=db.Column(db.String(255))
+    imageThree=db.Column(db.String(255))
     summary = db.Column(db.String)
     description = db.Column(db.String)
     price = db.Column(db.Integer)
@@ -25,7 +28,10 @@ class Product(db.Model):
             "name": self.name,
             "brand": self.brand,
             "categoryId": self.categoryId,
-            "image_url": self.image_url,
+            "image_url_main": self.image_url_main,
+            "imageOne": self.imageOne,
+            "imageTwo": self.imageTwo,
+            "imageThree": self.imageThree,
             "summary": self.summary,
             "description": self.description,
             "price": self.price,

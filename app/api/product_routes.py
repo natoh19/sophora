@@ -11,3 +11,10 @@ def products():
     # print('----------', {"products": [product.to_dict() for product in products]})
     return {"products": [product.to_dict() for product in products]}
     # return 'Hello'
+
+
+@product_routes.route('/<int:id>/')
+def productSingle(id):
+    product = Product.query.get(id)
+    return product.to_dict()
+    # return 'Hello'

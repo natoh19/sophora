@@ -208,7 +208,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div>
-      <AppBar style={{marginTop: 100, backgroundColor: 'white'}}>
+      <AppBar style={{marginTop: 100}}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -218,7 +218,7 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap component = {Link} to="/" style= {{textDecorationLine: 'none'}}>
+          <Typography className={classes.title} variant="h6" noWrap component = {Link} to="/" style= {{textDecorationLine: 'none', color: 'white'}}>
            Sophora
           </Typography>
           <div className={classes.search}>
