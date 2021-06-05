@@ -9,15 +9,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import red from '@material-ui/core/colors/red';
 // import black from '@material-ui/core/colors/black';
 
-const theme = createMuiTheme({
-  palette: {
-    type: "light",
-    primary: {500: '#FFFFFF'},
-    secondary: {
-      main: '#000000',
-    },
-  },
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     type: "light",
+//     primary: {500: '#020d0f'},
+//     secondary: {
+//       main: '#000000',
+//     },
+//   },
+// });
 
 // const theme = createMuiTheme({
 //   palette: {
@@ -33,12 +33,12 @@ const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    {/* <ThemeProvider theme={theme}> */}
+      {/* <CssBaseline /> */}
       <Provider store={store}>
         <App />
       </Provider>
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

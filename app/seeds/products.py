@@ -4,27 +4,33 @@ from app.models import db, Product
 def seed_products():
 
     product1 = Product(
-        name="Light Booster Bronzer",
-        brand="Maybelline",
+        name="Brilliant Eye Brightener",
+        brand="Thrive",
         categoryId=2,
-        image_url="https://d3t32hsnjxo7q6.cloudfront.net/i/2d46e82f21b11f658a4378abcbd1c31b_ra,w158,h184_pa,w158,h184.png",
-        summary="Light weight bronzer",
-        description="Maybelline Face Studio Master Hi-Light Light Boosting bronzer formula",
-        price=1400,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1622847299/sophoraSeeds/Brilliant_Eye_Brightener_Set_Muna_Mieko_emmzie.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1622847298/sophoraSeeds/BEB-Mieko_BA-10_pobeq6.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1622847297/sophoraSeeds/BEB_Muna_Claudine_BA_b48cf534-5431-4a2f-a422-92a8a164d5c7_vf7ozw.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1622847297/sophoraSeeds/BEB-Mieko_BA-13_1_ery6c3.jpg",
+        summary="Best-selling eye brightener ",
+        description="Complements every skin tone and highlights all of your best features" ,
+        price=4000,
         quantity=13
     )
 
     db.session.add(product1)
 
     product2 = Product(
-        name="Maybelline Fit Me Bronzer",
-        brand="Maybelline",
+        name="Artist Face Color Mini",
+        brand="Make Up Forever",
         categoryId = 2,
-        image_url="https://d3t32hsnjxo7q6.cloudfront.net/i/d4f7d82b4858c622bb3c1cef07b9d850_ra,w158,h184_pa,w158,h184.png",
-        summary="Lightweight pigment",
-        description="Lightweight pigments blend easily and wear evenly. Provides a natural, fade-proof bronzed color that leaves skin the way it was meant to be",
-        price=1800,
-        quantity=13
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1622848247/35487521166_I000021190_ARTIST_FACE_COLOR_MINI-5G--106_Face_2_xx8ttd.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1622848247/35487521166_I000021190_ARTIST_FACE_COLOR_MINI-5G--106_Face_1_hsbnsd.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1622848247/35487521166_I000021190_ARTIST_FACE_COLOR_MINI-5G--106_Face_0_syfu8e.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1622848247/35487521166_I000021190_ARTIST_FACE_COLOR_MINI-5G--106_Face_1_hsbnsd.jpg",
+        summary="Highlighter & Blush Duo",
+        description="An all-in-one travel duo featuring Artist Face Color highlight and blush powder bestsellers.",
+        price=1540,
+        quantity=11
     )
 
     db.session.add(product2)

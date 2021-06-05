@@ -13,10 +13,17 @@ export const setAllProducts = (products) => ({
     payload: products
 })
 
+export const setSingleProduct = (product) => ({
+    type: SET_SINGLE_PRODUCT,
+    payload: product
+})
+
 const initialState ={
     products: [],
     product: {}
 }
+
+
 
 
 export const getAllProducts =() => async (dispatch) => {
@@ -32,6 +39,21 @@ export const getAllProducts =() => async (dispatch) => {
     dispatch(setAllProducts(products.products))
 
     return products;
+}
+
+export const getSingleProduct=(id) => async(dispatch)=> {
+  const response = await fetch(`/api/products/${id}/`)
+
+  if(!response.ok) {
+    const errors = await response.json()
+    return {errors}
+  }
+
+  const product = await response.json()
+
+  dispatch(setSingleProduct(product))
+
+  return product;
 }
 
 export const getAllProductsByCategory =(id) => async (dispatch) => {
@@ -61,6 +83,7 @@ export default function (state=initialState, action) {
           products: action.payload
         }
       case SET_SINGLE_PRODUCT:
+
         return {
           ...state,
           product: action.payload

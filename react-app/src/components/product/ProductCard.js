@@ -37,7 +37,8 @@ export default function ProductCard({product}) {
 
 
     const handleProductGridClick = () => {
-        history.push(`{/products/:id}`)
+        // alert("product.id")
+        history.push(`/products/${product.id}`)
     }
 
     return (
@@ -48,11 +49,11 @@ export default function ProductCard({product}) {
             />
             <CardMedia
                 className={classes.media}
-                image={product.image_url}
+                image={product.image_url_main}
             />
             <CardContent>
                 <Typography variant="h6" color="textSecondary" component="h6" >
-                   {product.price}
+                   {`$${product.price/100}`}
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
