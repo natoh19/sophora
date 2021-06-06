@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import {useHistory} from 'react-router-dom'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,12 +29,17 @@ const useStyles = makeStyles((theme) => ({
 export default function CartModal(props) {
   const classes = useStyles();
   const cart = Object.values(useSelector(state => state.cart.products))
+  const history=useHistory()
 //   const [open, setOpen] = React.useState(false);
 
 
 //   const handleOpen = () => {
 //     setOpen(true);
 //   };
+
+  const handleConfirm = () => {
+    history.push('/confirmation')
+  };
 
 //   const handleClose = () => {
 //     setOpen(false);
@@ -68,12 +74,9 @@ export default function CartModal(props) {
                         <Typography variant="subtitle1">{props.product.description}</Typography>
                         <Typography variant="subtitle1">{`$${props.product.price/100}`}</Typography>
                       </div>
-                     <Button variant="contained" color="secondary">Checkout</Button>
+                     <Button onClick={handleConfirm}variant="contained" color="secondary">Checkout</Button>
                   </Box>
               </Grid>
-
-
-
           </div>
         </Fade>
       </Modal>

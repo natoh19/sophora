@@ -5,6 +5,8 @@ export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const UPDATE_CART = 'UPDATE_CART';
 export const CLEAR_PRODUCT = 'CLEAR_PRODUCT'
+export const INCREASE_QUANTITY = 'INCREASE_QUANTITY'
+export const DECREASE_QUANTITY = 'DECREASE_QUANTITY'
 
 
 export const loadCart = products => ({
@@ -12,58 +14,79 @@ export const loadCart = products => ({
     payload: products
   });
 
-  export const addProduct = product => ({
-    type: ADD_PRODUCT,
-    payload: product
-  });
+export const increaseQty = product => ({
+  type: INCREASE_QUANTITY,
+  payload: product
+})
 
-  export const removeProduct = products => ({
-    type: REMOVE_PRODUCT,
-    payload: products
-  });
+export const decreaseQty = product => ({
+  type: DECREASE_QUANTITY,
+  payload: product
+})
 
-  export const clearProduct = ()=> ({
-    type: CLEAR_PRODUCT,
-    payload: []
-  })
+export const addProduct = product => ({
+  type: ADD_PRODUCT,
+  payload: product
+});
 
+export const removeProduct = products => ({
+  type: REMOVE_PRODUCT,
+  payload: products
+});
 
-  const initialState = JSON.parse(localStorage.getItem('cart') || '{"products":[]}')
-
-
-  export default function (state = initialState, action) {
-    switch (action.type) {
-        case LOAD_CART:
-          return {
-            ...state,
-            products: action.payload
-          };
-          case ADD_PRODUCT:
-          //   if (state.products.some(product => product.id === action.payload.id)) {
-
-          //     return {
-          //       ...state,
-          //       products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
-          //     }
-          //   }
+export const clearProduct = () => ({
+  type: CLEAR_PRODUCT,
+  payload: []
+})
 
 
-          return {
-               ...state,
-               products: [...state.products, { ...action.payload, qty: 1 }]
-             };
+const initialState = JSON.parse(localStorage.getItem('cart') || '{"products":[]}')
 
 
-        case REMOVE_PRODUCT:
-          // alert('removed product')
-          return {
-            products: state.products.filter(product => product.id !== action.payload.id)
-          }
-        case CLEAR_PRODUCT:
-          return {
-            products: []
-          }
-        default:
-          return state;
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case LOAD_CART:
+      return {
+        ...state,
+        products: action.payload
+      };
+    case ADD_PRODUCT:
+      // alert("Added to Cart")
+      if (state.products.some(product => product.id === action.payload.id)) {
+        // increase qty if item already exists in cart
+        return {
+          ...state,
+          products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
+        }
       }
+      return {
+        ...state,
+        products: [...state.products, { ...action.payload, qty: 1 }]
+
+      }; // else add the new item to cart
+
+    case INCREASE_QUANTITY:
+      alert('increase qty')
+      return {
+        ...state,
+        products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
+      }
+    case DECREASE_QUANTITY:
+      alert('decreate qty')
+      return {
+        ...state,
+        products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty - 1 } : product))
+      }
+    case REMOVE_PRODUCT:
+      alert('removed product')
+      return {
+        products: state.products.filter(product => product.id !== action.payload.id)
+      }
+    case CLEAR_PRODUCT:
+      return {
+        products: []
+      }
+    default:
+      return state;
   }
+}
