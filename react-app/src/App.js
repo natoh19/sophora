@@ -8,10 +8,10 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe, stripe } from "@stripe/stripe-js";
 import HomePage from './components/homePage/HomePage'
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from './components/checkout/CheckoutForm'
+import Stripe from './components/checkout/Stripe'
 import Navbar from './components/navbar/Navbar'
 import ProfilePage from './components/profilePage/ProfilePage'
 import CheckoutPage from './components/checkout/CheckoutPage'
@@ -19,6 +19,8 @@ import Header from './components/header/Header'
 import ProductCard from './components/product/ProductCard'
 import Products from './components/product/Products'
 import Product from './components/product/Product'
+import OrderSummary from './components/orderSummary/OrderSummary'
+import ItemDetail from './components/orderSummary/ItemDetail'
 import './index.css'
 
 const promise = loadStripe("pk_test_51Iws9eDTZpv1JDZFarzSyEF2nqq9xenWCwbILooHMNrAgUCCN2WIATjKHDFiEZVqkqHUeiLsRzcV786iA4H9blPJ00yOk7hdYb");
@@ -62,20 +64,24 @@ function App() {
         </ProtectedRoute>
         <Route path="/checkout" exact>
           <Elements stripe={promise}>
-          <CheckoutForm />
+          <CheckoutPage />
           </Elements>
         </Route>
         <Route path="/order" exact>
           <CheckoutPage />
         </Route>
-        <Route path="/productcard" exact>
+        {/* <Route path="/productcard" exact>
           <ProductCard />
-        </Route>
+        </Route> */}
         <Route path="/products" exact>
           <Products />
         </Route>
         <Route path="/products/:id">
         <Product />
+        </Route>
+        <Route path="/confirmation">
+          <OrderSummary />
+
 
         </Route>
 

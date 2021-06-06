@@ -4,14 +4,19 @@ import { Grid, Container } from "@material-ui/core";
 import * as productStore from '../../store/product'
 import ProductCard from './ProductCard'
 
+
 export default function Products() {
     const allProducts = useSelector(state => state.product.products)
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+
+
 
 
     useEffect(() => {
         dispatch(productStore.getAllProducts())
     }, [dispatch])
+
+
 
     return (
         <Container id="container">

@@ -12,7 +12,7 @@ import {
     IconButton,
     Grid
   } from "@material-ui/core";
-  import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { useParams } from "react-router-dom";
 import ImageGrid from './ImageGrid'
 import * as productStore from '../../store/product'
@@ -28,6 +28,8 @@ import CartModal from '../cart/cartModal'
 
 
 
+
+
 export default function Product() {
 
   const dispatch= useDispatch();
@@ -38,10 +40,16 @@ export default function Product() {
   const images = [product.image_url_main, product.imageOne, product.imageTwo]
   const cart = useSelector(state => state.cart.products)
 
+
   useEffect(() => {
     dispatch(productStore.getSingleProduct(id))
 
   }, [dispatch, id])
+
+  useEffect(() => {
+    setOpen(true)
+  }, [cart])
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -105,7 +113,7 @@ export default function Product() {
                   async () => {
                    dispatch(cartReducer.addProduct(product))
                 }}
-                onClick={handleOpen}
+                // onClick={handleOpen}
               >
 
                   Add To Cart
