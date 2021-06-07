@@ -35,86 +35,127 @@ def seed_products():
 
     db.session.add(product2)
 
-#     product3 = Product(
-#         sku='PS4MCOS',
-#         name='Plaid socks',
-#         category_id=4,
-#         image_url='https://ae01.alicdn.com/kf/HTB1K.z2NFXXXXXJXXXXq6xXFXXXL/New-Autumn-Winter-Cotton-Dress-Socks-Mens-Crew-Socks-Business-Classic-Plaid-Socks-Fashion-Colorful-Leisure.jpg',
-#         description='Thick and stylish socks',
-#         regular_price=8.00
-#     )
 
-#     db.session.add(product3)
+    product3 = Product(
+        name="Unlocked",
+        brand="Hourglass",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623033822/8D60B0B4-C372-4410-9973-AFD71DA49F70_550x690_mt0aqv.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623033822/8D60B0B4-C372-4410-9973-AFD71DA49F70_550x690_mt0aqv.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623033822/D558DB41-82E6-4408-950B-BCFB66785C06_550x690_swhvpi.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623033821/1E2F94B0-89C2-4BDA-8F4D-6097E408CD06_550x690_vwzsid.jpg",
+        summary="Dramatic eyes for day and night",
+        description="Create a dramatic sparkling eye with an exclusive set that features Caution Extreme Lash Mascara and Scattered Light Glitter",
+        price=4900,
+        quantity=11
+    )
 
-#     product4 = Product(
-#         sku='WSG4BROS',
-#         name='Wayfair sunglasses',
-#         category_id=4,
-#         image_url='https://i.pinimg.com/originals/10/35/f4/1035f4ee12a0bb2aef446e0dd6422132.jpg',
-#         description='Wayfair brown sunglasses',
-#         regular_price=100.00
-#     )
-#     db.session.add(product4)
+    db.session.add(product3)
 
-#     product5 = Product(
-#         sku='ASG4TSOS',
-#         name='Aviator sunglasses',
-#         category_id=4,
-#         image_url='https://cdnc.lystit.com/photos/2012/05/09/persol-brown-plastic-aviator-sunglasses-product-2-3465708-409937962.jpeg',
-#         description='Aviator tortoise sunglasses',
-#         regular_price=75.00
-#     )
-#     db.session.add(product5)
+    product4 = Product(
+        name="Le Volume de Chanel Mascara",
+        brand="Chanel",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034435/makeup5/makeup5/le-volume-de-chanel-mascara-10-noir-0-21oz--packshot-default-191210-8800873775134_r3c06x.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034434/makeup5/makeup5/le-volume-de-chanel-mascara-10-noir-0-21oz--application-visual-a-191210-8801778466846_rx87ph.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034436/makeup5/makeup5/le-volume-de-chanel-mascara-10-noir-0-21oz--application-visual-b-191210-8801778434078_akmykv.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034436/makeup5/makeup5/le-volume-de-chanel-mascara-10-noir-0-21oz--basic-texture-191210-8801073692702_jtpqcf.jpg",
+        summary="For a full volume look",
+        description="Exquisite and long lasting deep color for eyes",
+        price=4200,
+        quantity=11
+    )
+    db.session.add(product4)
 
-#     product6 = Product(
-#         sku='WHSG4WOS',
-#         name='White round sunglasses',
-#         category_id=4,
-#         image_url='https://www.topsunglasses.net/wp-content/uploads/2016/11/White-Round-Sunglasses-Pictures.jpg',
-#         description='White stylish round sunglasses with a flair',
-#         regular_price=35.00
-#     )
-#     db.session.add(product6)
+    product5 = Product(
+        name="Les Beiges Healthy Glow eyes",
+        brand="Chanel",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034694/makeup6/makeup6/les-beiges-healthy-glow-natural-eyeshadow-palette-medium-0-16oz--packshot-default-184180-8818220531742_fqhgyc.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034695/makeup6/makeup6/les-beiges-healthy-glow-natural-eyeshadow-palette-medium-0-16oz--application-visual-c-184180-8801648279582_lrkrqz.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034696/makeup6/makeup6/les-beiges-healthy-glow-natural-eyeshadow-palette-medium-0-16oz--basic-texture-184180-8801068908574_cihoru.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034696/makeup6/makeup6/les-beiges-healthy-glow-natural-eyeshadow-palette-medium-0-16oz--basic-texture-184180-8801068908574_cihoru.jpg",
+        summary="Neutral eye palette",
+        description="Long lasting, neutral beige based color",
+        price=5300,
+        quantity=11
+    )
+    db.session.add(product5)
 
-#     product7 = Product(
-#         sku='BB4BKOS',
-#         name='Black belt',
-#         category_id=4,
-#         image_url='https://www.thefashionisto.com/wp-content/uploads/2018/04/Salvatore-Ferragamo-2018-Mens-Switch-Belt-Style-001.jpg',
-#         description='Sleek black belt for any occasion',
-#         regular_price=35.00
-#     )
-#     db.session.add(product7)
+    product6 = Product(
+        name="Boy de Chanel 3-in-1",
+        brand="Chanel",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--packshot-default-195614-8835365077022_ia4e7t.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034887/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--basic-texture-195614-8824994562078_libved.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--application-visual-b-195614-8824041406494_sryqfn.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034885/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--application-visual-a-195614-8824041472030_m4yhzn.jpg",
+        summary="For men, 3-in-1 eye pencil and brow pencil",
+        description="Neutral brown shade for any skin tone",
+        price=5000,
+        quantity=11
+    )
+    db.session.add(product6)
 
-#     product8 = Product(
-#         sku='BRB4BROS',
-#         name='Brown Belt',
-#         category_id=4,
-#         image_url='https://i.etsystatic.com/5712391/r/il/1c329f/668497568/il_794xN.668497568_o38h.jpg',
-#         description='Simple rustic brown belt for any occasion',
-#         regular_price=20.00
-#     )
-#     db.session.add(product8)
+    product7 = Product(
+        name="Boy de Chanel 3-in-1",
+        brand="Chanel",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--packshot-default-195614-8835365077022_ia4e7t.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034887/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--basic-texture-195614-8824994562078_libved.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--application-visual-b-195614-8824041406494_sryqfn.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034885/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--application-visual-a-195614-8824041472030_m4yhzn.jpg",
+        summary="For men, 3-in-1 eye pencil and brow pencil",
+        description="Neutral brown shade for any skin tone",
+        price=5000,
+        quantity=11
+    )
+    db.session.add(product7)
 
-#     product9 = Product(
-#         sku='SSB4MCOS',
-#         name='Snake skin Belt',
-#         category_id=4,
-#         image_url='https://i.pinimg.com/originals/39/17/95/3917954d50ce0d7889dad4b9042e891d.jpg',
-#         description='Elegant and stylish snake skin belt for that chic look',
-#         regular_price=40.00
-#     )
-#     db.session.add(product9)
+    product8 = Product(
+        name="Essential Conealer and Highlighter",
+        brand="Chanel",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--packshot-default-149170-8800837992478_f5fc3h.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--packshot-default-149170-8800837992478_f5fc3h.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--basic-texture-149170-8804327718942_zghc0x.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--basic-texture-149170-8804327718942_zghc0x.jpg",
+        summary="Conceal, hightlight, color",
+        description="The ultimate staple for creating a dewy, fresh-faced look, this versatile palette packs multiple uses and effects in a sleek, touch-up-friendly compact.",
+        price=5500,
+        quantity=11
+    )
+    db.session.add(product8)
 
-#     product10 = Product(
-#         sku='BYB4YOS',
-#         name='Bright yellow Belt',
-#         category_id=4,
-#         image_url='https://i.pinimg.com/originals/d1/25/4d/d1254d703bb6f6a0c28f19f9fce5c620.jpg',
-#         description='Fashion forward with the utility looking style of a belt',
-#         regular_price=18.50
-#     )
-#     db.session.add(product10)
+    product9 = Product(
+        name="Hot Lips Kit",
+        brand="Charlotte Tilbury",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035481/makeup9/makeup9/HotLips2.0_PatsyRed_Model_xwtswo.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--packshot-default-149170-8800837992478_f5fc3h.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035480/makeup9/makeup9/HotLips2_Packaging-and-swatches-infinity-burst_ui6hn6.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035480/makeup9/makeup9/HotLips2_Packaging-and-swatches-leopard-modern-red_qhhrsr.jpg",
+        summary="Lipstick is happiness in a tube!",
+        description="Choose a shade and a refill from Charlotte’s Hot Lips 2 collection, inspired by 11 of the world’s most iconic women and men; rule breakers, record makers and history shakers!",
+        price=3500,
+        quantity=11
+    )
+    db.session.add(product9)
+
+    product10 = Product(
+        name="Magic Foundation",
+        brand="Charlotte Tilbury",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035812/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-MODEL-SHADE-0_fzroum.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035812/MagicFoundation-Shade0-Before-_-After-PDP_jhjikr.jpg",
+        summary="Fairest with pink undertones",
+        description="Demi-matte, long-lasting, buildable coverage formula that creates a flawless, perfect-looking finish.",
+        price=3900,
+        quantity=11
+    )
+    db.session.add(product10)
 
 #     product12 = Product(
 #         sku='TDS1MCS',
