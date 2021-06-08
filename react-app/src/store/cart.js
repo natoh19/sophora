@@ -66,19 +66,19 @@ export default function (state = initialState, action) {
       }; // else add the new item to cart
 
     case INCREASE_QUANTITY:
-      alert('increase qty')
+      // alert('increase qty')
       return {
         ...state,
         products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
       }
     case DECREASE_QUANTITY:
-      alert('decreate qty')
+      // alert('decreate qty')
       return {
         ...state,
         products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty - 1 } : product))
       }
     case REMOVE_PRODUCT:
-      alert('removed product')
+      // alert('removed product')
       return {
         products: state.products.filter(product => product.id !== action.payload.id)
       }

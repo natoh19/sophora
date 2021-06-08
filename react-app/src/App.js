@@ -63,16 +63,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/checkout" exact>
-          <Elements stripe={promise}>
-          <CheckoutPage />
-          </Elements>
-        </Route>
-        <Route path="/order" exact>
           <CheckoutPage />
         </Route>
-        {/* <Route path="/productcard" exact>
-          <ProductCard />
-        </Route> */}
         <Route path="/products" exact>
           <Products />
         </Route>

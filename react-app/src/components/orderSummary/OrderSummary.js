@@ -16,6 +16,7 @@ import * as cartReducer from '../../store/cart'
 import ItemDetail from './ItemDetail'
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { createOrder } from '../../store/order';
 
 const useStyles = makeStyles({
     table: {
@@ -32,6 +33,7 @@ export default function OrderSummary() {
     const history = useHistory();
 
 
+
     const useStyles = makeStyles((theme) => ({
         button: {
             margin: theme.spacing(1),
@@ -42,6 +44,7 @@ export default function OrderSummary() {
     const classes = useStyles();
 
     const handleCheckout = () => {
+        // dispatch(createOrder());
         history.push('/checkout')
     }
 

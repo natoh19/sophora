@@ -46,9 +46,9 @@ export default function Product() {
 
   }, [dispatch, id])
 
-  useEffect(() => {
-    setOpen(true)
-  }, [cart])
+  // useEffect(() => {
+  //   setOpen(true)
+  // }, [cart])
 
 
   const handleOpen = () => {
@@ -109,11 +109,19 @@ export default function Product() {
                 <Button  variant="contained" color="primary" className={classes.button}
                 style={{marginTop: "auto", marginLeft: "30px"}} startIcon = {<AddShoppingCartIcon />}
                 // onClick={handleAdd}
-                onClick={
-                  async () => {
-                   dispatch(cartReducer.addProduct(product))
-                }}
+                // onClick={
+                //   async () => {
+                //    dispatch(cartReducer.addProduct(product))
+                // }}
                 // onClick={handleOpen}
+
+
+                onClick = {() => {
+                  handleAdd(product)
+                  handleOpen()
+                }}
+
+
               >
 
                   Add To Cart
