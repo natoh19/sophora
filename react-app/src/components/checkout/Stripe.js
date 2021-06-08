@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import * as orderReducer from '../../store/order'
 import {
   CardElement,
   useStripe,
@@ -6,84 +8,86 @@ import {
 } from "@stripe/react-stripe-js";
 import './CheckoutForm.css';
 
+
 export default function CheckoutForm() {
+  const dispatch = useDispatch();
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
   const stripe = useStripe();
+  const order = useSelector(state => state.order)
   const elements = useElements();
-  // useEffect(() => {
-  //   // Create PaymentIntent as soon as the page loads
-  //   window
-  //     .fetch("/api/orders/create-payment-intent", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify({items: [{ id: "xl-tshirt" }]})
-  //     })
-  //     .then(res => {
-  //       return res.json();
-  //     })
-  //     .then(data => {
-  //       setClientSecret(data.clientSecret);
-  //     });
-  // }, []);
-  const cardStyle = {
-    style: {
-      base: {
-        color: "#32325d",
-        fontFamily: 'Arial, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#32325d"
-        }
-      },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a"
-      }
-    }
-  };
-  const handleChange = async (event) => {
-    // Listen for changes in the CardElement
-    // and display any errors as the customer types their card details
-    setDisabled(event.empty);
-    setError(event.error ? event.error.message : "");
-  };
-  const handleSubmit = async ev => {
-    ev.preventDefault();
-    setProcessing(true);
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement)
-      }
-    });
-    if (payload.error) {
-      setError(`Payment failed ${payload.error.message}`);
-      setProcessing(false);
-    } else {
-      setError(null);
-      setProcessing(false);
-      setSucceeded(true);
-    }
-  };
-  return (
+
+
+
+  const handleSubmit =()=> {
+    console.log('success')}
+
+
+    return (
+    // Create PaymentIntent as soon as the page loads
+    // console.info('order is', order);
+    // if(!order || !order.id) return
+    // const res = await  window
+    //   .fetch("/api/orders/create-payment-intent", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({stripeOrder_id: order.id})
+    // })
+
+  //   const data = await res.json();
+  //   console.log('++++data', data)
+  //   setClientSecret(data.clientSecret);
+  //   return data.clientSecret;
+
+  // }, [order]);
+
+
+
+  // const handleChange = async (event) => {
+  //   // Listen for changes in the CardElement
+  //   // and display any errors as the customer types their card details
+  //   setDisabled(event.empty);
+  //   setError(event.error ? event.error.message : "");
+  // };
+  // const handleSubmit = async ev => {
+  //   ev.preventDefault();
+  //   setProcessing(true);
+  //   const secret = await getPaymentIntent();
+  //   // console.log('secret is', secret);
+  //   const payload = await stripe.confirmCardPayment(secret, {
+  //     payment_method: {
+  //       card: elements.getElement(CardElement)
+  //     }
+  //   });
+  //   if (payload.error) {
+  //     setError(`Payment failed ${payload.error.message}`);
+  //     setProcessing(false);
+  //     dispatch(orderReducer.updateOrder("failure"))
+  //   } else {
+  //     setError(null);
+  //     setProcessing(false);
+  //     setSucceeded(true);
+  //     dispatch(orderReducer.updateOrder("success"))
+  //   }
+  // };
+
+
+
+
     <form id="payment-form" onSubmit={handleSubmit}>
-      <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
+      {/* <CardElement id="card-element" options={cardStyle} onChange={handleChange} /> */}
       <button
-        disabled={processing || disabled || succeeded}
         id="submit"
       >
         <span id="button-text">
-          {processing ? (
-            <div className="spinner" id="spinner"></div>
-          ) : (
+
             "Pay now"
-          )}
+
         </span>
       </button>
       {/* Show any error that happens when processing the payment */}
@@ -103,5 +107,5 @@ export default function CheckoutForm() {
         </a> Refresh the page to pay again.
       </p>
     </form>
-  );
-}
+  )
+      }

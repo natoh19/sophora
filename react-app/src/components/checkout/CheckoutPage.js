@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { loadStripe } from "@stripe/stripe-js";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -11,14 +11,20 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Container from '@material-ui/core/Container';
 import ItemDetail from '../orderSummary/ItemDetail'
 import * as cartReducer from '../../store/cart'
+import * as orderReducer from '../../store/order'
+import Button from '@material-ui/core/Button';
+import { FormControl } from '@material-ui/core';
 import Stripe from './Stripe'
+// import CreditCardForm from './CreditCardForm'
+import OrderFinal from './OrderFinal'
+// import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
+
 import {
   CardElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
 
-// const promise = loadStripe("pk_test_51Iws9eDTZpv1JDZFarzSyEF2nqq9xenWCwbILooHMNrAgUCCN2WIATjKHDFiEZVqkqHUeiLsRzcV786iA4H9blPJ00yOk7hdYb");
 
 export default function CheckoutPage() {
   const [firstName, setFirstName] = useState('')
@@ -31,6 +37,9 @@ export default function CheckoutPage() {
   const [country, setCountry] = useState('')
   const cart = Object.values(useSelector(state => state.cart.products))
 
+  const dispatch = useDispatch();
+
+
   const handleTotal = (cart) => {
     let total = 0
     cart.map(product => total += (product.qty * product.price))
@@ -39,18 +48,23 @@ export default function CheckoutPage() {
 
   }
 
+  const handlePay=async (e)=> {
+    e.preventDefault()
+    await dispatch(orderReducer.createOrder())
+
+  }
+
+
   return (
-    <div styles={{ margin: '0 auto' }}>
+
+    <div>
+
+    <form onSubmit={handlePay}>
       <Box width="100%">
         <Typography variant="h3" align="center">
           Checkout
       </Typography>
       </Box>
-
-
-      <div className="checkout-grid-container">
-
-        <div className="checkout-grid-form">
 
           <Grid item xs={12}>
             <TextField
@@ -62,7 +76,7 @@ export default function CheckoutPage() {
               fullWidth
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              margin="normal"
+              margin="dense"
             />
           </Grid>
 
@@ -74,7 +88,7 @@ export default function CheckoutPage() {
               variant="outlined"
               fullWidth
               value={lastName}
-              margin="normal"
+              margin="dense"
               onChange={(e) => setLastName(e.target.value)}
             />
           </Grid>
@@ -87,7 +101,7 @@ export default function CheckoutPage() {
               variant="outlined"
               fullWidth
               value={email}
-              margin="normal"
+              margin="dense"
               onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
@@ -100,20 +114,8 @@ export default function CheckoutPage() {
               variant="outlined"
               fullWidth
               value={address1}
-              margin="normal"
+              margin="dense"
               onChange={(e) => setAddress1(e.target.value)}
-            />
-          </Grid>
-
-          <Grid item xs={12}>
-            <TextField
-              label="Street Address 2 (optional)"
-              name="address2"
-              variant="outlined"
-              fullWidth
-              value={address2}
-              margin="normal"
-              onChange={(e) => setAddress2(e.target.value)}
             />
           </Grid>
 
@@ -125,7 +127,7 @@ export default function CheckoutPage() {
               variant="outlined"
               fullWidth
               value={zip_code}
-              margin="normal"
+              margin="dense"
               onChange={(e) => setZipCode(e.target.value)}
             />
           </Grid>
@@ -138,7 +140,7 @@ export default function CheckoutPage() {
               variant="outlined"
               fullWidth
               value={city}
-              margin="normal"
+              margin="dense"
               onChange={(e) => setCity(e.target.value)}
             />
           </Grid>
@@ -151,34 +153,55 @@ export default function CheckoutPage() {
               variant="outlined"
               fullWidth
               value={country}
-              margin="normal"
+              margin="dense"
               onChange={(e) => setCountry(e.target.value)}
             />
           </Grid>
+          <Grid item xs={12}>
+            <Box>
+              <TextField
+              required
+              label="Credit Card Number"
+              variant="filled"
+              margin="dense"
+              fullWidth
+              ></TextField>
+            </Box>
+            <Box>
+              <TextField
+              label="CVV"
+              required
+              size="small"
+              variant="outlined"
+              margin="dense"
+              helperText="3 or 4 digits usually found on the signature strip"
+              ></TextField>
+            </Box>
+          </Grid>
+          <Button type="submit">Pay</Button>
+          </form>
 
-        </div>
+
+
+
 
         <div className="checkout-grid-summary">
 
           <Grid item xs={12}>
             {cart.map(product => (
-              <ItemDetail product={product} cart={cart} />
+              <OrderFinal product={product} />
+
             ))}
 
-            <Box>
-              <Typography variant="h5" align="center">Order Total: {`$${handleTotal(cart)}`}</Typography>
-            </Box>
-            <Stripe />
           </Grid>
-
-
+        </div>
 
         </div>
 
 
-      </div>
 
-    </div>
+
+
   )
 
 
