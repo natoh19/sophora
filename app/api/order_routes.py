@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 import json
 from flask_login import login_required, current_user
 import os
-from app.models import  db, Order, Product, Payment, OrderProduct
+from app.models import  db, Order, Product
 
 
 
@@ -78,12 +78,13 @@ def create_order():
         # print('=====INTENT', intent)
     db.session.flush()
 
-    order = Order(user_id=data['user_id'], currency="usd",total=totalCost)
+    order = Order(user_id=data['user_id'] ,total=totalCost)
     db.session.add(order)
     db.session.commit()
-    for i in range(len(data['products'])):
-        op=OrderProduct(order, products[i], data['products']['qty'][i])
-        db.session.add(op)
+    for p in products:
+        # op=OrderProduct(order, products[i], data['products'][i]['qty'])
+        order.products.append(p)
+        db.session.add(p)
     db.session.commit()
 
 
@@ -92,7 +93,7 @@ def create_order():
         # print(order.orderProducts)
         # ordersDict = {'order': order.to_dict()}
         # print('++++++orderDict', ordersDict)
-    return jsonify(order=order.to_dict())
+    return order.to_dict()
 
 
 
