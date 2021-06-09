@@ -58,8 +58,8 @@ export const createOrder = () => async (dispatch, getState)   => {
         return data;
     }
 
-    dispatch(createOrderAction(data.order))
-    return data.order;
+    dispatch(createOrderAction(data))
+    return data
   }
 
 

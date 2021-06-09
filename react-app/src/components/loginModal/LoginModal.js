@@ -27,6 +27,7 @@ export default function LoginModal(props) {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    console.log(email, password)
     const data = await dispatch(login(email, password));
     props.handleClose();
     if (data.errors) {
