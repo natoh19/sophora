@@ -1,17 +1,19 @@
 from .db import db
+from sqlalchemy.ext.associationproxy import association_proxy
 
-orders_products=db.Table('orders_products',
-    db.Column("orders_id", db.Integer, db.ForeignKey("orders.id")),
-    db.Column("products_id", db.Integer, db.ForeignKey("products.id"))
-)
 
 class OrderProduct(db.Model):
-    __tablename__ ="order_products"
+    __tablename__ = "order_products"
     id = db.Column(db.Integer, primary_key=True)
     orders_id = db.Column(db.Integer, db.ForeignKey("orders.id"))
     products_id = db.Column(db.Integer, db.ForeignKey("products.id"))
-    products= db.relationship("Product", backref="orderProduct")
-    orders =db.relationship("Order", backref="orderProduct")
+    quantity = db.Column(db.Integer)
+    products = db.relationship("Product", backref="orderProduct")
+    orders = db.relationship("Order", backref="orderProduct")
+    def __init__(self, order=None, product=None, quantity=None):
+        self.orders.append(order)
+        self.products.append(product)
+        self.quantity = quantity
 
 
 class Order(db.Model):
@@ -20,7 +22,7 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     # product_id = db.Column(db.Integer, db.ForeignKey("products.id"))
     # payment_id = db.Column(db.Integer, db.ForeignKey("payments.id"))
-    status = db.Column(db.String)
+    # status = db.Column(db.String)
     total = db.Column(db.Integer)
     currency = db.Column(db.String)
 
@@ -28,13 +30,10 @@ class Order(db.Model):
     # products = db.relationship("Product", secondary='orders_products')
     users = db.relationship("User", back_populates="orders")
 
-    def products(self):
-        products = [p.orderProduct for p in self.orderProduct if p.id == self.id]
-        allProducts = []
-        for prod in products:
-            for p in prod:
-                allProducts.extend(p.orderProduct)
-        return allProducts
+
+    products = association_proxy('orderProducts', 'products')
+
+
 
 
 

@@ -59,7 +59,7 @@ export default function CheckoutPage() {
 
     <div>
 
-    <form onSubmit={handlePay}>
+    <form onSubmit={handlePay} className="checkout-form">
       <Box width="100%">
         <Typography variant="h3" align="center">
           Checkout

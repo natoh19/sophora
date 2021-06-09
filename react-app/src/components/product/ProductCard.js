@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -12,6 +13,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Tooltip from '@material-ui/core/Tooltip';
+import * as session from '../../store/session'
+import * as lovesStore from '../../store/loves'
 
 
 
@@ -34,11 +37,19 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductCard({product}) {
     const classes = useStyles();
     const history = useHistory();
+    const user = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
 
 
     const handleProductGridClick = () => {
         // alert("product.id")
         history.push(`/products/${product.id}`)
+    }
+
+    const handleLike=()=> {
+        console.log('++++product.id', product.id)
+        dispatch(session.addLove(product.id))
+
     }
 
     return (
@@ -58,14 +69,14 @@ export default function ProductCard({product}) {
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
+                    <FavoriteIcon onClick={handleLike}/>
                 </IconButton>
                 <Tooltip title="Product Details">
                     <IconButton aria-label="product details" onClick={handleProductGridClick}>
                         <VisibilityIcon />
                     </IconButton>
                 </Tooltip>
-                <Button variant="outlined" onClick={handleProductGridClick} >Details</Button>
+                <Button variant="outlined" onClick={handleProductGridClick}>Details</Button>
             </CardActions>
 
         </Card>

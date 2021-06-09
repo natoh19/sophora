@@ -45,7 +45,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <NavBar />
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route path="/" exact={true} >
           <HomePage />
