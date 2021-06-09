@@ -33,5 +33,8 @@ class User(db.Model, UserMixin):
   def to_dict(self):
     return {
       "id": self.id,
-      "email": self.email
+      "email": self.email,
+      "loves": {love.product_id: love.product_id for love in self.loves}
+      #  "loves": {love.product_id for love in self.loves} returns null
+      # "loves": {love.to_dict() for love in self.loves}
     }

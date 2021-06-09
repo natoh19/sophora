@@ -25,18 +25,13 @@ import * as cartReducer from '../../store/cart'
 import CartModal from '../cart/cartModal'
 
 
-
-
-
-
-
 export default function Product() {
 
   const dispatch= useDispatch();
   const product = useSelector(state => state.product.product);
   const { id } = useParams();
   const [selected, setSelected] = useState(0)
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const images = [product.image_url_main, product.imageOne, product.imageTwo]
   const cart = useSelector(state => state.cart.products)
 

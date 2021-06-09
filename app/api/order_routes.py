@@ -3,8 +3,7 @@ from flask import Blueprint, jsonify, request
 import json
 from flask_login import login_required, current_user
 import os
-import stripe
-from app.models import  db, Order, Product, Payment
+from app.models import  db, Order, Product, Payment, OrderProduct
 
 
 
@@ -12,7 +11,7 @@ order_routes = Blueprint('orders', __name__, url_prefix = '/api/orders')
 
 
 # stripe.api_key = "sk_test_51Iws9eDTZpv1JDZFVUGIXMqSgrj6K2nX0Sbyx2lOMhLH7Blqa4n4urGqZN9dlsbdFr8luyaB5OEANPTWZOc9u29400RY1xSzkQ"
-stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+# stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 
 
@@ -63,14 +62,13 @@ stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 @order_routes.route('/', methods=['POST'])
 def create_order():
-    try:
-        data = request.get_json()
+    data = request.get_json()
         # print('++++++DATA', data)
-        productObj= [p['id'] for p in data["products"]]
+    productObj= [p['id'] for p in data["products"]]
         # print('+++projectobj', productObj)
-        products = Product.query.filter(Product.id.in_(productObj)).all()
+    products = Product.query.filter(Product.id.in_(productObj)).all()
         # print('+++++', products)
-        totalCost = sum([p['price'] * p['qty'] for p in data['products']])
+    totalCost = sum([p['price'] * p['qty'] for p in data['products']])
         # print('++++++TOTALCOST', totalCost)
         # intent = stripe.PaymentIntent.create(
         #     amount=totalCost,
@@ -78,26 +76,26 @@ def create_order():
         # )
 
         # print('=====INTENT', intent)
-        db.session.flush()
+    db.session.flush()
 
-        order = Order(user_id=data['user_id'], currency="usd",total=totalCost, status="INITIATED")
-        db.session.add(order)
-        db.session.commit()
-        for p in products:
-            print('++++++++pToDICT', p.to_dict())
-            order.products.append(p)
-            db.session.commit()
-
-        print('++++ order', order)
-        print(order.products())
-        print(order.orderProducts)
-        ordersDict = {'order': order.to_dict()}
-        print('++++++orderDict', ordersDict)
-        return jsonify(order=order.to_dict())
+    order = Order(user_id=data['user_id'], currency="usd",total=totalCost)
+    db.session.add(order)
+    db.session.commit()
+    for i in range(len(data['products'])):
+        op=OrderProduct(order, products[i], data['products']['qty'][i])
+        db.session.add(op)
+    db.session.commit()
 
 
-    except Exception as e:
-        return jsonify(error=str(e)), 403
+        # print('++++ order', order)
+        # print(order.products())
+        # print(order.orderProducts)
+        # ordersDict = {'order': order.to_dict()}
+        # print('++++++orderDict', ordersDict)
+    return jsonify(order=order.to_dict())
+
+
+
 
 
 

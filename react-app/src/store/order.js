@@ -38,8 +38,9 @@ export const createOrder = () => async (dispatch, getState)   => {
 
     const state = getState();
     if(!state.cart.products.length) return;
-    // const products = state.cart.products[0].id;
+    // const products = state.cart.products[0];
     const products = state.cart.products
+    console.log('PRODUCT', products)
     const user = state.session.user.id;
     console.log('state is', products);
     const response = await fetch("/api/orders/", {
@@ -48,7 +49,7 @@ export const createOrder = () => async (dispatch, getState)   => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "user_id": user,
+        "user_id": 1,
 	      "products": products
       }),
     });

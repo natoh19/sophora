@@ -10,3 +10,12 @@
 body {
     display: block;
 }
+
+.checkout-form{
+  padding: 10vh 25vw 10px 25vw;
+}
+
+.checkout-grid-summary{
+
+  padding: 5vh 30%;
+}

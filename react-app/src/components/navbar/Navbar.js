@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -19,6 +19,10 @@ import * as session from '../../store/session'
 import {useHistory, Link} from 'react-router-dom'
 import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
+import LoginModal from '../loginModal/LoginModal'
+import SignUpModal from '../signUpModal/SignUpModal'
+
+// import Paper from '@material-ui/core/Paper';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -91,24 +95,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const sessionUser = useSelector(state => state.session.user);
+  const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   const userInSession = useSelector(state => state.session.user)
   const dispatch = useDispatch();
   const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [signUpOpen, setSignUpOpen] = useState(false)
+  const [userAction, setUserAction] =useState('')
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  // const handleProfileMenuOpenTwo = (event) => {
-  //   alert("handleProfileMenuOpen2")
-  //   setAnchorEl(event.currentTarget);
-  // };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -119,21 +124,23 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
-  // const handleMobileMenuOpen = (event) => {
-  //   setMobileMoreAnchorEl(event.currentTarget);
-  // };
 
   const handleLogOut = (event) => {
     dispatch(session.logout())
   }
 
-  const handleLogin =(event) => {
-    history.push("/login")
+  const handleClickOpen = (val) => {
+    setOpen(val);
+  };
+
+  const handleSignUpToggle=(val) =>{
+    setSignUpOpen(val)
   }
 
-  // const handleLogOutTwo = (event) => {
-  //   dispatch(session.logout())
-  // }
+
+
+
+
 
 
   const menuId = 'primary-search-account-menu';
@@ -153,58 +160,6 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  // const mobileMenuId = 'primary-search-account-menu-mobile';
-  // const renderMobileMenu = (
-  //   <Menu
-  //     anchorEl={mobileMoreAnchorEl}
-  //     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-  //     id={mobileMenuId}
-  //     keepMounted
-  //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-  //     open={isMobileMenuOpen}
-  //     onClose={handleMobileMenuClose}
-  //   >
-  //     <MenuItem>
-  //       <IconButton aria-label="show 4 new mails" color="inherit">
-  //         <Badge color="secondary">
-  //           <FavoriteIcon />
-  //         </Badge>
-  //       </IconButton>
-  //       <p>Loves</p>
-  //     </MenuItem>
-  //     <MenuItem>
-  //       <IconButton color="inherit">
-  //         <Badge color="secondary">
-  //           <ShoppingCartIcon/>
-  //         </Badge>
-  //       </IconButton>
-  //       <p>Your Basket</p>
-  //     </MenuItem>
-  //     <MenuItem onClick={handleProfileMenuOpen}>
-  //       <IconButton
-  //         aria-label="account of current user"
-  //         aria-controls="primary-search-account-menu"
-  //         aria-haspopup="true"
-  //         color="inherit"
-  //       >
-  //         <AccountCircle aria-hidden={false}/>
-  //       </IconButton>
-  //       <p>Profile</p>
-  //     </MenuItem>
-  //   </Menu>
-  // );
-
-  // let profileIcon;
-
-  // if (userInSession) {
-  //   profileIcon = (
-  //     <AccountCircle user={userInSession} />
-  //   )
-  // } else {
-  //   profileIcon = (
-  //     <DoubleArrowIcon/>
-  //   )
-  // }
 
   return (
     <div>
@@ -243,7 +198,8 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton color="inherit">
               <Badge color="secondary">
-                <FavoriteIcon/>
+                {userInSession &&
+                <FavoriteIcon/>}
               </Badge>
             </IconButton>
             {userInSession &&
@@ -260,23 +216,38 @@ export default function PrimarySearchAppBar() {
           }
           </div>
           <div className={classes.sectionDesktop}>
+            <LoginModal open={open} handleClose={() => handleClickOpen(false)}/>
             {!userInSession &&
             <Button
               variant="contained"
               color="secondary"
-              // aria-controls={mobileMenuId}
-              // aria-haspopup="true"
-              onClick={handleLogin}
+              onClick={() => handleClickOpen(true)}
               className={classes.button}
               startIcon={<PersonIcon />}
             >
-              Login
+             Login
             </Button>
           }
           </div>
+
+          <div className={classes.sectionDesktop}>
+          <SignUpModal open={signUpOpen} handleClose={() => handleSignUpToggle(false)}/>
+          {!userInSession &&
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            onClick={() => handleSignUpToggle(true)}
+          >
+          Sign Up
+          </Button>
+
+          }
+
+          </div>
+
         </Toolbar>
       </AppBar>
-      {/* {renderMobileMenu} */}
       {renderMenu}
     </div>
   );

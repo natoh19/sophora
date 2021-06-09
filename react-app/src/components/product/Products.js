@@ -3,6 +3,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import { Grid, Container } from "@material-ui/core";
 import * as productStore from '../../store/product'
 import ProductCard from './ProductCard'
+// import * as lovesStore from '../../store/loves'
+import * as session from '../../store/session'
 
 
 export default function Products() {
@@ -15,6 +17,10 @@ export default function Products() {
     useEffect(() => {
         dispatch(productStore.getAllProducts())
     }, [dispatch])
+
+    useEffect(() =>{
+        dispatch(session.getLoves())
+    }, [])
 
 
 

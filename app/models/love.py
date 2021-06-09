@@ -15,11 +15,6 @@ class Love(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "sku": self.sku,
-            "name": self.name,
-            "categoryId": self.category_id,
-            "image_url": self.image_url,
-            "description": self.description,
-            "price": self.regular_price,
-            "quantity": self.quantity,
+            "product_id": self.product_id,
+            "user_id": self.user_id,
         }
