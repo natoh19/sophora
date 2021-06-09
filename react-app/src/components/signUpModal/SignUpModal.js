@@ -6,23 +6,27 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import { useSelector, useDispatch } from "react-redux"
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 export default function SignUpForm(props) {
-
-const [username, setUsername] = useState("")
+  const [errors, setErrors] = useState([]);
+  const [username, setUsername] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(email, password));
+      await dispatch(signUp(email, password, firstName, lastName));
       props.handleClose();
     }
 
@@ -31,6 +35,14 @@ const [username, setUsername] = useState("")
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -60,14 +72,22 @@ const [username, setUsername] = useState("")
       <Button variant="outlined" color="primary" onClick={props.handleSignUpOpen}>
         Open form dialog
       </Button>
-      <Dialog open={props.open} onClose={props.handleSignUpClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
+      <Dialog open={props.open} onClose={props.handleSignUpClose}  aria-labelledby="form-dialog-title" style={{padding: '40px'}}>
+        <DialogTitle id="form-dialog-title" style={{textAlign:'center'}} variant="h5" >Sign Up</DialogTitle>
 
         <form onSubmit={onSignUp}>
         <DialogContent>
-          <DialogContentText>
+          <Typography variant="h5" style={{textAlign:'center'}}>
             Register your account at Sophora today!
+          </Typography>
+          <DialogContentText style={{textAlign:'center'}}>
+          *Required Fields
           </DialogContentText>
+          <Box>
+        {errors.map((error) => (
+          <div>{error}</div>
+        ))}
+        </Box>
           <TextField
             autoFocus
             margin="dense"
@@ -76,7 +96,32 @@ const [username, setUsername] = useState("")
             label="email"
             type="email"
             value={email}
+            required={true}
             onChange={updateEmail}
+            fullWidth
+          />
+
+        <TextField
+            autoFocus
+            margin="dense"
+            id="first_name"
+            name="first_name"
+            label="First Name"
+            // type="text"
+            value={firstName}
+            onChange={updateFirstName}
+            fullWidth
+          />
+
+        <TextField
+            autoFocus
+            margin="dense"
+            id="last_name"
+            name="last_name"
+            label="Last Name"
+            // type="text"
+            value={lastName}
+            onChange={updateLastName}
             fullWidth
           />
         <TextField
@@ -88,14 +133,15 @@ const [username, setUsername] = useState("")
             type="password"
             value={password}
             onChange={updatePassword}
+            required={true}
             fullWidth
           />
         <TextField
             autoFocus
             margin="dense"
-            id="password"
+            id="confirm-password"
             name="repeat_password"
-            label="password"
+            label="Repeat Password"
             type="password"
             value={repeatPassword}
             onChange={updateRepeatPassword}

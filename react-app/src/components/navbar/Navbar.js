@@ -20,6 +20,7 @@ import {useHistory, Link} from 'react-router-dom'
 import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
 import LoginModal from '../loginModal/LoginModal'
+import PanToolIcon from '@material-ui/icons/PanTool';
 import SignUpModal from '../signUpModal/SignUpModal'
 
 // import Paper from '@material-ui/core/Paper';
@@ -154,9 +155,9 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
       onClick={handleLogOut}>
-    >
+
       <MenuItem component = {Link} to="/MyAccount">My Account</MenuItem>
-      <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
+
     </Menu>
   );
 
@@ -165,14 +166,20 @@ export default function PrimarySearchAppBar() {
     <div>
       <AppBar style={{marginTop: 100}}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="secondary"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+        {renderMenu}
+
+        {userInSession &&
+            <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          }
           <Typography className={classes.title} variant="h6" noWrap component = {Link} to="/" style= {{textDecorationLine: 'none', color: 'white'}}>
            Sophora
           </Typography>
@@ -202,18 +209,6 @@ export default function PrimarySearchAppBar() {
                 <FavoriteIcon/>}
               </Badge>
             </IconButton>
-            {userInSession &&
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          }
           </div>
           <div className={classes.sectionDesktop}>
             <LoginModal open={open} handleClose={() => handleClickOpen(false)}/>
@@ -228,6 +223,20 @@ export default function PrimarySearchAppBar() {
              Login
             </Button>
           }
+          </div>
+          <div className={classes.sectionDesktop}>
+
+            {userInSession &&
+            <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => handleClickOpen(true)}
+            className={classes.button}
+            startIcon={<PersonIcon />}>
+              Logout
+            </Button>
+            }
+
           </div>
 
           <div className={classes.sectionDesktop}>
@@ -248,7 +257,7 @@ export default function PrimarySearchAppBar() {
 
         </Toolbar>
       </AppBar>
-      {renderMenu}
+
     </div>
   );
 }
