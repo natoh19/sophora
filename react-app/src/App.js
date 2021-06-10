@@ -21,9 +21,10 @@ import Products from './components/product/Products'
 import Product from './components/product/Product'
 import OrderSummary from './components/orderSummary/OrderSummary'
 import ItemDetail from './components/orderSummary/ItemDetail'
+import About from './components/about/About'
 import './index.css'
 
-const promise = loadStripe("pk_test_51Iws9eDTZpv1JDZFarzSyEF2nqq9xenWCwbILooHMNrAgUCCN2WIATjKHDFiEZVqkqHUeiLsRzcV786iA4H9blPJ00yOk7hdYb");
+
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -44,7 +45,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <NavBar />
+      {/* <NavBar /> */}
       {/* <Header /> */}
       <Switch>
         <Route path="/" exact={true} >
@@ -53,6 +54,13 @@ function App() {
         <Route path="/MyAccount" exact={true} >
           <ProfilePage />
         </Route>
+
+        <Route path="/about" exact={true} >
+          <About />
+        </Route>
+
+
+
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>

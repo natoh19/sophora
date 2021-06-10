@@ -59,7 +59,7 @@ export const authenticate = () => async (dispatch) => {
       })
     });
     const data = await response.json();
-    alert("user logged in")
+
     if (data.errors) {
         return data;
     }
@@ -81,7 +81,7 @@ export const authenticate = () => async (dispatch) => {
   };
 
 
-  export const signUp = (email, password) => async (dispatch)  => {
+  export const signUp = (email, password, firstName, lastName) => async (dispatch)  => {
     const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
@@ -90,6 +90,8 @@ export const authenticate = () => async (dispatch) => {
       body: JSON.stringify({
         email,
         password,
+        firstName,
+        lastName
       }),
     });
     const data = await response.json();

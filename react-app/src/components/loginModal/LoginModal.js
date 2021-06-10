@@ -27,7 +27,7 @@ export default function LoginModal(props) {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    console.log(email, password)
+    // console.log(email, password)
     const data = await dispatch(login(email, password));
     props.handleClose();
     if (data.errors) {
@@ -52,26 +52,36 @@ export default function LoginModal(props) {
     return <Redirect to="/" />;
   }
 
+  const handleDemoUser= async (e) => {
+    e.preventDefault();
+    const email = 'demo@aa.io';
+    const password = 'password'
+    const dispatched = await dispatch(login( email, password))
+
+    if (dispatched.errors) setErrors(dispatch.errors)
+  }
+
 
 
   return (
     <Box>
-      <Button variant="outlined" color="primary" onClick={props.handleClickOpen}>
+      {/* <Button variant="outlined" color="primary" onClick={props.handleClickOpen}>
         Open form dialog
-      </Button>
+      </Button> */}
       <Dialog open={props.open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Login</DialogTitle>
         <form onSubmit={onLogin}>
         <DialogContent>
-        <Box>
+        <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
-      </Box>
+      </div>
 
           <TextField
             autoFocus
             margin="dense"
+            required
             id="name"
             name="email"
             label="Email Address"
@@ -83,6 +93,7 @@ export default function LoginModal(props) {
 
         <TextField
             autoFocus
+            required
             margin="dense"
             id="password"
             label="Password"
@@ -90,7 +101,7 @@ export default function LoginModal(props) {
             value={password}
             onChange={updatePassword}
             fullWidth
-            value={email}
+            value={password}
 
           />
         </DialogContent>
@@ -99,10 +110,15 @@ export default function LoginModal(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={onLogin} color="primary">
+          <Button type="submit" color="primary">
             Login
           </Button>
         </DialogActions>
+        </form>
+
+        <form onSubmit={handleDemoUser} style={{paddingLeft: '8.5em', paddingBottom: '2em'}}>
+
+          <Button type="Submit" variant="contained" color="secondary" onClick={handleDemoUser}>Demo User</Button>
         </form>
       </Dialog>
 
