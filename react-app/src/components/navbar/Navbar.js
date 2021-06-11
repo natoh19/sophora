@@ -154,6 +154,10 @@ export default function PrimarySearchAppBar() {
     history.push('/confirmation')
   }
 
+  const handleFavClick=()=> {
+    history.push('/myaccount')
+  }
+
 
 
 
@@ -219,19 +223,16 @@ export default function PrimarySearchAppBar() {
 
             <IconButton aria-label="cart" onClick= {handleCartIconClick}>
               <StyledBadge badgeContent={cart.length} color="secondary">
-              {cart.length &&
                <ShoppingCartIcon />
-              }
               </StyledBadge>
             </IconButton>
-
 
 
 
             <IconButton color="inherit">
               <Badge color="secondary">
                 {userInSession &&
-                <FavoriteIcon/>
+                <FavoriteIcon onClick={handleFavClick}/>
                 }
               </Badge>
             </IconButton>

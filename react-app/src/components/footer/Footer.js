@@ -1,5 +1,6 @@
 import './footer.css'
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 
@@ -12,11 +13,15 @@ export default function Footer() {
                 <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '1em' }}>
 
                     <div>
-                        <a href='https://github.com/natoh19' target="_blank" style={{ textDecoration: 'none', color: 'white', marginRight: '.75em' }}>GitHub</a>
+                        <a href='https://github.com/natoh19' target="_blank" style={{ textDecoration: 'none', color: 'white', marginRight: '1em' }}>GitHub</a>
                     </div>
 
                     <div>
-                        <a href='https://www.linkedin.com/in/natalie-oldroyd/' target="_blank" style={{ textDecoration: 'none', color: 'white', marginLeft: '.75em' }}>LinkedIn</a>
+                        <a href='https://www.linkedin.com/in/natalie-oldroyd/' target="_blank" style={{ textDecoration: 'none', color: 'white', marginRight: '1em', marginLeft: '1em' }}>LinkedIn</a>
+                    </div>
+
+                    <div>
+                        <Link to='/about' style={{ textDecoration: 'none', color: 'white', marginLeft: '1em' }}>About The Dev</Link>
                     </div>
 
                 </div>

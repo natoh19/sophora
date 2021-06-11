@@ -31,7 +31,7 @@ export const createOrder = () => async (dispatch, getState)   => {
     if (data.errors) {
         return data;
     }
-    alert("order submit")
+
 
     dispatch(createOrderAction(data))
     return data
