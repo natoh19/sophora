@@ -1,0 +1,22 @@
+.about-container{
+    margin-right: 15px;
+    margin-right: 15px;
+    padding-top: 15em;
+    padding-bottom: 5em;
+}
+
+.stack{
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.center {
+    text-align: center;
+}
+
+.links{
+    display:flex;
+
+
+}

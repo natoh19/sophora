@@ -67,7 +67,7 @@ export const getAllProductsByCategory =(id) => async (dispatch) => {
     const products = await response.json()
 
 
-    dispatch(setCatProducts([...products]))
+    dispatch(setCatProducts(products.products))
 }
 
 export default function (state=initialState, action) {

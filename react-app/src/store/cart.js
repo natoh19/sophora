@@ -75,7 +75,7 @@ export default function (state = initialState, action) {
       // alert('decreate qty')
       return {
         ...state,
-        products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty - 1 } : product))
+        products: state.products.map(product => (product.id === action.payload.id && product.qty > 0 ? { ...product, qty: product.qty - 1 } : product))
       }
     case REMOVE_PRODUCT:
       // alert('removed product')

@@ -1,4 +1,13 @@
 
-/* #homepage-body {
-    display:block;
-} */
+.banner-flex-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10em;
+}
+
+.homepage-promo-container{
+    display: flex;
+    flex-direction: column;
+    padding: 6em;
+
+}

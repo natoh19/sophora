@@ -18,15 +18,15 @@ export default function SignUpForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(email, password, firstName, lastName));
+      await dispatch(signUp(email, password, first_name, last_name));
       props.handleClose();
     }
 
@@ -108,7 +108,7 @@ export default function SignUpForm(props) {
             name="first_name"
             label="First Name"
             // type="text"
-            value={firstName}
+            value={first_name}
             onChange={updateFirstName}
             fullWidth
           />
@@ -120,7 +120,7 @@ export default function SignUpForm(props) {
             name="last_name"
             label="Last Name"
             // type="text"
-            value={lastName}
+            value={last_name}
             onChange={updateLastName}
             fullWidth
           />

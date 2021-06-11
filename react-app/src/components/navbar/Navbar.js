@@ -16,12 +16,23 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import * as session from '../../store/session'
+import * as cartReducer from '../../store/cart'
 import {useHistory, Link} from 'react-router-dom'
 import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
 import LoginModal from '../loginModal/LoginModal'
 import PanToolIcon from '@material-ui/icons/PanTool';
 import SignUpModal from '../signUpModal/SignUpModal'
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
 
 // import Paper from '@material-ui/core/Paper';
 
@@ -102,6 +113,7 @@ export default function PrimarySearchAppBar() {
   const userInSession = useSelector(state => state.session.user)
   const dispatch = useDispatch();
   const history = useHistory();
+  const cart = Object.values(useSelector(state => state.cart.products))
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [loginOpen, setLoginOpen] = useState(false);
   const [signUpOpen, setSignUpOpen] = useState(false)
@@ -138,6 +150,10 @@ export default function PrimarySearchAppBar() {
     setSignUpOpen(val)
   }
 
+  const handleCartIconClick =() => {
+    history.push('/confirmation')
+  }
+
 
 
 
@@ -154,7 +170,8 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-      onClick={handleLogOut}>
+      // onClick={handleLogOut}
+      >
 
       <MenuItem component = {Link} to="/MyAccount">My Account</MenuItem>
 
@@ -198,20 +215,30 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton color="inherit">
-              <Badge color="secondary">
-                <ShoppingCartIcon/>
-              </Badge>
+
+
+            <IconButton aria-label="cart" onClick= {handleCartIconClick}>
+              <StyledBadge badgeContent={cart.length} color="secondary">
+              {cart.length &&
+               <ShoppingCartIcon />
+              }
+              </StyledBadge>
             </IconButton>
+
+
+
+
             <IconButton color="inherit">
               <Badge color="secondary">
                 {userInSession &&
-                <FavoriteIcon/>}
+                <FavoriteIcon/>
+                }
               </Badge>
             </IconButton>
           </div>
           <div className={classes.sectionDesktop}>
             <LoginModal open={open} handleClose={() => handleClickOpen(false)}/>
+            {/* <LoginModal open={open}/> */}
             {!userInSession &&
             <Button
               variant="contained"
@@ -230,9 +257,12 @@ export default function PrimarySearchAppBar() {
             <Button
             variant="contained"
             color="secondary"
-            onClick={() => handleClickOpen(true)}
+            // onClick={() => handleClickOpen(true)}
             className={classes.button}
-            startIcon={<PersonIcon />}>
+            // startIcon={<PersonIcon />}
+            onClick={handleLogOut}
+
+            >
               Logout
             </Button>
             }

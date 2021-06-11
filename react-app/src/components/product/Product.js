@@ -73,7 +73,7 @@ export default function Product() {
 
      return (
 
-      <div>
+      <div className="outer-container">
         <Grid container spacing={1} style={{maxWidth: 800, margin: '0 auto'}}>
 
           <Grid item sm={1} >
