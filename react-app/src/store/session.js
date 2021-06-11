@@ -81,7 +81,7 @@ export const authenticate = () => async (dispatch) => {
   };
 
 
-  export const signUp = (email, password, firstName, lastName) => async (dispatch)  => {
+  export const signUp = (email, password, first_name, last_name) => async (dispatch)  => {
     const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
@@ -90,11 +90,12 @@ export const authenticate = () => async (dispatch) => {
       body: JSON.stringify({
         email,
         password,
-        firstName,
-        lastName
+        first_name,
+        last_name
       }),
     });
     const data = await response.json();
+    console.log('+++++++++dataSignUp')
     if (data.errors) {
         return data;
     }

@@ -6,7 +6,7 @@ def seed_products():
     product1 = Product(
         name="Brilliant Eye Brightener",
         brand="Thrive",
-        categoryId=2,
+        categoryId=1 ,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1622847299/sophoraSeeds/Brilliant_Eye_Brightener_Set_Muna_Mieko_emmzie.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1622847298/sophoraSeeds/BEB-Mieko_BA-10_pobeq6.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1622847297/sophoraSeeds/BEB_Muna_Claudine_BA_b48cf534-5431-4a2f-a422-92a8a164d5c7_vf7ozw.jpg",
@@ -22,7 +22,7 @@ def seed_products():
     product2 = Product(
         name="Artist Face Color Mini",
         brand="Make Up Forever",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1622848247/35487521166_I000021190_ARTIST_FACE_COLOR_MINI-5G--106_Face_2_xx8ttd.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1622848247/35487521166_I000021190_ARTIST_FACE_COLOR_MINI-5G--106_Face_1_hsbnsd.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1622848247/35487521166_I000021190_ARTIST_FACE_COLOR_MINI-5G--106_Face_0_syfu8e.jpg",
@@ -39,7 +39,7 @@ def seed_products():
     product3 = Product(
         name="Unlocked",
         brand="Hourglass",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623033822/8D60B0B4-C372-4410-9973-AFD71DA49F70_550x690_mt0aqv.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623033822/8D60B0B4-C372-4410-9973-AFD71DA49F70_550x690_mt0aqv.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623033822/D558DB41-82E6-4408-950B-BCFB66785C06_550x690_swhvpi.jpg",
@@ -55,7 +55,7 @@ def seed_products():
     product4 = Product(
         name="Le Volume de Chanel Mascara",
         brand="Chanel",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034435/makeup5/makeup5/le-volume-de-chanel-mascara-10-noir-0-21oz--packshot-default-191210-8800873775134_r3c06x.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034434/makeup5/makeup5/le-volume-de-chanel-mascara-10-noir-0-21oz--application-visual-a-191210-8801778466846_rx87ph.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034436/makeup5/makeup5/le-volume-de-chanel-mascara-10-noir-0-21oz--application-visual-b-191210-8801778434078_akmykv.jpg",
@@ -70,7 +70,7 @@ def seed_products():
     product5 = Product(
         name="Les Beiges Healthy Glow eyes",
         brand="Chanel",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034694/makeup6/makeup6/les-beiges-healthy-glow-natural-eyeshadow-palette-medium-0-16oz--packshot-default-184180-8818220531742_fqhgyc.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034695/makeup6/makeup6/les-beiges-healthy-glow-natural-eyeshadow-palette-medium-0-16oz--application-visual-c-184180-8801648279582_lrkrqz.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034696/makeup6/makeup6/les-beiges-healthy-glow-natural-eyeshadow-palette-medium-0-16oz--basic-texture-184180-8801068908574_cihoru.jpg",
@@ -85,7 +85,7 @@ def seed_products():
     product6 = Product(
         name="Boy de Chanel 3-in-1",
         brand="Chanel",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--packshot-default-195614-8835365077022_ia4e7t.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034887/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--basic-texture-195614-8824994562078_libved.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--application-visual-b-195614-8824041406494_sryqfn.jpg",
@@ -100,7 +100,7 @@ def seed_products():
     product7 = Product(
         name="Boy de Chanel 3-in-1",
         brand="Chanel",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--packshot-default-195614-8835365077022_ia4e7t.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034887/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--basic-texture-195614-8824994562078_libved.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623034886/makeup7/makeup7/boy-de-chanel-3-in-1-eye-pencil-614-brown-0-02oz--application-visual-b-195614-8824041406494_sryqfn.jpg",
@@ -115,7 +115,7 @@ def seed_products():
     product8 = Product(
         name="Essential Conealer and Highlighter",
         brand="Chanel",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--packshot-default-149170-8800837992478_f5fc3h.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--packshot-default-149170-8800837992478_f5fc3h.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--basic-texture-149170-8804327718942_zghc0x.jpg",
@@ -130,7 +130,7 @@ def seed_products():
     product9 = Product(
         name="Hot Lips Kit",
         brand="Charlotte Tilbury",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035481/makeup9/makeup9/HotLips2.0_PatsyRed_Model_xwtswo.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035147/makeup7/makeup7/makeup8/makeup8/palette-essentielle-conceal-highlight-color-170-beige-intense-0-31oz--packshot-default-149170-8800837992478_f5fc3h.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035480/makeup9/makeup9/HotLips2_Packaging-and-swatches-infinity-burst_ui6hn6.jpg",
@@ -145,7 +145,7 @@ def seed_products():
     product10 = Product(
         name="Magic Foundation",
         brand="Charlotte Tilbury",
-        categoryId = 2,
+        categoryId = 1,
         image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035812/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-MODEL-SHADE-0_fzroum.jpg",
         imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",

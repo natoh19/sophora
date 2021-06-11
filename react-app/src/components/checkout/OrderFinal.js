@@ -17,7 +17,7 @@ import * as cartReducer from '../../store/cart'
 
 
 
-export default function OrderSummary({product}) {
+export default function OrderFinal({product}) {
 
   const theme = useTheme();
   const dispatch = useDispatch();

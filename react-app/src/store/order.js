@@ -6,32 +6,6 @@ const createOrderAction = (data) => ({
     payload: data
 })
 
-// export const updateOrder = (status) => async (dispatch, getState)   => {
-
-//     const state = getState();
-//     if(!state.order.id) return;
-
-//     const order = state.order.id;
-
-//     const response = await fetch("/api/orders/", {
-//       method: "PATCH",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         "order_id": order,
-// 	    "status": status
-//       }),
-//     });
-//     const data = await response.json();
-//     if (data.errors) {
-//         return data;
-//     }
-
-
-//     return {};
-//   }
-
 
 
 export const createOrder = () => async (dispatch, getState)   => {
@@ -49,7 +23,7 @@ export const createOrder = () => async (dispatch, getState)   => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "user_id": 1,
+        "user_id": user,
 	      "products": products
       }),
     });
@@ -57,6 +31,7 @@ export const createOrder = () => async (dispatch, getState)   => {
     if (data.errors) {
         return data;
     }
+    alert("order submit")
 
     dispatch(createOrderAction(data))
     return data

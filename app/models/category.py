@@ -10,8 +10,8 @@ class Category(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "type": self.name,
+            "id": self.category_id,
+            "type": self.type,
             "products": [product.to_dict() for product in self.products],
             "loves": []
         }

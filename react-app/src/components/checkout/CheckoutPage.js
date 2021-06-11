@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles';
+import {useHistory} from 'react-router-dom'
 import { loadStripe } from "@stripe/stripe-js";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -27,6 +29,7 @@ import {
 
 
 export default function CheckoutPage() {
+  const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -38,6 +41,7 @@ export default function CheckoutPage() {
   const cart = Object.values(useSelector(state => state.cart.products))
 
   const dispatch = useDispatch();
+  const history = useHistory()
 
 
   const handleTotal = (cart) => {
@@ -51,19 +55,50 @@ export default function CheckoutPage() {
   const handlePay=async (e)=> {
     e.preventDefault()
     await dispatch(orderReducer.createOrder())
+    history.push('/ThankYou')
+
 
   }
+
+    const useStyles = makeStyles((theme) => ({
+        button: {
+            margin: theme.spacing(1),
+            width: "100%",
+        },
+    }));
+
+    const classes = useStyles();
 
 
   return (
 
+    <div className="checkout-container">
+
     <div>
+
+     <Typography variant="h3" align="center">
+          Checkout
+      </Typography>
+
+    <div>
+
+    <div className="checkout-grid-summary">
+
+          <Grid item xs={12}>
+            {cart.map(product => (
+              <OrderFinal product={product} />
+
+            ))}
+
+          </Grid>
+    </div>
+
 
     <form onSubmit={handlePay} className="checkout-form">
       <Box width="100%">
-        <Typography variant="h3" align="center">
-          Checkout
-      </Typography>
+       {errors.map((error) => (
+          <div>{error}</div>
+        ))}
       </Box>
 
           <Grid item xs={12}>
@@ -178,22 +213,26 @@ export default function CheckoutPage() {
               ></TextField>
             </Box>
           </Grid>
-          <Button type="submit">Pay</Button>
+          <Box>
+
+          <Typography variant="h5">
+           Order Total: {`$${handleTotal(cart)}`}
+          </Typography>
+
+          </Box>
+          <Button type="submit" className={classes.button} color="primary" variant="contained">Submit Payment</Button>
           </form>
 
 
 
+          </div>
 
 
-        <div className="checkout-grid-summary">
 
-          <Grid item xs={12}>
-            {cart.map(product => (
-              <OrderFinal product={product} />
 
-            ))}
 
-          </Grid>
+
+
         </div>
 
         </div>
