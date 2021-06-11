@@ -70,12 +70,12 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact >
           <User />
         </ProtectedRoute>
-        <Route path="/checkout" exact>
+        <ProtectedRoute path="/checkout" exact>
           <CheckoutPage />
-        </Route>
-          <Route path="/thankyou" exact>
+        </ProtectedRoute>
+          <ProtectedRoute path="/thankyou" exact>
           <ThankYou/>
-        </Route>
+        </ProtectedRoute>
         <Route path="/products" exact>
           <Products />
         </Route>

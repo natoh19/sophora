@@ -94,7 +94,7 @@ export const authenticate = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    console.log('+++++++++dataSignUp')
+
     if (data.errors) {
         return data;
     }
@@ -106,12 +106,15 @@ export const authenticate = () => async (dispatch) => {
 
 
 
-  export const getLoves = () => async (dispatch)   => {
-    const response = await fetch("/api/loves/")
+  export const getLoves = () => async (dispatch, getState)   => {
 
-    //requires a useEffect on myAccount page to not require refresh for likes to appear in state.session.likedß
+    let response;
 
+    const state = getState();
+    const user = state.session?.user;
 
+    if (user) {
+       const response = await fetch("/api/loves/")
 
     if (response.ok){
       const data = await response.json();
@@ -120,6 +123,7 @@ export const authenticate = () => async (dispatch) => {
       return data
     }
 
+    }
 
   }
 
