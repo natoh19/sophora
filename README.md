@@ -1,6 +1,11 @@
-# Flask React Project
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white) ![Nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
 
-This is the backend for the Flask React project.
+# Welcome to Sophora!
+
+### Live Link: [Sophora](https://thriftee.herokuapp.com/)
+_Sophora_ is a clone of the beauty web site [Sephora](https://www.sephora.com/)for educational purposes.
+
+Users can browse, add items to their cart, add items to their wishlist and checkout products. Users cart persists by storing their cart items in local storage and in the Redux store. Users can remove items from their wish list and from their cart as well as update the quanity of items in their cart before checkout. Some features are limited to logged in users only. These include the wishlist feature as well as the My Account page and checkout. 
 
 ## Getting started
 
