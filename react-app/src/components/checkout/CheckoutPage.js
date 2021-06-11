@@ -55,6 +55,7 @@ export default function CheckoutPage() {
   const handlePay=async (e)=> {
     e.preventDefault()
     await dispatch(orderReducer.createOrder())
+    await dispatch(cartReducer.clearProduct())
     history.push('/ThankYou')
 
 
