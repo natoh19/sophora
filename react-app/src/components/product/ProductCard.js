@@ -47,7 +47,6 @@ export default function ProductCard({product}) {
     }
 
     const handleLike=()=> {
-        console.log('++++product.id', product.id)
         dispatch(session.addLove(product.id))
 
     }
@@ -68,9 +67,11 @@ export default function ProductCard({product}) {
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
+            <Tooltip title="login to add to wishlist">
                 <IconButton aria-label="add to favorites">
                     <FavoriteIcon onClick={handleLike}/>
                 </IconButton>
+                </Tooltip>
                 <Tooltip title="Product Details">
                     <IconButton aria-label="product details" onClick={handleProductGridClick}>
                         <VisibilityIcon />

@@ -9,21 +9,21 @@ export default function HomePageBanner(){
 
         <div className="banner-img">
         <Link to="/categories/1">
-             <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1623352642/Copy_of_Untitled_gvhyfz.png" alt="makeup" />
+             <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1623352641/makeup_jtv2vu.png" alt="makeup" />
 
              </Link>
         </div>
 
         <div className="banner-img">
         <Link to="/categories/4">
-         <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1623352641/makeup_jtv2vu.png" alt="haircare"/>
+         <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1623352641/haircare_etzwfa.png" alt="haircare"/>
          </Link>
 
         </div>
 
         <div className="banner-img">
         <Link to="/categories/2">
-            <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1623352641/haircare_etzwfa.png" alt="skincare"/>
+            <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1623352642/Copy_of_Untitled_gvhyfz.png" alt="skincare"/>
             </Link>
         </div>
 

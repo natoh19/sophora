@@ -41,9 +41,9 @@ function App() {
   return (
     <BrowserRouter>
       {/* <Header /> */}
-      <Navbar />
       <CategoryNav />
-      <NavBar />
+      <Navbar />
+      {/* <NavBar /> */}
       <Switch>
         <Route path="/" exact={true} >
           <HomePage />

@@ -73,7 +73,7 @@ export default function Product() {
 
      return (
 
-      <div className="outer-container">
+      <div className="outer-container" style={{paddingTop: '14em'}}>
         <Grid container spacing={1} style={{maxWidth: 800, margin: '0 auto'}}>
 
           <Grid item sm={1} >

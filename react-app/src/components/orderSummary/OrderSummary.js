@@ -60,7 +60,7 @@ export default function OrderSummary() {
 
     return (
 
-        <Container id="products">
+        <Container id="products" style={{paddingTop: '11em' }}>
             <Grid container spacing={3} direction="column" style={{ maxWidth: 800, margin: '0 auto' }}>
                 {cart.map(product => (
                     <Grid key={product.id} item xs>

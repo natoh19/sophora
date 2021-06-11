@@ -76,7 +76,6 @@ export const authenticate = () => async (dispatch) => {
     });
 
     const data = await response.json();
-    alert("User logged out")
     dispatch(removeUser());
   };
 
@@ -117,7 +116,7 @@ export const authenticate = () => async (dispatch) => {
     if (response.ok){
       const data = await response.json();
       dispatch(setItemsActionCreator(data))
-      console.log('+++++++data', data)
+
       return data
     }
 
@@ -130,7 +129,7 @@ export const authenticate = () => async (dispatch) => {
     const state = getState();
     const user = state.session?.user;
     const likes = Object.values(state.session?.liked)
-    console.log('++++++++++++++++++ LIKES', likes)
+
 
     // if (likes?.filter(like=> like.id === likedId).length >0) return
 
