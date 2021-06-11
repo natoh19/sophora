@@ -142,20 +142,20 @@ def seed_products():
     )
     db.session.add(product9)
 
-    product10 = Product(
-        name="Magic Foundation",
-        brand="Charlotte Tilbury",
-        categoryId = 1,
-        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035812/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-MODEL-SHADE-0_fzroum.jpg",
-        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",
-        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",
-        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035812/MagicFoundation-Shade0-Before-_-After-PDP_jhjikr.jpg",
-        summary="Fairest with pink undertones",
-        description="Demi-matte, long-lasting, buildable coverage formula that creates a flawless, perfect-looking finish.",
-        price=3900,
-        quantity=11
-    )
-    db.session.add(product10)
+    # product10 = Product(
+    #     name="Magic Foundation",
+    #     brand="Charlotte Tilbury",
+    #     categoryId = 1,
+    #     image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035812/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-MODEL-SHADE-0_fzroum.jpg",
+    #     imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",
+    #     imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035811/CHARLOTTE_TILBURY-MAGIC_FOUNDATION-LID_OFF_0_occ2jy.jpg",
+    #     imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623035812/MagicFoundation-Shade0-Before-_-After-PDP_jhjikr.jpg",
+    #     summary="Fairest with pink undertones",
+    #     description="Demi-matte, long-lasting, buildable coverage formula that creates a flawless, perfect-looking finish.",
+    #     price=3900,
+    #     quantity=11
+    # )
+    # db.session.add(product10)
 
     product11 = Product(
         name="Beautiful Skin",
@@ -268,10 +268,10 @@ def seed_products():
         name="Ispahan",
         brand="Dior",
         categoryId = 3,
-        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623432162/image1_rspduw.png",
-        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623432164/image2_fd0jo1.png",
-        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623432163/image3_mv9ux3.png",
-        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623432162/image1_rspduw.png",
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446607/image2_gqflkh.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446607/image3_mkdnmb.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446608/image1_qesdiq.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446607/image4_iexjp6.jpg",
         summary="A fragrance that arouses curiosity",
         description="Captivating fragrance that gives this olfactory evocation of the Orient",
         price=25000,
@@ -347,10 +347,10 @@ def seed_products():
         name="Brazilian Crush Cheirosa '39",
         brand="Sol Cheirosa",
         categoryId = 3,
-        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623433585/image1_b51t36.jpg",
-        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623433585/image2_wsj1vk.jpg",
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623433888/image1_mcxntc.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623433889/image2_d3jisu.jpg",
         imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623433587/image3_tn0fre.jpg",
-        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623433587/image4_kn7ooq.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623433889/image3_bbvcdo.jpg",
         summary="Coconut Cream & Toasted Praline",
         description="Rich, warm vanilla and tropical orchid give the fragrance a sweet, clean mid-note",
         price=1900,
@@ -407,13 +407,13 @@ def seed_products():
     db.session.add(product26)
 
     product27 = Product(
-        name="Tecnlart Morning",
+        name="Tecnlart Next Day",
         brand="L'Oreal",
         categoryId = 4,
-        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623439118/PPDHDC3474636909292_1_pgcvff.jpg",
-        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623439118/PPDHDC3474636400188_2_joqy1o.jpg",
-        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623439118/PPDHDC3474636403912_lifestyle_1_tmiuj1.jpg",
-        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623439118/PPDHDC3474636909292_1_pgcvff.jpg",
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623449411/PPDHDC884486218674_lifestyle_1_bykgc1.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623449411/PPDHDC884486218674_2_mk5u8t.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623449411/PPDHDC884486218674_1_e7rkwx.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623449411/PPDHDC884486218674_lifestyle_1_bykgc1.jpg",
         summary="A dry shampoo with light hold",
         description="Contains starch to weightlessly absorb excess oil on the scalp, and mineral salt to give hair sexy volume and hold.",
         price=2800,
@@ -441,10 +441,10 @@ def seed_products():
         name="Hair Touch Up",
         brand="L'Oreal",
         categoryId = 4,
-        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623440361/PPDHDC3474636613908_1_ofnolt.jpg",
-        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623440361/PPDHDC3474636613908_2_pxmfpx.jpg",
-        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623440361/PPDHDC3474636613847_lifestyle_1_alrkk9.jpg",
-        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623440361/PPDHDC3474636613908_1_ofnolt.jpg",
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445119/PPDHDC3474636382835_2_czlosx.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445119/PPDHDC3474636382835_3_d6wptm.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445119/PPDHDC3474636382835_2_czlosx.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445119/PPDHDC3474636382835_2_czlosx.jpg",
         summary="A root concealing spray to cover grays",
         description="Touch Up Professional Root Concealer in Light Brown, one of 7 available shades, is the quick, easy and natural-looking solution to covering up gray hairs",
         price=2500,
@@ -452,6 +452,133 @@ def seed_products():
     )
     db.session.add(product29)
 
+
+    product29 = Product(
+        name="Essentials",
+        brand="Cold Pressed",
+        categoryId = 4,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623444726/0005_ESSENTIALS1_750x_zei3kf.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623444737/Essentials_9429945d-f5b2-474f-9498-c74964dfe974_750x_dzt2g7.png",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623444738/Essentials_2_9564b72f-eb8b-4640-be0a-dbbbe1296320_750x_dibn37.png",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623444726/0005_ESSENTIALS1_750x_zei3kf.jpg",
+        summary="Our best-selling Essentials system",
+        description="Featuring nourishing products that detoxify buildup on the scalp and deliver intense hydration",
+        price=8500,
+        quantity=11
+    )
+    db.session.add(product29)
+
+
+    product30 = Product(
+        name="Color Safe",
+        brand="Madison Reed",
+        categoryId = 4,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445396/pdp-shampoo-conditioner-full-size-2000x2000_vlcoug.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445396/carousel-hair-shot-3-4x_m13wq4.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445395/carousel-hair-shot-2-4x_trpwkn.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623445395/carousel-hair-shot-1-4x_hrdfzr.jpg",
+        summary="Nourishing, Color Protecting Shampoo & Conditioner",
+        description="Creates long-lasting shine, softens and strengthens hair",
+        price=3700,
+        quantity=11
+    )
+    db.session.add(product30)
+
+    product31 = Product(
+        name="Cold Pressed",
+        brand="Art + Acre",
+        categoryId = 4,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446130/RestoreCollectionFront_750x_kzdzka.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446139/image4_cf52fe.png",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446147/image2_y1gxwh.png",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446145/image3_jtaatd.png",
+        summary="The Restore Collection is the newest build on our all-time favorite Essentials",
+        description="Focused on renewing vitality and healing damaged hair, this collection is formulated with pure, carefully-curated ingredients",
+        price=9600,
+        quantity=11
+    )
+    db.session.add(product31)
+
+    product32 = Product(
+        name="Brazilian Crush Cheirosa '71",
+        brand="Sol Cheirosa",
+        categoryId = 3,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446999/Cheirosa_71_Body_Fragrance_Mist_Sol_de_Janeiro_0_6ef21f5e-4baf-43a2-ae11-32171a2113f5_800x_qioc7y.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623446999/Cheirosa_71_Body_Fragrance_Mist_Sol_de_Janeiro_1_800x_qosrjg.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447001/Cheirosa_71_Body_Fragrance_Mist_Sol_de_Janeiro_5_800x_s3mony.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447005/Cheirosa_71_Body_Fragrance_Mist_Sol_de_Janeiro_4_800x_wxvsqg.jpg",
+        summary="Caramelized Vanilla & Toasted Macadamia Perfum",
+        description="This voluptuous fragrance serves up an irresistible gourmand experience that tempts in a whole new way.",
+        price=1900,
+        quantity=11
+    )
+    db.session.add(product32)
+
+
+    product33 = Product(
+        name="Cheirosa '62 Candle",
+        brand="Sol Cheirosa",
+        categoryId = 3,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447389/Limited_Edition_Cheirosa_62_Candle_Sol_de_Janeiro_0_800x_nvn17m.png",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447389/Limited_Edition_Cheirosa_62_Candle_Sol_de_Janeiro_3_800x_fb4bbp.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447389/Limited_Edition_Cheirosa_62_Candle_Sol_de_Janeiro_2_800x_jnpv8p.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447388/Limited_Edition_Cheirosa_62_Candle_Sol_de_Janeiro_4_800x_q56o40.jpg",
+        summary="In the Iconic Scent of Brazilian Bum Bum Cream",
+        description="Bask in the warmth of Brazil with our bright, beautiful and most eagerly anticipated soy-based candle.",
+        price=3300,
+        quantity=11
+    )
+    db.session.add(product33)
+
+    product34 = Product(
+        name="Brazilian Bum Bum Cream",
+        brand="Sol Cheirosa",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447780/Brazilian_Bum_Bum_Cream_Sol_de_Janeiro_0_800x_odiphg.png",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447779/Brazilian_Bum_Bum_Cream_Sol_de_Janeiro_1_800x_ouk2vp.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447779/Brazilian_Bum_Bum_Cream_Sol_de_Janeiro_3_800x_mhdvxg.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623447779/Brazilian_Bum_Bum_Cream_Sol_de_Janeiro_5_800x_eg0jh3.jpg",
+        summary="Helps Smooth and Visibly Tighten the Appearance of Skin",
+        description="Our award-winning, deliciously-scented body cream is the ultimate Brazilian Beauty Secret.",
+        price=4500,
+        quantity=11
+    )
+    db.session.add(product34)
+
+    product35 = Product(
+        name="4 Play Moisturizing Shower Cream",
+        brand="Sol Cheirosa",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448022/Brazilian_4_Play_Moisturizing_Shower_Cream-Gel_1_liter_Sol_de_Janeiro_0_800x_jq6w8s.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448022/Brazilian_4_Play_Moisturizing_Shower_Cream-Gel_1_liter_Sol_de_Janeiro_2_800x_e1x3eg.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448022/Brazilian_4_Play_Moisturizing_Shower_Cream-Gel_1_liter_Sol_de_Janeiro_2_800x_e1x3eg.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448021/Brazilian_4_Play_Moisturizing_Shower_Cream-Gel_Sol_de_Janeiro_2_34fd4a74-25e1-4b20-b57a-5440159f951d_800x_myawom.jpg",
+        summary="Deliciously Scented Sulfate-Free Jumbo Size Body Wash",
+        description="This generous 1 liter size of our Brazilian 4 Play Moisturizing Shower Cream-Gel gives you more of what you love—irresistibly soft, clean skin that’s so cheirosa",
+        price=4900,
+        quantity=11
+    )
+    db.session.add(product35)
+
+    product36 = Product(
+        name="Bom Dia Bright Body Cream",
+        brand="Sol Cheirosa",
+        categoryId = 2,
+        image_url_main="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448495/Bom_Dia_Bright_Body_Cream_Sol_de_Janeiro_0_800x_pjwncm.jpg",
+        imageOne="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448495/Bom_Dia_Bright_Body_Cream_Sol_de_Janeiro_1_800x_noi6ba.jpg",
+        imageTwo="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448495/Bom_Dia_Bright_Body_Cream_Sol_de_Janeiro_3_800x_rghrzk.jpg",
+        imageThree="https://res.cloudinary.com/dse6ebwba/image/upload/v1623448495/Bom_Dia_Bright_Body_Cream_Sol_de_Janeiro_4_800x_tesdbi.jpg",
+        summary="It's a bom dia (good day) for gorgeous skin—yours!",
+        description="Retexturizes and gives skin a brightening boost with exfoliating Fruit AHAs and Vitamin C",
+        price=4500,
+        quantity=11
+    )
+    db.session.add(product36)
+
+
+
+
+    db.session.commit()
 
     db.session.commit()
 
