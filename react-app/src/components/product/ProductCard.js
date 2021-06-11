@@ -63,15 +63,18 @@ export default function ProductCard({product}) {
             />
             <CardContent>
                 <Typography variant="h6" color="textSecondary" component="h6" >
-                   {`$${product.price/100}`}
+                   {`$${(product.price/100).toFixed(2)}`}
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
-            <Tooltip title="login to add to wishlist">
+            {user &&
+              <Tooltip title="login to add to wishlist">
                 <IconButton aria-label="add to favorites">
                     <FavoriteIcon onClick={handleLike}/>
                 </IconButton>
-                </Tooltip>
+            </Tooltip>
+            }
+
                 <Tooltip title="Product Details">
                     <IconButton aria-label="product details" onClick={handleProductGridClick}>
                         <VisibilityIcon />
