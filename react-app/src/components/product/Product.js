@@ -22,6 +22,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import * as cartReducer from '../../store/cart'
+import * as session from '../../store/session'
 import CartModal from '../cart/cartModal'
 
 
@@ -34,16 +35,13 @@ export default function Product() {
   const [open, setOpen] = useState(false);
   const images = [product.image_url_main, product.imageOne, product.imageTwo]
   const cart = useSelector(state => state.cart.products)
+   const user = useSelector(state => state.session.user);
 
 
   useEffect(() => {
     dispatch(productStore.getSingleProduct(id))
 
   }, [dispatch, id])
-
-  // useEffect(() => {
-  //   setOpen(true)
-  // }, [cart])
 
 
   const handleOpen = () => {
@@ -92,12 +90,18 @@ export default function Product() {
               {/* <Divider /> */}
               <Box mt={2} style={{marginLeft: "30px"}}>
                 <Typography variant="h4">{product.name}</Typography>
+
+              {user &&
                 <IconButton aria-label="love this item">
                   <FavoriteIcon />
                 </IconButton>
+                }
+
+
+
                 <Typography variant="h6">{product.brand}</Typography>
                 <Typography variant="subtitle1">{product.description}</Typography>
-                <Typography variant="subtitle1">{`$${product.price/100}`}</Typography>
+                <Typography variant="subtitle1">{`$${(product.price/100).toFixed(2)}`}</Typography>
               </Box>
               <Box >
                 <Box>
