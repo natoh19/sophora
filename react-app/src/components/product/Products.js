@@ -33,7 +33,7 @@ export default function Products() {
 
 
     return (
-        <Container id="container" style={{paddingTop: '14em'}}>
+        <Container id="container" style={{paddingTop: '11em', marginBottom: '10em'}}>
             <Grid container spacing={3} className="grid-elements-container">
                 {allProducts.map(product => (
                     <Grid key={product.id}  item xs={12} sm={8} md={4}>

@@ -62,33 +62,30 @@ export default function Product() {
     dispatch(cartReducer.addProduct(product))
   }
 
-  // onClick={
-  //   async () => {
-  //   dispatch(cartReducer.addProduct(product))
-  // }}
+
 
   const classes = useStyles();
 
      return (
 
       <div className="outer-container" style={{paddingTop: '14em'}}>
-        <Grid container spacing={1} style={{maxWidth: 800, margin: '0 auto'}}>
+        <Grid container spacing={1} style={{maxWidth: 900, margin: '0 auto'}}>
 
           <Grid item sm={1} >
             <ImageGrid images={images} onSelect={setSelected} selected={selected}/>
           </Grid>
 
           <Grid item sm={5}>
-            <div style={{marginLeft: '30px'}}>
-              <img src={images[selected]} width='100%' />
+            <div id='mainImg-contain'>
+               <img src={images[selected]}  />
             </div>
           </Grid>
 
           <Grid item sm={6}>
-            <Grid container direction="column" style={{height: '100%'}}>
+            <Grid container direction="column" style={{height: '100%', justifyContent: 'center', marginLeft: '11em'}}>
 
-              {/* <Divider /> */}
-              <Box mt={2} style={{marginLeft: "30px"}}>
+
+              <Box>
                 <Typography variant="h4">{product.name}</Typography>
 
               {user &&
@@ -104,29 +101,23 @@ export default function Product() {
                 <Typography variant="h6">{product.brand}</Typography>
                 <Typography variant="subtitle1">{product.description}</Typography>
                 <Typography variant="subtitle1">{`$${(product.price/100).toFixed(2)}`}</Typography>
-              </Box>
-              <Box >
-                <Box>
                 <Button  variant="contained" color="primary" className={classes.button}
-                style={{marginTop: "auto", marginLeft: "30px"}} startIcon = {<AddShoppingCartIcon />}
-                // onClick={handleAdd}
-                // onClick={
-                //   async () => {
-                //    dispatch(cartReducer.addProduct(product))
-                // }}
-                // onClick={handleOpen}
-
-
+                // style={{marginTop: "auto"}}
+                startIcon = {<AddShoppingCartIcon />}
                 onClick = {() => {
                   handleAdd(product)
                   handleOpen()
                 }}
-
-
               >
-
                   Add To Cart
                   </Button>
+
+
+
+              </Box>
+              <Box>
+                <Box>
+
                   <CartModal open={open} onClose={handleClose} product={product}/>
 
                 </Box>
