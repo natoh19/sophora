@@ -17,6 +17,7 @@ import ItemDetail from './ItemDetail'
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { createOrder } from '../../store/order';
+import * as session from '../../store/session'
 
 const useStyles = makeStyles({
     table: {
@@ -31,6 +32,7 @@ export default function OrderSummary() {
     const dispatch = useDispatch()
     const [qty, setQty] = React.useState('');
     const history = useHistory();
+    const userInSession = useSelector(state => state.session.user)
 
 
 
@@ -61,7 +63,15 @@ export default function OrderSummary() {
     return (
 
         <Container id="products" style={{paddingTop: '11em' }}>
+
+
+
             <Grid container spacing={3} direction="column" style={{ maxWidth: 800, margin: '0 auto' }}>
+               {!userInSession &&
+          <Typography variant="h6" align='center' style={{marginBottom: '.75em'}}>
+            Please login to place your order
+        </Typography>
+        }
                 {cart.map(product => (
                     <Grid key={product.id} item xs>
                         <ItemDetail product={product} cart={cart} />

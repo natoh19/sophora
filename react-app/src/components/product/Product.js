@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import ImageGrid from './ImageGrid'
 import * as productStore from '../../store/product'
 import { ShoppingCart } from "@material-ui/icons";
-// import {getSingleProduct} from '../../store/product'
+import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -92,9 +92,11 @@ export default function Product() {
                 <Typography variant="h4">{product.name}</Typography>
 
               {user &&
+              <Tooltip title="Add to your love list!">
                 <IconButton aria-label="love this item">
                   <FavoriteIcon />
                 </IconButton>
+                </Tooltip>
                 }
 
 
