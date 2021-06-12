@@ -28,7 +28,7 @@ export default function Products() {
 
     useEffect(() =>{
         dispatch(session.getLoves())
-    }, [])
+    }, [dispatch])
 
 
 

@@ -72,7 +72,7 @@ export default function CartModal(props) {
                       <Typography variant="h4">{props.product.name}</Typography>
                         <Typography variant="h6">{props.product.brand}</Typography>
                         <Typography variant="subtitle1">{props.product.description}</Typography>
-                        <Typography variant="subtitle1">{`$${props.product.price/100}`}</Typography>
+                        <Typography variant="subtitle1">{`$${(props.product.price/100).toFixed(2)}`}</Typography>
                       </div>
                      <Button onClick={handleConfirm}variant="contained" color="secondary">Checkout</Button>
                   </Box>

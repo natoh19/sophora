@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './profilePage.css'
 import * as session from '../../store/session'
 import {removeLove} from '../../store/session'
 import { useSelector, useDispatch } from "react-redux";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 
 
 export default function ProfilePage() {
@@ -14,7 +15,11 @@ export default function ProfilePage() {
     const likes = useSelector(state => state.session.liked)
     const userInSession = useSelector(state => state.session.liked)
     const cart = Object.values(useSelector(state => state.cart.products))
-    console.log(likes)
+
+
+    useEffect(() =>{
+        dispatch(session.getLoves())
+    }, [dispatch])
 
 
     const handleRemove=(item)=> {
@@ -31,15 +36,9 @@ export default function ProfilePage() {
 
                 {Array.isArray(likes) && likes.map(like => {
                    return <div>
-                       <span>{like.name}</span><button style={{marginLeft: '8px'}} onClick={() => handleRemove(like.id)}>Remove</button>
+                       <span>{like.name}</span><Button style={{marginLeft: '8px'}} onClick={() => handleRemove(like.id)}>Remove</Button>
                        </div>
                })}
-
-
-
-
-
-
 
 
             </div>
