@@ -62,6 +62,11 @@ export default function Product() {
     dispatch(cartReducer.addProduct(product))
   }
 
+    const handleLike=()=> {
+        dispatch(session.addLove(product.id))
+
+  }
+
 
 
   const classes = useStyles();
@@ -91,7 +96,7 @@ export default function Product() {
               {user &&
               <Tooltip title="Add to your love list!">
                 <IconButton aria-label="love this item">
-                  <FavoriteIcon />
+                  <FavoriteIcon onClick={handleLike}/>
                 </IconButton>
                 </Tooltip>
                 }
