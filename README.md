@@ -34,7 +34,7 @@ Users can browse, add items to their cart, add items to their wishlist and check
 
 ### Backend Routes
 
-### Auth
+#### Auth
 
 `/auth/login`
 - *POST* - Creates an existing user session (`/login`)
@@ -46,7 +46,7 @@ Users can browse, add items to their cart, add items to their wishlist and check
 - *POST* - Creates a new user session (`/sign-up`)
 
 
-### Users
+#### Users
 
  `/users/:id`
 - *GET* - Retrieves a user's profile
@@ -54,7 +54,7 @@ Users can browse, add items to their cart, add items to their wishlist and check
 - *DELETE* - Deletes a user account
 
 
-### Products
+#### Products
 
  `/products`
 - *GET* - Retrieves all products from store
@@ -64,20 +64,20 @@ Users can browse, add items to their cart, add items to their wishlist and check
 - *GET* - Retrieves a specific product
 
 
-### Categories
+#### Categories
 
 `/categories/:category_id`
 - *GET* - Retrieves all items within a category
 
 
-### Orders
+#### Orders
 
  `/orders/`
 - *POST* - Creates a new order for a user
 - *GET* - Gets all orders
 
 
-### Likes
+#### Likes
 
  `/loves/`
 - *POST* - Creates a new order for a user
