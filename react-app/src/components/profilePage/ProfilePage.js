@@ -18,7 +18,7 @@ export default function ProfilePage() {
     const cart = Object.values(useSelector(state => state.cart.products))
     const orders= useSelector(state => state.session.orders)
     const lastOrder = useSelector(state => state.session.lastOrder)
-    console.log('LAST ORDER', lastOrder)
+    // console.log('LAST ORDER', lastOrder)
 
 
 
