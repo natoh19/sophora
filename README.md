@@ -89,16 +89,12 @@ Users can browse, add items to their cart, add items to their wishlist and check
 ### Frontend Routes
 
  `/`
-This page displays selections of products available from the store with product name, price, and image
 
 `/about`
-This page displays developer's information
 
 `/checkout`
-This page displays form to fill out shipping address and payment fields
 
 `/confirmation`
-This page displays a summary of the user's cart before proceeding to checkout
 
 `/category/:id`
 This page displays all products in a particular category. Categories will be:
@@ -108,7 +104,5 @@ This page displays all products in a particular category. Categories will be:
     4. Haircare
 
 `/thank-you`
-Upon a successful checkout the user will be redirected to a thank you page confirming their order and their order number generated in the database.
 
 `/profile/MyAccount`
-This page will display user's account details including name, email, password
