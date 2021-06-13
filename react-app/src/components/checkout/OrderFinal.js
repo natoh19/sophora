@@ -35,7 +35,7 @@ export default function OrderFinal({product}) {
     <Grid
   container
   direction="row"
-  justifItems="center"
+  justifyItems="center"
   alignItems="start"
   spacing={2}
 >

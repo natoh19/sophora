@@ -55,27 +55,16 @@ function App() {
         <Route path="/about" exact={true} >
           <About />
         </Route>
-           {/* <Route path="/test" exact={true} >
-          <HomePageBanner />
-        </Route> */}
 
-
-{/*
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact>
-          <SignUpForm />
-        </Route> */}
         <ProtectedRoute path="/users/:userId" exact >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/checkout" exact>
           <CheckoutPage />
         </ProtectedRoute>
-          <ProtectedRoute path="/thankyou" exact>
+          <Route path="/thankyou" exact>
           <ThankYou/>
-        </ProtectedRoute>
+        </Route>
         <Route path="/products" exact>
           <Products />
         </Route>

@@ -69,8 +69,8 @@ export default function ProductCard({product}) {
             <CardActions disableSpacing>
             {user &&
               <Tooltip title="Add to your love list!">
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon onClick={handleLike}/>
+                <IconButton aria-label="add to favorites" onClick={handleLike}>
+                    <FavoriteIcon />
                 </IconButton>
             </Tooltip>
             }

@@ -28,7 +28,7 @@ export default function About() {
 
         <Grid item sm={5}>
           <div >
-            <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1618190978/60409772_ichcck.jpg" width='100%' style={{ borderRadius: 20, boxShadow: '2px 5px #d3d3d3' }} />
+            <img src="https://res.cloudinary.com/dse6ebwba/image/upload/v1618190978/60409772_ichcck.jpg" alt="Natalie Oldroy" width='100%' style={{ borderRadius: 20, boxShadow: '2px 5px #d3d3d3' }} />
           </div>
         </Grid>
 
@@ -39,8 +39,8 @@ export default function About() {
 
               <Typography variant="subtitle1" style={{ marginLeft: '2em', marginBottom: '1em' }}>With a background in e-commerce as a business owner, Natalie found herself increasingly interested in the mechanics of what went on underneath the hood of e-commerce apps. She transitioned to become a full stack software engineer but her passion for all things e-commerce remains.</Typography>
               <div className="links" style={{ marginLeft: '2em' }}>
-                <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://github.com/natoh19' target="_blank" style={{ textDecoration: 'none', color: 'white' }}>GitHub</a></Button>
-                <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://www.linkedin.com/in/natalie-oldroyd/' target="_blank" style={{ textDecoration: 'none', color: 'white' }}>LinkedIn</a></Button>
+                <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://github.com/natoh19' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>GitHub</a></Button>
+                <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://www.linkedin.com/in/natalie-oldroyd/' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>LinkedIn</a></Button>
 
               </div>
             </Box>

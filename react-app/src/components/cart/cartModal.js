@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import * as cartReducer from '../../store/cart'
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -28,22 +27,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CartModal(props) {
   const classes = useStyles();
-  const cart = Object.values(useSelector(state => state.cart.products))
   const history=useHistory()
-//   const [open, setOpen] = React.useState(false);
 
-
-//   const handleOpen = () => {
-//     setOpen(true);
-//   };
 
   const handleConfirm = () => {
     history.push('/confirmation')
   };
 
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
 
   return (
     <div>

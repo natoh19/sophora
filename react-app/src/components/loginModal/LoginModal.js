@@ -5,7 +5,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Box from '@material-ui/core/Box';
 import { useState } from "react";
@@ -17,7 +16,6 @@ import { login } from "../../store/session";
 
 export default function LoginModal(props) {
     const [errors, setErrors] = useState([]);
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const user = useSelector(state => state.session.user);
@@ -73,7 +71,7 @@ export default function LoginModal(props) {
         <form onSubmit={onLogin}>
         <DialogContent>
         <Typography align="center">
-        Login to add items to your 💙  list and checkout!
+        Login to add items to your <span role="img" aria-label="heart">💙</span>  list and checkout!
 
         </Typography>
         <div>
@@ -105,7 +103,7 @@ export default function LoginModal(props) {
             value={password}
             onChange={updatePassword}
             fullWidth
-            value={password}
+
 
           />
         </DialogContent>

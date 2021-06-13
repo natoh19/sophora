@@ -87,42 +87,9 @@ export default function OrderSummary() {
 
         </Container>
 
-        // <div >
-        //     <div className={classes.root}>
-        //         <Paper className={classes.paper}>
-        //             <Grid container spacing={1} style={{maxWidth: 800, margin: '0 auto'}}>
-        //                 <Grid item xs={12} align="center">
-        //                     <Typography variant="">Order Summary</Typography>
-        //                 </Grid>
-        //                 <Grid container>
-        //                     <Grid item xs align="left">
-        //                     <Typography>
-        //                         Item
-        //                     </Typography>
-        //                     </Grid>
-        //                     <Grid item xs align="left">
-        //                     <Typography>
-        //                         Image
-        //                     </Typography>
-        //                     </Grid>
-        //                     <Grid item xs align="left">
-
-        //                     <Grid item xs align="left">
-        //                         <Typography>
-        //                             Price
-        //                         </Typography>
-        //                     </Grid>
-
-        //                     </Grid>
-
-        //                 </Grid>
-        //             </Grid>
-        //         </Paper>
 
 
-        //     </div>
 
-        // </div>
 
     )
 }

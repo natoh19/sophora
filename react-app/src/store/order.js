@@ -14,9 +14,9 @@ export const createOrder = () => async (dispatch, getState)   => {
     if(!state.cart.products.length) return;
     // const products = state.cart.products[0];
     const products = state.cart.products
-    console.log('PRODUCT', products)
+    // console.log('PRODUCT', products)
     const user = state.session.user.id;
-    console.log('state is', products);
+    // console.log('state is', products);
     const response = await fetch("/api/orders/", {
       method: "POST",
       headers: {
