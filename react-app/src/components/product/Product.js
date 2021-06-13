@@ -82,7 +82,7 @@ export default function Product() {
 
           <Grid item sm={5}>
             <div id='mainImg-contain'>
-               <img src={images[selected]}  />
+               <img src={images[selected]} alt="beauty product" />
             </div>
           </Grid>
 
@@ -95,8 +95,8 @@ export default function Product() {
 
               {user &&
               <Tooltip title="Add to your love list!">
-                <IconButton aria-label="love this item">
-                  <FavoriteIcon onClick={handleLike}/>
+                <IconButton onClick={handleLike} aria-label="love this item">
+                  <FavoriteIcon />
                 </IconButton>
                 </Tooltip>
                 }

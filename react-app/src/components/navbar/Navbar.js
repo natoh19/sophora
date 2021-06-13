@@ -9,19 +9,15 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import * as session from '../../store/session'
-import * as cartReducer from '../../store/cart'
 import {useHistory, Link} from 'react-router-dom'
 import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
 import LoginModal from '../loginModal/LoginModal'
-import PanToolIcon from '@material-ui/icons/PanTool';
 import SignUpModal from '../signUpModal/SignUpModal'
 import { withStyles } from '@material-ui/core/styles';
 
@@ -107,7 +103,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const sessionUser = useSelector(state => state.session.user);
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   const userInSession = useSelector(state => state.session.user)

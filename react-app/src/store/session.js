@@ -4,6 +4,8 @@ const REMOVE_USER = "session/REMOVE_USER";
 export const ADD_ITEM= 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const SET_ITEMS = 'SET_ITEMS';
+export const SET_ORDERS ="SET_ORDERS"
+export const SET_LAST_ORDER="SET_LAST_ORDER"
 
 const setUser = (user) => ({
     type: SET_USER,
@@ -24,10 +26,19 @@ export const removeItemActionCreator = likedId => ({
   payload: likedId
 })
 
-
 export const setItemsActionCreator = likes => ({
 type: SET_ITEMS,
 payload: likes
+})
+
+export const setOrdersActionCreator = orders => ({
+  type: SET_ORDERS,
+  payload: orders
+})
+
+export const setLastOrder = lastOrder => ({
+  type: SET_LAST_ORDER,
+  payload: lastOrder
 })
 
 
@@ -104,8 +115,6 @@ export const authenticate = () => async (dispatch) => {
   }
 
 
-
-
   export const getLoves = () => async (dispatch, getState)   => {
 
     let response;
@@ -127,15 +136,43 @@ export const authenticate = () => async (dispatch) => {
 
   }
 
+export const getOrders = () => async (dispatch, getState) => {
+  // let response;
+  const state= getState();
+
+  const response = await fetch("/api/orders/")
+
+
+  if (response.ok){
+    const data = await response.json()
+    dispatch(setOrdersActionCreator(data))
+    // console.log('DATA', data)
+    return data
+  }
+
+}
+
+export const getLastOrder = () => async (dispatch, getState) => {
+  // let response;
+  const state= getState();
+
+  const response = await fetch("/api/orders/")
+
+
+  if (response.ok){
+    const data = await response.json()
+    const lastOrder = data[0]
+    dispatch(setLastOrder(lastOrder))
+    return lastOrder
+  }
+
+}
 
 
   export const addLove = (likedId) => async (dispatch, getState)   => {
     const state = getState();
     const user = state.session?.user;
     const likes = Object.values(state.session?.liked)
-
-
-    // if (likes?.filter(like=> like.id === likedId).length >0) return
 
 
     const response = await fetch("/api/loves/", {
@@ -173,6 +210,8 @@ export const authenticate = () => async (dispatch) => {
     return data;
   }
 
+
+
 export default function reducer(state=initialState, action) {
     switch (action.type) {
         case SET_USER:
@@ -193,11 +232,21 @@ export default function reducer(state=initialState, action) {
             ...state,
             liked: state.liked.filter(v => v.id !== action.payload)
           }
-          case SET_ITEMS:
-            return {
-              ...state,
-              liked: action.payload || []
-            }
+        case SET_ITEMS:
+          return {
+            ...state,
+            liked: action.payload || []
+          }
+        case SET_ORDERS:
+          return {
+            ...state,
+            orders: action.payload || []
+          }
+        case SET_LAST_ORDER:
+          return {
+            ...state,
+            lastOrder: action.payload
+          }
         default:
             return state;
     }

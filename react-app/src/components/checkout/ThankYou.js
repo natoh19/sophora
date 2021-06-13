@@ -12,6 +12,7 @@ export default function ThankYou(){
            <div style={{boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)', width: 'fit-content', margin: '0 auto', padding: '5em', marginTop: '14em'}}>
            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '.5em'}}>
            <div style={{width: '500px', margin: '0 auto', textAlign:'center', borderBottom: '1px solid black'}}>
+            <Typography variant="h4" styles={{padding: '1em'}}>Thank you for your order</Typography>
            <Typography variant="h4">Order Summary</Typography>
 
            </div>

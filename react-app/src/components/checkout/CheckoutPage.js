@@ -87,7 +87,7 @@ export default function CheckoutPage() {
 
           <Grid item xs={12}>
             {cart.map(product => (
-              <OrderFinal product={product} />
+              <OrderFinal product={product}/>
 
             ))}
 
@@ -245,48 +245,6 @@ export default function CheckoutPage() {
   )
 
 
-  {/* <Grid container spacing={3} direction="column">
-        <Grid item xs={12}>
-          <TextField required id="cardName" label="Name on card" fullWidth/>
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            required
-            id="cardNumber"
-            label="Card number"
-            fullWidth
-            autoComplete="cc-number"
-          /> */}
-  {/* </Grid>
-        <Grid item xs={12}>
-          <TextField required id="expDate" label="Expiry date" fullWidth />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            required
-            id="cvv"
-            label="CVV"
-            helperText="Last three digits on signature strip"
-            fullWidth
-          />
-        </Grid>
-      </Grid>
-        <CheckoutForm />
 
-
-    </div>
-
-    </div
-
-
-
-
-
-// element.style {
-//   display: flex;
-//   justify-content: center;
-//   align-items: flex-end;
-//   flex-direction: column;
-//   align-content: center; */}
 
 }
