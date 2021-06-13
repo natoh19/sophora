@@ -22,19 +22,19 @@ Users can browse, add items to their cart, add items to their wishlist and check
 - PostgreSQL
 - SQLAlchemy
 
-## Key Features
+### Key Features
 - User authentication and password hashing
 - CSRF attack protection
 - Local storage to persist cart data
 - API to fetch from relational database (PostgreSQL - SQLAlchemy)
 - Redux to store session user, products, user likes and orders
 
-## Database Schema
+### Database Schema
 ![Database Schema](https://res.cloudinary.com/dse6ebwba/image/upload/v1623548616/sophoraDB_mjjmvl.png)
 
-#### Backend Routes
+### Backend Routes
 
-## Auth
+### Auth
 
 `/auth/login`
 - *POST* - Creates an existing user session (`/login`)
@@ -46,7 +46,7 @@ Users can browse, add items to their cart, add items to their wishlist and check
 - *POST* - Creates a new user session (`/sign-up`)
 
 
-## Users
+### Users
 
  `/users/:id`
 - *GET* - Retrieves a user's profile
@@ -54,7 +54,7 @@ Users can browse, add items to their cart, add items to their wishlist and check
 - *DELETE* - Deletes a user account
 
 
-## Products
+### Products
 
  `/products`
 - *GET* - Retrieves all products from store
@@ -64,20 +64,20 @@ Users can browse, add items to their cart, add items to their wishlist and check
 - *GET* - Retrieves a specific product
 
 
-## Categories
+### Categories
 
 `/categories/:category_id`
 - *GET* - Retrieves all items within a category
 
 
-## Orders
+### Orders
 
  `/orders/`
 - *POST* - Creates a new order for a user
 - *GET* - Gets all orders
 
 
-# Likes
+### Likes
 
  `/loves/`
 - *POST* - Creates a new order for a user
