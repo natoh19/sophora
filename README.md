@@ -32,4 +32,57 @@ Users can browse, add items to their cart, add items to their wishlist and check
 ## Database Schema
 ![Database Schema](https://res.cloudinary.com/dse6ebwba/image/upload/v1623548616/sophoraDB_mjjmvl.png)
 
+#### Backend Routes
+
+## Auth
+
+`/auth/login`
+- *POST* - Creates an existing user session (`/login`)
+
+`/auth/logout`
+- *DELETE* - Deletes the current user session (`/login`)
+
+`/auth/sign-up`
+- *POST* - Creates a new user session (`/sign-up`)
+
+
+## Users
+
+ `/users/:id`
+- *GET* - Retrieves a user's profile
+- *PUT* - Updates a user's profile details
+- *DELETE* - Deletes a user account
+
+
+## Products
+
+ `/products`
+- *GET* - Retrieves all products from store
+
+
+ `/products/:id`
+- *GET* - Retrieves a specific product
+
+
+## Categories
+
+`/categories/:category_id`
+- *GET* - Retrieves all items within a category
+
+
+## Orders
+
+ `/orders/`
+- *POST* - Creates a new order for a user
+- *GET* - Gets all orders
+
+
+# Likes
+
+ `/loves/`
+- *POST* - Creates a new order for a user
+- *GET* - Creates a new order for a user
+
+`/loves/:id`
+- *DELETE* - Deletes a like
 
