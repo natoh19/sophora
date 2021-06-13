@@ -7,6 +7,8 @@ _Sophora_ is inspired by the beauty products web site [Sephora](https://www.seph
 
 Users can browse, add items to their cart, add items to their wishlist and checkout products. User carts persist after leaving the site and upon return by storing their cart items in local storage and in the Redux store. Users can remove items from their wish list and from their cart as well as update the quantity of items in their cart before checkout. Some features are limited to logged in users only. These include the wishlist feature as well as the My Account page and checkout. On site messaging has been added to inform the user as to which features remain restricted until signup and login.
 
+![](giphy.gif)
+
 ## Technologies
 ### Frontend
 - Javascript
