@@ -106,3 +106,7 @@ This page displays all products in a particular category. Categories will be:
 `/thank-you`
 
 `/profile/MyAccount`
+
+### Future Implementations
+- Keyword Search in navigation bar
+- Users can leave reviews for their past orders.
