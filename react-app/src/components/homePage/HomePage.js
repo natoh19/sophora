@@ -1,6 +1,7 @@
 import React from 'react'
 import HomePageBanner from './HomePageBanner'
 import HomePagePromo from './HomePagePromo'
+import HomePageProducts from '../product/HomePageProducts'
 import './homePage.css'
 
 
@@ -24,7 +25,10 @@ export default function HomePage() {
             <HomePagePromo />
 
             </div>
-</>
+            <div>
+            <HomePageProducts />
+            </div>
+            </>
 
 
 

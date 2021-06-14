@@ -2,30 +2,16 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import {useHistory} from 'react-router-dom'
-import { loadStripe } from "@stripe/stripe-js";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import OrderSummary from '../orderSummary/OrderSummary'
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Container from '@material-ui/core/Container';
-import ItemDetail from '../orderSummary/ItemDetail'
 import * as cartReducer from '../../store/cart'
 import * as orderReducer from '../../store/order'
 import Button from '@material-ui/core/Button';
-import { FormControl } from '@material-ui/core';
-import Stripe from './Stripe'
-// import CreditCardForm from './CreditCardForm'
-import OrderFinal from './OrderFinal'
-// import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
+import OrderFinal from './OrderFinal';
 
-import {
-  CardElement,
-  useStripe,
-  useElements
-} from "@stripe/react-stripe-js";
+
 
 
 export default function CheckoutPage() {
@@ -34,8 +20,8 @@ export default function CheckoutPage() {
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [address1, setAddress1] = useState('')
-  const [address2, setAddress2] = useState('')
   const [zip_code, setZipCode] = useState('')
+  const [state, setState] = useState('')
   const [city, setCity] = useState('')
   const [country, setCountry] = useState('')
   const cart = Object.values(useSelector(state => state.cart.products))
@@ -154,6 +140,19 @@ export default function CheckoutPage() {
               onChange={(e) => setAddress1(e.target.value)}
             />
           </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              required
+              label="State"
+              name="state"
+              variant="outlined"
+              fullWidth
+              value={state}
+              margin="dense"
+              onChange={(e) => setState(e.target.value)}
+            />
+        </Grid>
 
           <Grid item xs={12}>
             <TextField

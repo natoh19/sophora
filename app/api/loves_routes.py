@@ -28,9 +28,7 @@ def get_loves():
     loves = []
     for lovedProduct in current_user.loves:
         loves.append(Product.query.get(lovedProduct.product_id).to_dict())
-    # print('++++++loves', loves)
     return jsonify(loves)
-    # return loves //return type must be string.
 
 
 @loves_routes.route('/', methods=['POST'])
@@ -58,10 +56,3 @@ def delete_loved_product(lovedId):
     db.session.delete(loved_product)
     db.session.commit()
     return jsonify()
-
-# @loves_routes.route('/<int:lovedId>', methods=['DELETE'])
-# def delete_loved_product(lovedId):
-#     userId=current_user.id
-#     loved_product= Love.query.filter_by(user_id=userId, product_id=lovedId).first()
-#     db.session.delete(loved_product)
-#     db.session.commit()

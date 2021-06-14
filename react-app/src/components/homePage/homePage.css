@@ -11,3 +11,12 @@
     padding: 6em;
 
 }
+
+
+@media screen and (min-width: 800px) {
+    #homePage-promo {display: flex}
+}
+
+@media screen and (min-width: 0px) and (max-width: 799px) {
+    #homePage-promo {display: none}
+}

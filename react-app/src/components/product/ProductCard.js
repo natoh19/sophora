@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Tooltip from '@material-ui/core/Tooltip';
 import * as session from '../../store/session'
-import * as lovesStore from '../../store/loves'
+
 
 
 
@@ -42,7 +42,6 @@ export default function ProductCard({product}) {
 
 
     const handleProductGridClick = () => {
-        // alert("product.id")
         history.push(`/products/${product.id}`)
     }
 

@@ -51,9 +51,9 @@ export default function (state = initialState, action) {
         products: action.payload
       };
     case ADD_PRODUCT:
-      // alert("Added to Cart")
+
       if (state.products.some(product => product.id === action.payload.id)) {
-        // increase qty if item already exists in cart
+
         return {
           ...state,
           products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
@@ -63,22 +63,22 @@ export default function (state = initialState, action) {
         ...state,
         products: [...state.products, { ...action.payload, qty: 1 }]
 
-      }; // else add the new item to cart
+      };
 
     case INCREASE_QUANTITY:
-      // alert('increase qty')
+
       return {
         ...state,
         products: state.products.map(product => (product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product))
       }
     case DECREASE_QUANTITY:
-      // alert('decreate qty')
+
       return {
         ...state,
         products: state.products.map(product => (product.id === action.payload.id && product.qty > 0 ? { ...product, qty: product.qty - 1 } : product))
       }
     case REMOVE_PRODUCT:
-      // alert('removed product')
+
       return {
         products: state.products.filter(product => product.id !== action.payload.id)
       }

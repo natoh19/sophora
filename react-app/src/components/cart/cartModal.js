@@ -1,4 +1,4 @@
-import {useSelector} from 'react-redux';
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -37,9 +37,7 @@ export default function CartModal(props) {
 
   return (
     <div>
-      {/* <button type="button" onClick={props.setOpen(false)}>
-        react-transition-group
-      </button> */}
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -56,7 +54,7 @@ export default function CartModal(props) {
               <Grid container direction="column" style={{maxWith:'500px'}} >
                   <Box mt={3}>
                       <div>
-                          <img src={props.product.image_url_main} style={{maxWidth: 250}}/>
+                          <img src={props.product.image_url_main} style={{maxWidth: 250}} alt={props.product.name}/>
                       </div>
                       <div>
                       <Typography variant="h4">{props.product.name}</Typography>

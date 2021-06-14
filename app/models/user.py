@@ -6,7 +6,6 @@ class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
-  # username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   first_name = db.Column(db.String(255))
   last_name = db.Column(db.String(255))
@@ -35,6 +34,5 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "email": self.email,
       "loves": {love.product_id: love.product_id for love in self.loves}
-      #  "loves": {love.product_id for love in self.loves} returns null
-      # "loves": {love.to_dict() for love in self.loves}
+
     }

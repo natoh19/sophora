@@ -14,7 +14,6 @@ import { signUp } from '../../store/session';
 
 export default function SignUpForm(props) {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -57,15 +56,6 @@ export default function SignUpForm(props) {
     return <Redirect to="/" />;
   }
 
-//   const [open, setOpen] = React.useState(false);
-
-//   const handleClickOpen = () => {
-//     setOpen(true);
-//   };
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
 
   return (
     <div>

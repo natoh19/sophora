@@ -1,23 +1,22 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {useParams} from 'react-router-dom'
+// import {useParams} from 'react-router-dom'
 import { Grid, Container } from "@material-ui/core";
 import * as productStore from '../../store/product'
 import ProductCard from './ProductCard'
-// import * as lovesStore from '../../store/loves'
 import * as session from '../../store/session'
 import './grid.css'
 
 
-export default function Products() {
+export default function HomePageProducts() {
     const allProducts = useSelector(state => state.product.products)
     const dispatch = useDispatch()
-    const {id}= useParams()
+    // const {id}= useParams()
 
 
     useEffect(() => {
-        dispatch(productStore.getAllProductsByCategory(id))
-    }, [dispatch, id])
+        dispatch(productStore.getAllProducts())
+    }, [dispatch])
 
     useEffect(() =>{
         dispatch(session.getLoves())

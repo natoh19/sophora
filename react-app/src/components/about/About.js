@@ -12,14 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function About() {
 
-  const useStyles = makeStyles((theme) => ({
-    button: {
-      margin: theme.spacing(1),
-    },
-  }));
-
-
-  const classes = useStyles();
 
   return (
 
@@ -35,7 +27,7 @@ export default function About() {
         <Grid item sm={6}>
           <Grid container direction="column" style={{ height: '100%', width: '100%' }}>
             <Box mt={2} style={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant="h4" style={{ marginLeft: '1em', marginBottom: '.5em' }}>Natalie Oldroyd</Typography>
+              <Typography variant="h4" style={{ marginLeft: '1em'}}>Natalie Oldroyd</Typography>
 
               <Typography variant="subtitle1" style={{ marginLeft: '2em', marginBottom: '1em' }}>With a background in e-commerce as a business owner, Natalie found herself increasingly interested in the mechanics of what went on underneath the hood of e-commerce apps. She transitioned to become a full stack software engineer but her passion for all things e-commerce remains.</Typography>
               <div className="links" style={{ marginLeft: '2em' }}>
