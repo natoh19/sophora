@@ -26,10 +26,10 @@ export default function Products() {
 
 
     return (
-        <Container id="grid-container" style={{margin: '0 auto'}} >
+        <Container id="grid-container">
             <Grid container spacing={4} className="grid-elements-container">
                 {allProducts.map(product => (
-                    <Grid key={product.id}  item xs={12} sm={6} md={4} style={{margin: '0 auto'}} >
+                    <Grid key={product.id}  item xs={12} sm={6} md={4}>
                     <ProductCard product={product} />
                     </Grid>
                 ))}

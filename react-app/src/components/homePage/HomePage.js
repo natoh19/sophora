@@ -25,7 +25,7 @@ export default function HomePage() {
             <HomePagePromo />
 
             </div>
-            <div>
+            <div >
             <HomePageProducts />
             </div>
             </>
