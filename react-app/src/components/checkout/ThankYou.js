@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 import './CheckoutForm.css'
 
 import Typography from '@material-ui/core/Typography';
@@ -8,6 +10,11 @@ import Typography from '@material-ui/core/Typography';
 export default function ThankYou(){
 
      const order = useSelector(state=> state.order)
+     const history = useHistory()
+
+     const handleReturn = ()=> {
+         history.push('/')
+     }
        return (
            <div style={{boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)', width: 'fit-content', margin: '0 auto', padding: '5em', marginTop: '14em'}}>
            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '.5em'}}>
@@ -26,7 +33,10 @@ export default function ThankYou(){
 
                 <Typography variant="subtitle1">{`${item.brand}  ---  $${(item.price/100).toFixed(2)}`}</Typography>
                 </div>
+
             ))}
+
+             <Button onClick={handleReturn} variant="contained" color="secondary">Return to Home</Button>
             </div>
 
             </div>
