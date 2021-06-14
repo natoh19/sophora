@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react';
+import { useSelector} from 'react-redux'
 import './CheckoutForm.css'
-import * as orderReducer from '../../store/order'
+
 import Typography from '@material-ui/core/Typography';
 
 
 export default function ThankYou(){
-     const cart = Object.values(useSelector(state => state.cart.products))
+
      const order = useSelector(state=> state.order)
        return (
            <div style={{boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)', width: 'fit-content', margin: '0 auto', padding: '5em', marginTop: '14em'}}>
@@ -22,7 +22,7 @@ export default function ThankYou(){
              </Typography>
             </div>
             {order.id.products.map((item, idx)=> (
-                <div >
+                <div key={idx}>
 
                 <Typography variant="subtitle1">{`${item.brand}  ---  $${(item.price/100).toFixed(2)}`}</Typography>
                 </div>

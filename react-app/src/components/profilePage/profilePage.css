@@ -11,19 +11,16 @@
 }
 
 .likes-container{
-    /* background-color: blue; */
+
     width: 50%;
     height: 50%;
     display: flex;
-    /* align-items: center; */
-    /* padding: 2rem 4rem; */
     box-sizing: border-box;
     border-right: 2px solid lightgrey;
     flex-direction: column;
 }
 
 .account-info-container{
-    /* background-color:green; */
     height: 50%;
     width: 100%;
     padding: 1.5rem 2.5rem;

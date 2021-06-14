@@ -30,8 +30,6 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-// import Paper from '@material-ui/core/Paper';
-
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -77,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -88,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sectionDesktop: {
     display: 'none',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('xs')]: {
       display: 'flex',
       color: 'secondary'
     },
@@ -103,20 +100,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   const userInSession = useSelector(state => state.session.user)
   const dispatch = useDispatch();
   const history = useHistory();
   const cart = Object.values(useSelector(state => state.cart.products))
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [loginOpen, setLoginOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const [signUpOpen, setSignUpOpen] = useState(false)
-  const [userAction, setUserAction] =useState('')
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
 
 
   const handleProfileMenuOpen = (event) => {
@@ -152,9 +146,6 @@ export default function PrimarySearchAppBar() {
   const handleFavClick=()=> {
     history.push('/myaccount')
   }
-
-
-
 
 
 
@@ -199,7 +190,39 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap component = {Link} to="/" style= {{textDecorationLine: 'none', color: 'white'}}>
            Sophora
           </Typography>
-          <div className={classes.search}>
+          <div className={classes.sectionDesktop}>
+            <LoginModal open={open} handleClose={() => handleClickOpen(false)}/>
+            {/* <LoginModal open={open}/> */}
+            {!userInSession &&
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => handleClickOpen(true)}
+              className={classes.button}
+              startIcon={<PersonIcon />}
+              style={{marginLeft: '1em'}}
+            >
+             Login
+            </Button>
+          }
+          </div>
+           <div className={classes.sectionDesktop}>
+
+          <SignUpModal open={signUpOpen} handleClose={() => handleSignUpToggle(false)}/>
+          {!userInSession &&
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            onClick={() => handleSignUpToggle(true)}
+          >
+          Sign Up
+          </Button>
+
+          }
+
+          </div>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -211,7 +234,7 @@ export default function PrimarySearchAppBar() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </div> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 
@@ -232,30 +255,14 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton>
           </div>
-          <div className={classes.sectionDesktop}>
-            <LoginModal open={open} handleClose={() => handleClickOpen(false)}/>
-            {/* <LoginModal open={open}/> */}
-            {!userInSession &&
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => handleClickOpen(true)}
-              className={classes.button}
-              startIcon={<PersonIcon />}
-            >
-             Login
-            </Button>
-          }
-          </div>
+
           <div className={classes.sectionDesktop}>
 
             {userInSession &&
             <Button
             variant="contained"
             color="secondary"
-            // onClick={() => handleClickOpen(true)}
             className={classes.button}
-            // startIcon={<PersonIcon />}
             onClick={handleLogOut}
 
             >
@@ -265,7 +272,7 @@ export default function PrimarySearchAppBar() {
 
           </div>
 
-          <div className={classes.sectionDesktop}>
+          {/* <div className={classes.sectionDesktop}>
           <SignUpModal open={signUpOpen} handleClose={() => handleSignUpToggle(false)}/>
           {!userInSession &&
           <Button
@@ -279,7 +286,7 @@ export default function PrimarySearchAppBar() {
 
           }
 
-          </div>
+          </div> */}
 
         </Toolbar>
       </AppBar>

@@ -1,17 +1,11 @@
-.outer-container {
-    margin-right: 15px;
-    padding-top: 5em;
-    padding-bottom: 5em;
+
+
+#grid-container {
+    /* display:flex; */
+    padding-top: 11em;
+    margin-bottom: 10em;
+
 }
-
-/* #container {
-    margin-right: 15px;
-    margin-right: 15px;
-    padding-top: 15em;
-    padding-bottom: 5em;
-
-
-} */
 
 #img_contain {
     width: 100px;

@@ -80,13 +80,12 @@ export const authenticate = () => async (dispatch) => {
   }
 
   export const logout = () => async (dispatch) => {
-    const response = await fetch("/api/auth/logout", {
+    await fetch("/api/auth/logout", {
       headers: {
         "Content-Type": "application/json",
       }
     });
 
-    const data = await response.json();
     dispatch(removeUser());
   };
 
@@ -117,8 +116,6 @@ export const authenticate = () => async (dispatch) => {
 
   export const getLoves = () => async (dispatch, getState)   => {
 
-    let response;
-
     const state = getState();
     const user = state.session?.user;
 
@@ -137,8 +134,6 @@ export const authenticate = () => async (dispatch) => {
   }
 
 export const getOrders = () => async (dispatch, getState) => {
-  // let response;
-  const state= getState();
 
   const response = await fetch("/api/orders/")
 
@@ -146,15 +141,13 @@ export const getOrders = () => async (dispatch, getState) => {
   if (response.ok){
     const data = await response.json()
     dispatch(setOrdersActionCreator(data))
-    // console.log('DATA', data)
+
     return data
   }
 
 }
 
 export const getLastOrder = () => async (dispatch, getState) => {
-  // let response;
-  const state= getState();
 
   const response = await fetch("/api/orders/")
 
@@ -172,7 +165,6 @@ export const getLastOrder = () => async (dispatch, getState) => {
   export const addLove = (likedId) => async (dispatch, getState)   => {
     const state = getState();
     const user = state.session?.user;
-    const likes = Object.values(state.session?.liked)
 
 
     const response = await fetch("/api/loves/", {
@@ -218,9 +210,7 @@ export default function reducer(state=initialState, action) {
             return {user: action.payload}
         case REMOVE_USER:
             return {user: null}
-        // case ADD_ITEM:
-        //   state.user.loves[action.payload]=action.payload
-        //   return {...state}
+
         case ADD_ITEM:
           const likedId = action.payload;
           return {

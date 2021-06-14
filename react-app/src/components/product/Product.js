@@ -1,29 +1,23 @@
 import React, {useState, useEffect} from 'react'
 import {
-    Card,
-    CardMedia,
-    CardContent,
-    CardActions,
+
     Typography,
-    CardActionArea,
     Button,
     Box,
-    Divider,
     IconButton,
     Grid
   } from "@material-ui/core";
 import { useDispatch, useSelector} from "react-redux";
 import { useParams } from "react-router-dom";
-import ImageGrid from './ImageGrid'
-import * as productStore from '../../store/product'
-import { ShoppingCart } from "@material-ui/icons";
+import ImageGrid from './ImageGrid';
+import * as productStore from '../../store/product';
 import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import * as cartReducer from '../../store/cart'
-import * as session from '../../store/session'
-import CartModal from '../cart/cartModal'
+import * as session from '../../store/session';
+import CartModal from '../cart/cartModal';
 
 
 export default function Product() {
@@ -34,7 +28,7 @@ export default function Product() {
   const [selected, setSelected] = useState(0)
   const [open, setOpen] = useState(false);
   const images = [product.image_url_main, product.imageOne, product.imageTwo]
-  const cart = useSelector(state => state.cart.products)
+
    const user = useSelector(state => state.session.user);
 
 

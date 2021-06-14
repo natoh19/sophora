@@ -18,7 +18,6 @@ class Product(db.Model):
     quantity = db.Column(db.Integer)
 
 
-    # orders = db.relationship("Order", back_populates="products")
     categories = db.relationship("Category", back_populates="products")
     loves = db.relationship("Love", back_populates="products")
 

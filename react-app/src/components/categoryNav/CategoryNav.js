@@ -29,11 +29,6 @@ const handleChange = (event, newValue) => {
         textColor="primary"
         centered
       >
-        {/* <div label="Item One">
-            <Link href="/categories/1">Make Up</Link>
-
-        <div /> */}
-
 
         <Tab
          label="Brands"
