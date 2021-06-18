@@ -29,7 +29,7 @@ export default function About() {
             <Box mt={2} style={{ display: 'flex', flexDirection: 'column' }}>
               <Typography variant="h4" style={{ marginLeft: '1em'}}>Natalie Oldroyd</Typography>
 
-              <Typography variant="subtitle1" style={{ marginLeft: '2em', marginBottom: '1em' }}>With a background in e-commerce as a business owner, Natalie found herself increasingly interested in the mechanics of what went on underneath the hood. She transitioned to become a full stack software engineer but her passion for using technology to meet businss challenges remains.</Typography>
+              <Typography variant="subtitle1" style={{ marginLeft: '2em', marginBottom: '1em' }}>With a background in e-commerce as a business owner, Natalie found herself increasingly interested in the mechanics of what went on underneath the hood. She's passionate about tech and applying it to meet business challenges. React, Redux, PostgreSQL, Python, JavaScript developer developing ready for her next challenge.</Typography>
               <div className="links" style={{ marginLeft: '2em' }}>
                 <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://github.com/natoh19' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>GitHub</a></Button>
                 <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://www.linkedin.com/in/natalie-oldroyd/' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>LinkedIn</a></Button>
