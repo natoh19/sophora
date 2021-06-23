@@ -22,14 +22,22 @@ export default function SignUpForm(props) {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+// signup in the modal.
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(email, password, first_name, last_name));
-      props.handleClose();
+      const data = dispatch(signUp(email, password, first_name, last_name));
+      // console.log(data)
+      if (data.errors) setErrors(data.errors)
+
+    } else {
+      setErrors(['Confirm password field must match password field'])
+
     }
 
   };
+
+
 
 
   const updateEmail = (e) => {
@@ -59,11 +67,15 @@ export default function SignUpForm(props) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={props.handleSignUpOpen}>
-        Open form dialog
-      </Button>
+
+
       <Dialog open={props.open} onClose={props.handleSignUpClose}  aria-labelledby="form-dialog-title" style={{padding: '40px'}}>
         <DialogTitle id="form-dialog-title" style={{textAlign:'center'}} variant="h5" >Sign Up</DialogTitle>
+          <Box className="errors" style={{margin: '0 auto', fontWeight: 'bold'}}>
+        {errors && errors.map((error, idx) => (
+          <div key={idx}>{error}</div>
+        ))}
+        </Box>
 
         <form onSubmit={onSignUp}>
         <DialogContent>
@@ -73,11 +85,7 @@ export default function SignUpForm(props) {
           <DialogContentText style={{textAlign:'center'}}>
           *Required Fields
           </DialogContentText>
-          <Box>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-        </Box>
+
           <TextField
             autoFocus
             margin="dense"
