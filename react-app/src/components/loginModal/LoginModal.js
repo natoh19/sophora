@@ -26,13 +26,23 @@ export default function LoginModal(props) {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    // console.log(email, password)
     const data = await dispatch(login(email, password));
-    props.handleClose();
+
     if (data.errors) {
       setErrors(data.errors);
+    } else {
+      props.handleClose();
     }
   };
+
+  const handleDemoUser= async (e) => {
+    e.preventDefault();
+    const email = 'demo@aa.io';
+    const password = 'password'
+    const dispatched = await dispatch(login( email, password))
+
+    if (dispatched.errors) setErrors(dispatch.errors)
+  }
 
   const handleClose = () => {
 
@@ -51,14 +61,7 @@ export default function LoginModal(props) {
     return <Redirect to="/" />;
   }
 
-  const handleDemoUser= async (e) => {
-    e.preventDefault();
-    const email = 'demo@aa.io';
-    const password = 'password'
-    const dispatched = await dispatch(login( email, password))
 
-    if (dispatched.errors) setErrors(dispatch.errors)
-  }
 
 
 
@@ -74,9 +77,9 @@ export default function LoginModal(props) {
         Login to add items to your <span role="img" aria-label="heart">💙</span>  list and checkout!
 
         </Typography>
-        <div>
-        {errors.map((error) => (
-          <div>{error}</div>
+        <div style={{padding: '.5em', margin: '0 auto', fontWeight: 'bold'}}>
+        {errors && errors.map((error, idx) => (
+          <div key={idx}>{error}</div>
         ))}
       </div>
 

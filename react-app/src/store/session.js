@@ -89,7 +89,7 @@ export const authenticate = () => async (dispatch) => {
     dispatch(removeUser());
   };
 
-
+//signup function in store
   export const signUp = (email, password, first_name, last_name) => async (dispatch)  => {
     const response = await fetch("/api/auth/signup", {
       method: "POST",
@@ -104,13 +104,15 @@ export const authenticate = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
+    // console.log(data)
 
     if (data.errors) {
-        return data;
+    // console.log(data.errors)
+        return data.errors;
     }
 
     dispatch(setUser(data))
-    return {};
+    return data;
   }
 
 
