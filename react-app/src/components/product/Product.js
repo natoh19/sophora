@@ -18,18 +18,52 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import * as cartReducer from '../../store/cart'
 import * as session from '../../store/session';
 import CartModal from '../cart/cartModal';
+import LikedIcon from '../likeButton/LikeButton'
 
 
 export default function Product() {
 
   const dispatch= useDispatch();
   const product = useSelector(state => state.product.product);
+  const likes = useSelector(state => state.session.liked)
+  const loves = Object.values(useSelector(state => state.session.user.loves));
+
   const { id } = useParams();
   const [selected, setSelected] = useState(0)
   const [open, setOpen] = useState(false);
+  const [exists, setExists] = useState(false)
   const images = [product.image_url_main, product.imageOne, product.imageTwo]
+  const user = useSelector(state => state.session.user);
 
-   const user = useSelector(state => state.session.user);
+
+  useEffect(() => {
+    dispatch(productStore.getSingleProduct(id))
+  }, [dispatch, id])
+
+  useEffect(() =>{
+    dispatch(session.getLoves())
+  }, [dispatch])
+
+  useEffect(() => {
+    setExists(isLikedRedux(likes, id))
+  }, [likes, id, exists])
+
+
+  function isLikedRedux(likes, id){
+    const numId = parseInt(id)
+
+    for (let i = 0; i < likes.length; i++){
+      let obj = likes[i]
+      if (obj['id'] === numId){
+        return true
+      }
+    }
+
+    return false;
+  }
+
+
+
 
 
   useEffect(() => {
@@ -56,8 +90,13 @@ export default function Product() {
     dispatch(cartReducer.addProduct(product))
   }
 
-    const handleLike=()=> {
-        dispatch(session.addLove(product.id))
+  const handleLike=()=> {
+
+    if (exists){
+      dispatch(session.removeLove(product.id))
+    } else {
+      dispatch(session.addLove(product.id))
+    }
 
   }
 
@@ -87,13 +126,12 @@ export default function Product() {
               <Box>
                 <Typography variant="h4">{product.name}</Typography>
 
-              {user &&
-              <Tooltip title="Add to your love list!">
-                <IconButton onClick={handleLike} aria-label="love this item">
-                  <FavoriteIcon />
+
+              {/* <Tooltip title="Remove from your love list"> */}
+                <IconButton aria-label="love this item" onClick={handleLike}>
+                  <LikedIcon exists ={exists} user={user} />
                 </IconButton>
-                </Tooltip>
-                }
+                {/* </Tooltip> */}
 
 
 
