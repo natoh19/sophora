@@ -104,7 +104,7 @@ export const authenticate = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    console.log('++++++DATA', data)
+
 
     if (!data.errors) {
       dispatch(setUser(data))

@@ -27,7 +27,7 @@ export default function SignUpForm(props) {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(email, password, first_name, last_name));
-      console.log('_____________', data)
+
       if (data.errors) setErrors(data.errors)
 
     } else {

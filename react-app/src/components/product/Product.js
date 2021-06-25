@@ -26,8 +26,6 @@ export default function Product() {
   const dispatch= useDispatch();
   const product = useSelector(state => state.product.product);
   const likes = useSelector(state => state.session.liked)
-  const loves = Object.values(useSelector(state => state.session.user.loves));
-
   const { id } = useParams();
   const [selected, setSelected] = useState(0)
   const [open, setOpen] = useState(false);
@@ -52,6 +50,8 @@ export default function Product() {
   function isLikedRedux(likes, id){
     const numId = parseInt(id)
 
+    if (user) {
+
     for (let i = 0; i < likes.length; i++){
       let obj = likes[i]
       if (obj['id'] === numId){
@@ -60,6 +60,9 @@ export default function Product() {
     }
 
     return false;
+  } else {
+    return
+  }
   }
 
 
@@ -91,12 +94,14 @@ export default function Product() {
   }
 
   const handleLike=()=> {
+    if (user) {
 
     if (exists){
       dispatch(session.removeLove(product.id))
     } else {
       dispatch(session.addLove(product.id))
     }
+  }
 
   }
 

@@ -129,6 +129,7 @@ export default function PrimarySearchAppBar() {
 
   const handleLogOut = (event) => {
     dispatch(session.logout())
+    history.push('/')
   }
 
   const handleClickOpen = (val) => {
