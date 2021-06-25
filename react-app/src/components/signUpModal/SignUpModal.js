@@ -26,8 +26,8 @@ export default function SignUpForm(props) {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = dispatch(signUp(email, password, first_name, last_name));
-      // console.log(data)
+      const data = await dispatch(signUp(email, password, first_name, last_name));
+      console.log('_____________', data)
       if (data.errors) setErrors(data.errors)
 
     } else {
@@ -71,11 +71,7 @@ export default function SignUpForm(props) {
 
       <Dialog open={props.open} onClose={props.handleSignUpClose}  aria-labelledby="form-dialog-title" style={{padding: '40px'}}>
         <DialogTitle id="form-dialog-title" style={{textAlign:'center'}} variant="h5" >Sign Up</DialogTitle>
-          <Box className="errors" style={{margin: '0 auto', fontWeight: 'bold'}}>
-        {errors && errors.map((error, idx) => (
-          <div key={idx}>{error}</div>
-        ))}
-        </Box>
+
 
         <form onSubmit={onSignUp}>
         <DialogContent>
@@ -85,6 +81,11 @@ export default function SignUpForm(props) {
           <DialogContentText style={{textAlign:'center'}}>
           *Required Fields
           </DialogContentText>
+          <DialogContentText style={{textAlign:'center'}}>
+          {errors && errors.map((error, idx) => (
+          <div key={idx}>{error}</div>
+        ))}
+            </DialogContentText>
 
           <TextField
             autoFocus
