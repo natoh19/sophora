@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useParams} from 'react-router-dom'
 import { Grid, Container } from "@material-ui/core";
@@ -12,6 +12,9 @@ import './grid.css'
 export default function Products() {
     const allProducts = useSelector(state => state.product.products)
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user);
+    const likes = useSelector(state => state.session.liked)
+    const [exists, setExists] = useState(false)
     const {id}= useParams()
 
 
@@ -22,6 +25,7 @@ export default function Products() {
     useEffect(() =>{
         dispatch(session.getLoves())
     }, [dispatch])
+
 
 
 

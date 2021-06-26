@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -38,7 +38,44 @@ export default function ProductCard({product}) {
     const classes = useStyles();
     const history = useHistory();
     const user = useSelector(state => state.session.user);
+    const likes = useSelector(state => state.session.liked)
+    const [exists, setExists] = useState(false)
     const dispatch = useDispatch();
+
+
+
+    // useEffect(() =>{
+    //     dispatch(session.getLoves())
+    //     // console.log('++++++++', likes)
+
+    //   }, [dispatch])
+
+
+    //   useEffect(() => {
+    //     setExists(isLikedRedux(likes, product.id))
+    // }, [likes, product.id, exists])
+
+
+
+
+    // function isLikedRedux(likes, productId){
+    //     const productid = parseInt(productId)
+
+    //     if (user) {
+
+    //     for (let i = 0; i < likes.length; i++){
+    //     let obj = likes[i]
+    //     if (obj['id'] === productid){
+    //         return true
+    //     }
+    //     }
+
+    //     return false;
+    // } else {
+    //     return
+    // }
+    // }
+
 
 
     const handleProductGridClick = () => {
@@ -49,6 +86,9 @@ export default function ProductCard({product}) {
         dispatch(session.addLove(product.id))
 
     }
+
+
+
 
     return (
         <Card className={classes.root}>

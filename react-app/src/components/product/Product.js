@@ -61,7 +61,7 @@ export default function Product() {
 
     return false;
   } else {
-    return
+    return undefined
   }
   }
 
@@ -69,10 +69,10 @@ export default function Product() {
 
 
 
-  useEffect(() => {
-    dispatch(productStore.getSingleProduct(id))
+  // useEffect(() => {
+  //   dispatch(productStore.getSingleProduct(id))
 
-  }, [dispatch, id])
+  // }, [dispatch, id])
 
 
   const handleOpen = () => {

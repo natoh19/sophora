@@ -42,7 +42,14 @@ export const setLastOrder = lastOrder => ({
 })
 
 
-const initialState = { user: null, liked: [] };
+const initialState = {
+   user: null,
+  //  likes: JSON.parse(localStorage.getItem('likes'))
+  like:[]
+  // likes: JSON.parse(localStorage.getItem('likes') || '{"likes":[]}')
+  };
+// const initialState = JSON.parse(localStorage.getItem('cart') || '{"products":[]}')
+
 
 export const authenticate = () => async (dispatch) => {
     const response = await fetch('/api/auth/',{
@@ -118,19 +125,20 @@ export const authenticate = () => async (dispatch) => {
     const state = getState();
     const user = state.session?.user;
 
+
+
     if (user) {
        const response = await fetch("/api/loves/")
 
-    if (response.ok){
-      const data = await response.json();
-      dispatch(setItemsActionCreator(data))
+      if (response.ok){
+        const data = await response.json();
+        dispatch(setItemsActionCreator(data))
+        return data
+      }
 
-      return data
-    }
+    } }
 
-    }
 
-  }
 
 export const getOrders = () => async (dispatch, getState) => {
 
