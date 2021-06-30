@@ -5,6 +5,7 @@ import { Grid, Container } from "@material-ui/core";
 import * as productStore from '../../store/product'
 import ProductCard from './ProductCard'
 import * as session from '../../store/session'
+import * as loveReducer from '../../store/loves'
 import './grid.css'
 
 
@@ -19,7 +20,7 @@ export default function HomePageProducts() {
     }, [dispatch])
 
     useEffect(() =>{
-        dispatch(session.getLoves())
+        dispatch(loveReducer.getLoves())
     }, [dispatch])
 
 

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import configureStore from './store';
-import {loadState, saveState} from './components/localStorageLikes/index'
+import {loadUserState, saveUserState, saveLikeState, loadLikeState, saveState, loadState} from './components/localStorageLikes/index'
 
 
 
@@ -18,11 +18,22 @@ const store = configureStore();
 // });
 
 store.subscribe(() => {
+  // saveLikeState({
+  //   liked: store.getState().loves.liked,
+  // });
   saveState({
-    likes: store.getState().session.liked,
+    state: store.getState(),
+    banana: store.getState().loves.liked,
+    // order: store.getState().order,
+    user: store.getState().session.user
+  }
 
-  });
+  )
+  saveUserState({
+    user: store.getState().session.user
+  })
   window.localStorage.setItem('cart', JSON.stringify(store.getState().cart));
+
 
 })
 

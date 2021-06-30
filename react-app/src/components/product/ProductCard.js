@@ -12,8 +12,11 @@ import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import { useParams } from "react-router-dom";
 import Tooltip from '@material-ui/core/Tooltip';
 import * as session from '../../store/session'
+import * as loveReducer from '../../store/loves'
+import LikedIcon from '../likeButton/LikeButton'
 
 
 
@@ -38,43 +41,52 @@ export default function ProductCard({product}) {
     const classes = useStyles();
     const history = useHistory();
     const user = useSelector(state => state.session.user);
-    const likes = useSelector(state => state.session.liked)
+    const likes = useSelector(state => state.loves.liked)
     const [exists, setExists] = useState(false)
     const dispatch = useDispatch();
+    const { id } = useParams();
 
 
 
-    // useEffect(() =>{
-    //     dispatch(session.getLoves())
-    //     // console.log('++++++++', likes)
+    useEffect(() =>{
+        dispatch(loveReducer.getLoves())
+      }, [dispatch])
 
-    //   }, [dispatch])
-
-
-    //   useEffect(() => {
-    //     setExists(isLikedRedux(likes, product.id))
-    // }, [likes, product.id, exists])
+      useEffect(() => {
+        setExists(isLikedRedux(likes, product.id))
+      }, [likes, product.id, exists])
 
 
 
+      function isLikedRedux(likes, id){
 
-    // function isLikedRedux(likes, productId){
-    //     const productid = parseInt(productId)
 
-    //     if (user) {
+        if (user) {
 
-    //     for (let i = 0; i < likes.length; i++){
-    //     let obj = likes[i]
-    //     if (obj['id'] === productid){
-    //         return true
-    //     }
-    //     }
+        for (let i = 0; i < likes.length; i++){
+          let obj = likes[i]
+          if (obj['id'] === id){
+            return true
+          }
+        }
 
-    //     return false;
-    // } else {
-    //     return
-    // }
-    // }
+        return false;
+      } else {
+        return undefined
+      }
+      }
+
+      const handleLike=()=> {
+        if (user) {
+
+        if (exists){
+          dispatch(loveReducer.removeLove(product.id))
+        } else {
+          dispatch(loveReducer.addLove(product.id))
+        }
+    }
+
+      }
 
 
 
@@ -82,10 +94,7 @@ export default function ProductCard({product}) {
         history.push(`/products/${product.id}`)
     }
 
-    const handleLike=()=> {
-        dispatch(session.addLove(product.id))
 
-    }
 
 
 
@@ -106,13 +115,10 @@ export default function ProductCard({product}) {
         </Typography>
             </CardContent>
             <CardActions disableSpacing>
-            {user &&
-              <Tooltip title="Add to your love list!">
-                <IconButton aria-label="add to favorites" onClick={handleLike}>
-                    <FavoriteIcon />
+            <IconButton aria-label="love this item" onClick={handleLike}>
+                  <LikedIcon exists ={exists} user={user} />
                 </IconButton>
-            </Tooltip>
-            }
+
 
                 <Tooltip title="Product Details">
                     <IconButton aria-label="product details" onClick={handleProductGridClick}>

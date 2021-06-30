@@ -19,13 +19,15 @@ import * as cartReducer from '../../store/cart'
 import * as session from '../../store/session';
 import CartModal from '../cart/cartModal';
 import LikedIcon from '../likeButton/LikeButton'
+import * as loveReducer from '../../store/loves'
+
 
 
 export default function Product() {
 
   const dispatch= useDispatch();
   const product = useSelector(state => state.product.product);
-  const likes = useSelector(state => state.session.liked)
+  const likes = useSelector(state => state.loves.liked)
   const { id } = useParams();
   const [selected, setSelected] = useState(0)
   const [open, setOpen] = useState(false);
@@ -39,7 +41,7 @@ export default function Product() {
   }, [dispatch, id])
 
   useEffect(() =>{
-    dispatch(session.getLoves())
+    dispatch(loveReducer.getLoves())
   }, [dispatch])
 
   useEffect(() => {
@@ -97,9 +99,9 @@ export default function Product() {
     if (user) {
 
     if (exists){
-      dispatch(session.removeLove(product.id))
+      dispatch(loveReducer.removeLove(product.id))
     } else {
-      dispatch(session.addLove(product.id))
+      dispatch(loveReducer.addLove(product.id))
     }
   }
 
