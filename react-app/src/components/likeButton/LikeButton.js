@@ -8,6 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > span': {
@@ -29,7 +30,7 @@ export default function LikeButton({exists, user}){
     const classes = useStyles();
 
     // const user = useSelector(state => state.session.user);
-    const likes = useSelector(state => state.loves.liked)
+    const likes = useSelector(state => state.session.liked)
 
     const dispatch = useDispatch();
     const [like, setLikes] = useState(false)

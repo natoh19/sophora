@@ -39,14 +39,14 @@ function App() {
       <CategoryNav />
       <Navbar />
       <Switch>
-        <Route path="/" exact={true} >
+        <Route path="/" exact >
           <HomePage />
         </Route>
-        <Route path="/MyAccount" exact={true} >
+        <Route path="/MyAccount" exact >
           <ProfilePage />
         </Route>
 
-        <Route path="/about" exact={true} >
+        <Route path="/about" exact >
           <About />
         </Route>
 

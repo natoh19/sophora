@@ -5,23 +5,26 @@ import { Grid, Container } from "@material-ui/core";
 import * as productStore from '../../store/product'
 import ProductCard from './ProductCard'
 import * as session from '../../store/session'
-import * as loveReducer from '../../store/loves'
+
 import './grid.css'
 
 
 export default function HomePageProducts() {
     const allProducts = useSelector(state => state.product.products)
     const dispatch = useDispatch()
-    // const {id}= useParams()
+    const likes = useSelector(state => state.session.liked)
+
+
 
 
     useEffect(() => {
         dispatch(productStore.getAllProducts())
     }, [dispatch])
 
-    useEffect(() =>{
-        dispatch(loveReducer.getLoves())
-    }, [dispatch])
+    // useEffect(() =>{
+    //     dispatch(session.getLoves())
+
+    // }, [dispatch])
 
 
 

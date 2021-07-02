@@ -6,13 +6,12 @@ import product from './product'
 import order from './order'
 import loves from './loves'
 
-
 const rootReducer = combineReducers({
     session,
     cart,
     product,
     order,
-    loves
+    // loves
 
 
 });

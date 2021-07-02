@@ -1,28 +1,5 @@
 
 
-  // export const saveLikeState = (state) => {
-  //   try {
-  //     const serializedStateLikes = JSON.stringify(state.loves.liked);
-  //     localStorage.setItem('liked', serializedStateLikes);
-
-  //   } catch {
-  //     // ignore write errors
-  //   }
-  // };
-
-  // export const loadLikeState = () => {
-  //   try {
-  //     const serializedStateLikes = localStorage.getItem('liked');
-  //     if (serializedStateLikes === null) {
-  //       return undefined;
-  //     }
-  //     return JSON.parse(serializedStateLikes);
-  //   } catch (err) {
-  //     return undefined;
-  //   }
-  // };
-
-
   export const saveUserState = (state) => {
     try {
       const serializedStateUser = JSON.stringify(state.user);

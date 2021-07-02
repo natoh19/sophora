@@ -19,15 +19,15 @@ import * as cartReducer from '../../store/cart'
 import * as session from '../../store/session';
 import CartModal from '../cart/cartModal';
 import LikedIcon from '../likeButton/LikeButton'
-import * as loveReducer from '../../store/loves'
+
 
 
 
 export default function Product() {
 
   const dispatch= useDispatch();
-  const product = useSelector(state => state.product.product);
-  const likes = useSelector(state => state.loves.liked)
+  const product = useSelector(state => state.product.product)
+  const likes = useSelector(state => state.session.liked)
   const { id } = useParams();
   const [selected, setSelected] = useState(0)
   const [open, setOpen] = useState(false);
@@ -41,22 +41,27 @@ export default function Product() {
   }, [dispatch, id])
 
   useEffect(() =>{
-    dispatch(loveReducer.getLoves())
+    if (user){
+      dispatch(session.getLoves())
+    }
   }, [dispatch])
+
 
   useEffect(() => {
     setExists(isLikedRedux(likes, id))
   }, [likes, id, exists])
 
 
-  function isLikedRedux(likes, id){
+  function isLikedRedux(likes = [], id){
+
     const numId = parseInt(id)
 
     if (user) {
 
     for (let i = 0; i < likes.length; i++){
       let obj = likes[i]
-      if (obj['id'] === numId){
+      console.log('++++obj', obj)
+      if (obj['id'] === numId) {
         return true
       }
     }
@@ -99,9 +104,9 @@ export default function Product() {
     if (user) {
 
     if (exists){
-      dispatch(loveReducer.removeLove(product.id))
+      dispatch(session.removeLove(product.id))
     } else {
-      dispatch(loveReducer.addLove(product.id))
+      dispatch(session.addLove(product.id))
     }
   }
 

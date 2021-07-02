@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import './profilePage.css'
 import * as session from '../../store/session'
-import * as loveReducer from '../../store/loves'
+
 import { useSelector, useDispatch } from "react-redux";
 import Button from '@material-ui/core/Button';
 
@@ -10,7 +10,7 @@ export default function ProfilePage() {
 
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const likes = useSelector(state => state.loves.liked)
+    const likes = useSelector(state => state.session.liked)
     // const orders= useSelector(state => state.session.orders)
     // const lastOrder = useSelector(state => state.session.lastOrder)
 
@@ -26,11 +26,11 @@ export default function ProfilePage() {
 
 
     useEffect(() =>{
-        dispatch(loveReducer.getLoves())
+        dispatch(session.getLoves())
     }, [dispatch])
 
     const handleRemove=(item)=> {
-        dispatch(loveReducer.removeLove(item))
+        dispatch(session.removeLove(item))
     }
 
     return (
