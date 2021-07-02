@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useParams} from 'react-router-dom'
 import { Grid, Container } from "@material-ui/core";
@@ -6,12 +6,16 @@ import * as productStore from '../../store/product'
 import ProductCard from './ProductCard'
 // import * as lovesStore from '../../store/loves'
 import * as session from '../../store/session'
+
 import './grid.css'
 
 
 export default function Products() {
     const allProducts = useSelector(state => state.product.products)
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user);
+    const likes = useSelector(state => state.session.liked)
+    const [exists, setExists] = useState(false)
     const {id}= useParams()
 
 
@@ -19,9 +23,16 @@ export default function Products() {
         dispatch(productStore.getAllProductsByCategory(id))
     }, [dispatch, id])
 
-    useEffect(() =>{
-        dispatch(session.getLoves())
-    }, [dispatch])
+    useEffect(() => {
+
+          dispatch(session.getLoves())
+
+      }, [dispatch])
+
+    // useEffect(() =>{
+    //     dispatch(loveReducer.getLoves())
+    // }, [dispatch])
+
 
 
 

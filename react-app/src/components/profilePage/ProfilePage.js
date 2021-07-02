@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import './profilePage.css'
 import * as session from '../../store/session'
+
 import { useSelector, useDispatch } from "react-redux";
 import Button from '@material-ui/core/Button';
 

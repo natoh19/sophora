@@ -1,43 +1,59 @@
+// import { logout } from './session'
 
 
-// export const ADD_ITEM= 'ADD_ITEM';
-// export const REMOVE_ITEM = 'REMOVE_PRODUCT';
+
+// export const ADD_ITEM = 'ADD_ITEM';
+// export const REMOVE_ITEM = 'REMOVE_ITEM';
 // export const SET_ITEMS = 'SET_ITEMS';
 
+// const initialState = {
+//   liked: []
+// };
 
 // export const addItemActionCreator = likedId => ({
-//     type: ADD_ITEM,
-//     payload: likedId
-//   });
+//   type: ADD_ITEM,
+//   payload: likedId
+// });
 
 // export const removeItemActionCreator = likedId => ({
-//     type: REMOVE_ITEM,
-//     payload: likedId
+//   type: REMOVE_ITEM,
+//   payload: likedId
 // })
 
-
-// export const setItemsActionCreator = likes => ({
+// export const setItemsActionCreator = liked => ({
 //   type: SET_ITEMS,
-//   payload: likes
+//   payload: liked
 // })
 
 
+// export const getLoves = () => async (dispatch, getState) => {
 
-// export const getLoves = () => async (dispatch)   => {
+
+
+//   // if (logout(getState())){
+//   //   return Promise.resolve()
+//   // };
+
+//   const state = getState();
+//   const user = state.session?.user;
+
+
+
 //   const response = await fetch("/api/loves/")
 
-
-
-//   if (response.ok){
+//   if (response.ok) {
 //     const data = await response.json();
 //     dispatch(setItemsActionCreator(data))
 //     return data
 //   }
+
+
 // }
 
 
-
-// export const addLove = (likedId, user) => async (dispatch)   => {
+// export const addLove = (likedId) => async (dispatch, getState) => {
+//   const state = getState();
+//   const user = state.session?.user;
 
 
 //   const response = await fetch("/api/loves/", {
@@ -52,14 +68,15 @@
 //   });
 //   const data = await response.json();
 //   if (data.errors) {
-//       return data;
+//     return data;
 //   }
 
-//   dispatch(addItemActionCreator(data.likedId))
+//   dispatch(addItemActionCreator(data))
 //   return data;
 // }
 
-// export const removeLove = (likedId) => async (dispatch)   => {
+
+// export const removeLove = (likedId) => async (dispatch) => {
 //   const response = await fetch(`/api/loves/${likedId}`, {
 //     method: "DELETE",
 //     headers: {
@@ -68,34 +85,36 @@
 //   });
 //   const data = await response.json();
 //   if (data.errors) {
-//       return data;
+//     return data;
 //   }
 
-//   dispatch(removeItemActionCreator(data.likedId))
+//   dispatch(removeItemActionCreator(likedId))
 //   return data;
 // }
 
-// export default function (state = {
-//   liked: []
-// }, action) {
+
+
+// export default function reducer(state = initialState, action) {
 //   switch (action.type) {
+
+
 //     case ADD_ITEM:
 //       const likedId = action.payload;
 //       return {
 //         ...state,
-//         liked: state.liked.every(v => v !== likedId) ? state.liked.concat(likedId): state.liked
+//         liked: state.liked.every(v => v.id !== likedId) ? state.liked.concat(likedId) : state.liked
 //       };
 //     case REMOVE_ITEM:
 //       return {
 //         ...state,
-//         liked: state.liked.filter(v => v !== action.payload)
-//       };
-
+//         liked: state.liked.filter(v => v.id !== action.payload)
+//       }
 //     case SET_ITEMS:
 //       return {
 //         ...state,
-//         liked: action.payload
+//         liked: action.payload || []
 //       }
+
 //     default:
 //       return state;
 //   }

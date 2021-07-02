@@ -23,6 +23,7 @@ loves_routes=Blueprint('loves', __name__, url_prefix = '/api/loves')
 
 
 @loves_routes.route('/')
+@login_required
 def get_loves():
     userId=current_user.id
     loves = []
@@ -32,6 +33,7 @@ def get_loves():
 
 
 @loves_routes.route('/', methods=['POST'])
+@login_required
 def create_loved():
     data = request.get_json()
     user_id=current_user.id
@@ -50,6 +52,7 @@ def create_loved():
 
 
 @loves_routes.route('/<int:lovedId>', methods=['DELETE'])
+@login_required
 def delete_loved_product(lovedId):
     userId=current_user.id
     loved_product= Love.query.filter_by(user_id=userId, product_id=lovedId).first()

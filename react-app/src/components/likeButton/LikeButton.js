@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import * as session from '../../store/session'
 import { useSelector, useDispatch } from "react-redux";
-import Button from '@material-ui/core/Button';
-import { red } from '@material-ui/core/colors';
-import { green } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import { makeStyles } from '@material-ui/core/styles';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import Icon from '@material-ui/core/Icon';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 
 
@@ -39,54 +35,20 @@ export default function LikeButton({exists, user}){
     const dispatch = useDispatch();
     const [like, setLikes] = useState(false)
 
+    let button;
 
-
-    // useEffect(() =>{
-    //     dispatch(session.getLoves())
-    //    likeFlag(id)
-    //    console.log('++++++id in useEffect', id)
-    // }, [dispatch, id])
-
-    // const likeFlag = (id) => {
-    //     console.log('++++++++id arg in likeFlag', id)
-    //     console.log('++++++LIKES from state', likes)
-    //     // likes.map(like => console.log('++++LIKE', like))
-    //     let flag = likes.map(like => like[id] === id)
-    //     console.log('+++++FLAG', flag)
-
-
-    //     if (!likes[id]){
-    //         console.log('+++++LIKE', like)
-    //         console.log('____LIKEID', likes[id])
-    //         setLikes(false)
-    //     }
-
-    //     if(likes[id]){
-    //         console.log('++++++++LIKE', like)
-    //         console.log('____LIKEID', likes[id])
-    //         setLikes(true)
-    //     }
-    // }
-
-
-
-    // const handleToggle = (id) => {
-    //     if (likeFlag){
-    //         dispatch(session.removeLove(id))
-    //     } else {
-    //         dispatch(session.addLove(id))
-    //     }
-    // }
+    if (exists && user){
+        button = <LikedIcon color="secondary" />
+    } else if (user) {
+        button = <LikedIcon />
+    } else {
+        button = null
+    }
 
     return (
         <div className = {classes.root}>
 
-            {user && exists ?
-            <LikedIcon color="secondary"/>:
-            <LikedIcon />
-                }
-
-
+            {button}
 
         </div>
 
