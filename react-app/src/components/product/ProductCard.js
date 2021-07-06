@@ -9,15 +9,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import { useParams } from "react-router-dom";
 import Tooltip from '@material-ui/core/Tooltip';
 import * as session from '../../store/session'
 
 import LikedIcon from '../likeButton/LikeButton'
-import setUser from '../../store/session'
+
 
 
 
@@ -46,41 +44,32 @@ export default function ProductCard({ product }) {
   const likes = useSelector(state => state.session.liked)
   const [exists, setExists] = useState(false)
   const dispatch = useDispatch();
-  const { id } = useParams();
-
-
-
-
-
 
 
   useEffect(() => {
     if (user) {
       setExists(isLikedRedux(likes, product.id))
     }
-  }, [likes, product.id, dispatch])
+  }, [likes, product.id, dispatch, isLikedRedux, user])
 
 
-
-
-
-  function isLikedRedux(likes=[], id){
+  function isLikedRedux(likes = [], id) {
     const numId = parseInt(id)
 
     if (user) {
 
-    for (let i = 0; i < likes.length; i++){
-      let obj = likes[i]
+      for (let i = 0; i < likes.length; i++) {
+        let obj = likes[i]
 
-      if (obj['id'] == numId) {
-        return true
+        if (obj['id'] === numId) {
+          return true
+        }
       }
-    }
 
-    return false;
-  } else {
-    return undefined
-  }
+      return false;
+    } else {
+      return undefined
+    }
   }
 
   const handleLike = () => {

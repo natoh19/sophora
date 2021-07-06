@@ -7,7 +7,7 @@ import {
   Box,
   Grid
 } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+
 
 
 export default function About() {
@@ -33,6 +33,7 @@ export default function About() {
               <div className="links" style={{ marginLeft: '2em' }}>
                 <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://github.com/natoh19' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>GitHub</a></Button>
                 <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://www.linkedin.com/in/natalie-oldroyd/' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>LinkedIn</a></Button>
+                <Button variant="contained" color="secondary" style={{ marginRight: '.5em' }}> <a href='https://natoh19.github.io/' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>Portfolio</a></Button>
 
               </div>
             </Box>

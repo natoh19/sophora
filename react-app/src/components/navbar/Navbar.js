@@ -1,20 +1,18 @@
-import React, {useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import * as session from '../../store/session'
-import {useHistory, Link} from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
 import LoginModal from '../loginModal/LoginModal'
@@ -136,19 +134,17 @@ export default function PrimarySearchAppBar() {
     setOpen(val);
   };
 
-  const handleSignUpToggle=(val) =>{
+  const handleSignUpToggle = (val) => {
     setSignUpOpen(val)
   }
 
-  const handleCartIconClick =() => {
+  const handleCartIconClick = () => {
     history.push('/confirmation')
   }
 
-  const handleFavClick=()=> {
+  const handleFavClick = () => {
     history.push('/myaccount')
   }
-
-
 
 
   const menuId = 'primary-search-account-menu';
@@ -161,10 +157,9 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
-      // onClick={handleLogOut}
-      >
+    >
 
-      <MenuItem component = {Link} to="/MyAccount">My Account</MenuItem>
+      <MenuItem component={Link} to="/MyAccount">My Account</MenuItem>
 
     </Menu>
   );
@@ -172,11 +167,11 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div>
-      <AppBar style={{position: 'absolute', top: '63px'}}>
+      <AppBar style={{ position: 'absolute', top: '63px' }}>
         <Toolbar>
-        {renderMenu}
+          {renderMenu}
 
-        {userInSession &&
+          {userInSession &&
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -188,39 +183,39 @@ export default function PrimarySearchAppBar() {
               <AccountCircle />
             </IconButton>
           }
-          <Typography className={classes.title} variant="h6" noWrap component = {Link} to="/" style= {{textDecorationLine: 'none', color: 'white'}}>
-           Sophora
+          <Typography className={classes.title} variant="h6" noWrap component={Link} to="/" style={{ textDecorationLine: 'none', color: 'white' }}>
+            Sophora
           </Typography>
           <div className={classes.sectionDesktop}>
-            <LoginModal open={open} handleClose={() => handleClickOpen(false)}/>
+            <LoginModal open={open} handleClose={() => handleClickOpen(false)} />
             {/* <LoginModal open={open}/> */}
             {!userInSession &&
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => handleClickOpen(true)}
-              className={classes.button}
-              startIcon={<PersonIcon />}
-              style={{marginLeft: '1em'}}
-            >
-             Login
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleClickOpen(true)}
+                className={classes.button}
+                startIcon={<PersonIcon />}
+                style={{ marginLeft: '1em' }}
+              >
+                Login
             </Button>
-          }
+            }
           </div>
-           <div className={classes.sectionDesktop}>
+          <div className={classes.sectionDesktop}>
 
-          <SignUpModal open={signUpOpen} handleClose={() => handleSignUpToggle(false)}/>
-          {!userInSession &&
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            onClick={() => handleSignUpToggle(true)}
-          >
-          Sign Up
+            <SignUpModal open={signUpOpen} handleClose={() => handleSignUpToggle(false)} />
+            {!userInSession &&
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={() => handleSignUpToggle(true)}
+              >
+                Sign Up
           </Button>
 
-          }
+            }
 
           </div>
           {/* <div className={classes.search}>
@@ -240,9 +235,9 @@ export default function PrimarySearchAppBar() {
           <div className={classes.sectionDesktop}>
 
 
-            <IconButton aria-label="cart" onClick= {handleCartIconClick}>
+            <IconButton aria-label="cart" onClick={handleCartIconClick}>
               <StyledBadge badgeContent={cart.length} color="secondary">
-               <ShoppingCartIcon />
+                <ShoppingCartIcon />
               </StyledBadge>
             </IconButton>
 
@@ -251,7 +246,7 @@ export default function PrimarySearchAppBar() {
             <IconButton color="inherit">
               <Badge color="secondary">
                 {userInSession &&
-                <FavoriteIcon onClick={handleFavClick}/>
+                  <FavoriteIcon onClick={handleFavClick} />
                 }
               </Badge>
             </IconButton>
@@ -260,34 +255,18 @@ export default function PrimarySearchAppBar() {
           <div className={classes.sectionDesktop}>
 
             {userInSession &&
-            <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            onClick={handleLogOut}
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                onClick={handleLogOut}
 
-            >
-              Logout
+              >
+                Logout
             </Button>
             }
 
           </div>
-
-          {/* <div className={classes.sectionDesktop}>
-          <SignUpModal open={signUpOpen} handleClose={() => handleSignUpToggle(false)}/>
-          {!userInSession &&
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            onClick={() => handleSignUpToggle(true)}
-          >
-          Sign Up
-          </Button>
-
-          }
-
-          </div> */}
 
         </Toolbar>
       </AppBar>

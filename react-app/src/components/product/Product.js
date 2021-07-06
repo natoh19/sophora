@@ -1,20 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import {
 
-    Typography,
-    Button,
-    Box,
-    IconButton,
-    Grid
-  } from "@material-ui/core";
-import { useDispatch, useSelector} from "react-redux";
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Grid
+} from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ImageGrid from './ImageGrid';
 import * as productStore from '../../store/product';
-import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import * as cartReducer from '../../store/cart'
 import * as session from '../../store/session';
 import CartModal from '../cart/cartModal';
@@ -25,7 +23,7 @@ import LikedIcon from '../likeButton/LikeButton'
 
 export default function Product() {
 
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const product = useSelector(state => state.product.product)
   const likes = useSelector(state => state.session.liked)
   const { id } = useParams();
@@ -40,46 +38,41 @@ export default function Product() {
     dispatch(productStore.getSingleProduct(id))
   }, [dispatch, id])
 
-  useEffect(() =>{
-    if (user){
+  useEffect(() => {
+    if (user) {
       dispatch(session.getLoves())
     }
-  }, [dispatch])
+  }, [dispatch, user])
 
 
   useEffect(() => {
+
     setExists(isLikedRedux(likes, id))
-  }, [likes, id, exists])
+  }, [likes, id, exists, isLikedRedux])
 
 
-  function isLikedRedux(likes = [], id){
+
+
+  function isLikedRedux(likes = [], id) {
 
     const numId = parseInt(id)
 
     if (user) {
 
-    for (let i = 0; i < likes.length; i++){
-      let obj = likes[i]
-      console.log('++++obj', obj)
-      if (obj['id'] === numId) {
-        return true
+      for (let i = 0; i < likes.length; i++) {
+        let obj = likes[i]
+
+        if (obj['id'] === numId) {
+          return true
+        }
       }
+
+      return false;
+    } else {
+      return undefined
     }
-
-    return false;
-  } else {
-    return undefined
-  }
   }
 
-
-
-
-
-  // useEffect(() => {
-  //   dispatch(productStore.getSingleProduct(id))
-
-  // }, [dispatch, id])
 
 
   const handleOpen = () => {
@@ -96,19 +89,19 @@ export default function Product() {
     },
   }));
 
-  const handleAdd = async(product) => {
+  const handleAdd = async (product) => {
     dispatch(cartReducer.addProduct(product))
   }
 
-  const handleLike=()=> {
+  const handleLike = () => {
     if (user) {
 
-    if (exists){
-      dispatch(session.removeLove(product.id))
-    } else {
-      dispatch(session.addLove(product.id))
+      if (exists) {
+        dispatch(session.removeLove(product.id))
+      } else {
+        dispatch(session.addLove(product.id))
+      }
     }
-  }
 
   }
 
@@ -116,67 +109,62 @@ export default function Product() {
 
   const classes = useStyles();
 
-     return (
+  return (
 
-      <div className="outer-container" style={{paddingTop: '14em'}}>
-        <Grid container spacing={1} style={{maxWidth: 900, margin: '0 auto'}}>
+    <div className="outer-container" style={{ paddingTop: '14em' }}>
+      <Grid container spacing={1} style={{ maxWidth: 900, margin: '0 auto' }}>
 
-          <Grid item sm={1} >
-            <ImageGrid images={images} onSelect={setSelected} selected={selected}/>
-          </Grid>
+        <Grid item sm={1} >
+          <ImageGrid images={images} onSelect={setSelected} selected={selected} />
+        </Grid>
 
-          <Grid item sm={5}>
-            <div id='mainImg-contain'>
-               <img src={images[selected]} alt="beauty product" />
-            </div>
-          </Grid>
+        <Grid item sm={5}>
+          <div id='mainImg-contain'>
+            <img src={images[selected]} alt="beauty product" />
+          </div>
+        </Grid>
 
-          <Grid item sm={6}>
-            <Grid container direction="column" style={{height: '100%', justifyContent: 'center', marginLeft: '11em'}}>
-
-
-              <Box>
-                <Typography variant="h4">{product.name}</Typography>
+        <Grid item sm={6}>
+          <Grid container direction="column" style={{ height: '100%', justifyContent: 'center', marginLeft: '11em' }}>
 
 
-              {/* <Tooltip title="Remove from your love list"> */}
-                <IconButton aria-label="love this item" onClick={handleLike}>
-                  <LikedIcon exists ={exists} user={user} />
-                </IconButton>
-                {/* </Tooltip> */}
+            <Box>
+              <Typography variant="h4">{product.name}</Typography>
 
+              <IconButton aria-label="love this item" onClick={handleLike}>
+                <LikedIcon exists={exists} user={user} />
+              </IconButton>
 
-
-                <Typography variant="h6">{product.brand}</Typography>
-                <Typography variant="subtitle1">{product.description}</Typography>
-                <Typography variant="subtitle1">{`$${(product.price/100).toFixed(2)}`}</Typography>
-                <Button  variant="contained" color="primary" className={classes.button}
+              <Typography variant="h6">{product.brand}</Typography>
+              <Typography variant="subtitle1">{product.description}</Typography>
+              <Typography variant="subtitle1">{`$${(product.price / 100).toFixed(2)}`}</Typography>
+              <Button variant="contained" color="primary" className={classes.button}
                 // style={{marginTop: "auto"}}
-                startIcon = {<AddShoppingCartIcon />}
-                onClick = {() => {
+                startIcon={<AddShoppingCartIcon />}
+                onClick={() => {
                   handleAdd(product)
                   handleOpen()
                 }}
               >
-                  Add To Cart
+                Add To Cart
                   </Button>
 
 
 
-              </Box>
+            </Box>
+            <Box>
               <Box>
-                <Box>
 
-                  <CartModal open={open} onClose={handleClose} product={product}/>
+                <CartModal open={open} onClose={handleClose} product={product} />
 
-                </Box>
               </Box>
-
-            </Grid>
+            </Box>
 
           </Grid>
 
         </Grid>
-      </div>
-    )
-  }
+
+      </Grid>
+    </div>
+  )
+}

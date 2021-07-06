@@ -163,19 +163,12 @@ export const getLastOrder = () => async (dispatch, getState) => {
 
 export const getLoves = () => async (dispatch, getState) => {
 
-
-//stops racing, stops redux from getting data
-//can like but likes not store in store
-  // if (logout(getState())){
-  //   return Promise.resolve()
-  // };
-
   const state = getState();
   const user = state.session.user;
 
 
   if (user) {
-    console.log('user is', user);
+
     const response = await fetch("/api/loves/")
     if (response.ok) {
       const data = await response.json();

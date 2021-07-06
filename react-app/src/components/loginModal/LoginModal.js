@@ -62,9 +62,6 @@ export default function LoginModal(props) {
   }
 
 
-
-
-
   return (
     <Box>
 
