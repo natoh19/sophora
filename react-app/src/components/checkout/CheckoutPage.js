@@ -72,8 +72,9 @@ export default function CheckoutPage() {
     <div className="checkout-grid-summary">
 
           <Grid item xs={12}>
-            {cart.map(product => (
-              <OrderFinal product={product}/>
+            {cart.map((product, idx) => (
+              <div key={idx}>  <OrderFinal product={product}/></div>
+
 
             ))}
 
@@ -91,7 +92,7 @@ export default function CheckoutPage() {
           <Grid item xs={12}>
             <TextField
               required
-              marginBottom="5px"
+              // marginBottom="5px"
               label="First Name"
               name="firstName"
               variant="outlined"

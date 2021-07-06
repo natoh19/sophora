@@ -17,14 +17,14 @@ export default function OrderSummary() {
 
 
 
-    const useStyles = makeStyles((theme) => ({
-        button: {
-            margin: theme.spacing(1),
-            width: "100%",
-        },
-    }));
+    // const useStyles = makeStyles((theme) => ({
+    //     button: {
+    //         margin: theme.spacing(1),
+    //         width: "100%",
+    //     },
+    // }));
 
-    const classes = useStyles();
+    // const classes = useStyles();
 
     const handleCheckout = () => {
 
@@ -43,7 +43,7 @@ export default function OrderSummary() {
 
     return (
 
-        <Container id="products" style={{paddingTop: '11em' }}>
+        <div id="products" style={{paddingTop: '11em' }}>
 
 
 
@@ -54,7 +54,7 @@ export default function OrderSummary() {
         </Typography>
         }
                 {cart.map(product => (
-                    <Grid key={product.id} item xs>
+                    <Grid key={product.id} >
                         <ItemDetail product={product} cart={cart} />
                     </Grid>
                 ))}
@@ -62,11 +62,11 @@ export default function OrderSummary() {
                 <Box>
                     <Typography variant = "h5" align="center">Order Total: {`$${handleTotal(cart)}`}</Typography>
                 </Box>
-                <Button onClick={handleCheckout}className={classes.button} color="primary" variant="contained">Checkout</Button>
+                <Button onClick={handleCheckout}  color="primary" variant="contained">Checkout</Button>
             </Grid>
 
 
-        </Container>
+        </div>
 
 
 

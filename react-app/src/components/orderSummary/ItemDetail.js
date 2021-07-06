@@ -55,7 +55,7 @@ export default function ItemDetail({product}) {
     </Box>
 </Grid>
 <Box item display="flex">
-    <Button variant="outlined"onClick={handleIncrease}>+</Button>
+    <Button variant="outlined" onClick={handleIncrease}>+</Button>
     <Typography style={{marginLeft: '11px', marginRight: '11px'}}>{product.qty}</Typography>
     <Button variant="outlined" onClick={handleDecrease}>-</Button>
 </Box>
