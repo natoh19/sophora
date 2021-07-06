@@ -5,23 +5,6 @@ from app.models import User, Love, Product,db
 loves_routes=Blueprint('loves', __name__, url_prefix = '/api/loves')
 
 
-
-# @loves_routes.route('/', methods=['POST'])
-# def create_loved():
-#     lovedId = request.form['lovedId']
-#     userId=current_user.id
-
-#     new_loved_product= Love(
-#         user_id=userId,
-#         product_id=lovedId
-#     )
-
-#     db.session.add(new_loved_product)
-#     db.session.commit()
-
-#     return jsonify(new_loved_product.product_id)
-
-
 @loves_routes.route('/')
 @login_required
 def get_loves():

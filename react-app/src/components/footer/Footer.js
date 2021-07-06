@@ -19,6 +19,9 @@ export default function Footer() {
                     <div>
                         <a href='https://www.linkedin.com/in/natalie-oldroyd/' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white', marginRight: '1em', marginLeft: '1em' }}>LinkedIn</a>
                     </div>
+                    <div>
+                        <a href='https://natoh19.github.io/' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white', marginRight: '1em', marginLeft: '1em' }}>Portfolio</a>
+                    </div>
 
                     <div>
                         <Link to='/about' style={{ textDecoration: 'none', color: 'white', marginLeft: '1em' }}>About The Dev</Link>
