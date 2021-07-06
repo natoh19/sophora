@@ -74,7 +74,7 @@ export default function LoginModal(props) {
         Login to add items to your <span role="img" aria-label="heart">💙</span>  list and checkout!
 
         </Typography>
-        <div style={{padding: '.5em', margin: '0 auto', fontWeight: 'bold'}}>
+        <div style={{padding: '.5em', margin: '0 auto', color:'red'}}>
         {errors && errors.map((error, idx) => (
           <div key={idx}>{error}</div>
         ))}

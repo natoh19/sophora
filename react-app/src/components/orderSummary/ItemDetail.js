@@ -54,7 +54,7 @@ export default function ItemDetail({ product }) {
             <img src={product.image_url_main} alt={product.name} style={{ maxWidth: "75px" }} />
           </Box>
         </Grid>
-        <Box item display="flex">
+        <Box item display="flex" style={{alignItems: "center"}}>
           <Button variant="outlined" onClick={handleIncrease}>+</Button>
           <Typography style={{ marginLeft: '11px', marginRight: '11px' }}>{product.qty}</Typography>
           <Button variant="outlined" onClick={handleDecrease}>-</Button>
