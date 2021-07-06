@@ -17,12 +17,12 @@ export default function OrderFinal({product}) {
 
 
   return (
-  <Grid direction="row">
+  <Grid >
     <Grid
   container
   direction="row"
-  justifyItems="center"
-  alignItems="start"
+  // justifyItems="center"
+  // alignItems="flex-start"
   spacing={2}
 >
 <Grid item xs>
