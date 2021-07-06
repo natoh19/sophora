@@ -27,7 +27,12 @@ export default function SignUpForm(props) {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(email, password, first_name, last_name));
 
-      if (data.errors) setErrors(data.errors)
+      if (data.errors)
+       {
+          setErrors(data.errors)
+        } else {
+          props.handleClose()
+        }
 
     } else {
       setErrors(['Confirm password field must match password field'])
@@ -36,6 +41,10 @@ export default function SignUpForm(props) {
 
   };
 
+  const handleClose = () => {
+
+    props.handleClose();
+  };
 
 
 
@@ -68,7 +77,7 @@ export default function SignUpForm(props) {
     <div>
 
 
-      <Dialog open={props.open} onClose={props.handleSignUpClose}  aria-labelledby="form-dialog-title" style={{padding: '40px'}}>
+      <Dialog open={props.open} onClose={handleClose}  aria-labelledby="form-dialog-title" style={{padding: '40px'}}>
         <DialogTitle id="form-dialog-title" style={{textAlign:'center'}} variant="h5" >Sign Up</DialogTitle>
 
 
@@ -80,11 +89,11 @@ export default function SignUpForm(props) {
           <DialogContentText style={{textAlign:'center'}}>
           *Required Fields
           </DialogContentText>
-          <DialogContentText style={{textAlign:'center'}}>
+          <div style={{textAlign:'center'}}>
           {errors && errors.map((error, idx) => (
-          <div key={idx}>{error}</div>
+          <p key={idx} style={{color: 'red'}}>{error}</p>
         ))}
-            </DialogContentText>
+            </div>
 
           <TextField
             autoFocus
@@ -148,7 +157,7 @@ export default function SignUpForm(props) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.handleClose} color="primary">
+          <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
           <Button type="submit" color="primary">
