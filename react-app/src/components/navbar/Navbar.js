@@ -167,7 +167,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div>
-      <AppBar style={{ position: 'absolute', top: '63px' }}>
+      <AppBar style={{ position: 'absolute', top: '63px'}}>
         <Toolbar>
           {renderMenu}
 
