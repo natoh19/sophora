@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Tooltip from '@material-ui/core/Tooltip';
 import * as session from '../../store/session'
+import {Link} from 'react-router-dom'
 
 import LikedIcon from '../likeButton/LikeButton'
 
@@ -86,6 +87,7 @@ export default function ProductCard({ product }) {
 
 
 
+
   const handleProductGridClick = () => {
     history.push(`/products/${product.id}`)
   }
@@ -102,8 +104,11 @@ export default function ProductCard({ product }) {
         subheader={product.summary}
       />
       <CardMedia
+        style = {{cursor: 'pointer'}}
         className={classes.media}
         image={product.image_url_main}
+        onClick = {handleProductGridClick}
+
       />
       <CardContent>
         <Typography variant="h6" color="textSecondary" component="h6" >
