@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Hidden from '@material-ui/core/Hidden';
+import withWidth from '@material-ui/core/withWidth';
 import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
@@ -27,6 +29,8 @@ const handleChange = (event, newValue) => {
         onChange={handleChange}
         indicatorColor="primary"
         textColor="primary"
+        variant="fullWidth"
+
         centered
       >
 
@@ -35,6 +39,7 @@ const handleChange = (event, newValue) => {
          component={Link}
          to={'/'}
          />
+
         <Tab
         label="Make Up"
         component={Link}

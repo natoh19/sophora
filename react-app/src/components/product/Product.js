@@ -152,6 +152,7 @@ export default function Product() {
 
 
             </Box>
+
             <Box>
               <Box>
 
@@ -165,6 +166,7 @@ export default function Product() {
         </Grid>
 
       </Grid>
+
     </div>
   )
 }

@@ -17,7 +17,9 @@ import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
 import LoginModal from '../loginModal/LoginModal'
 import SignUpModal from '../signUpModal/SignUpModal'
+import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -146,6 +148,8 @@ export default function PrimarySearchAppBar() {
     history.push('/myaccount')
   }
 
+  const matches = useMediaQuery('(min-width:600px)');
+
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -183,6 +187,9 @@ export default function PrimarySearchAppBar() {
               <AccountCircle />
             </IconButton>
           }
+
+
+
           <Typography className={classes.title} variant="h6" noWrap component={Link} to="/" style={{ textDecorationLine: 'none', color: 'white' }}>
             Sophora
           </Typography>
