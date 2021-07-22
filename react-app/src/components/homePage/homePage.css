@@ -18,6 +18,7 @@
 
 #homePage-promo-mobile {
     display: flex;
+    justify-content: center;
 
     /* flex-direction: column; */
     padding: 6em;
@@ -30,14 +31,16 @@
 
 @media screen and (min-width: 800px) {
     #homePage-promo {display: flex}
+
 }
 
 @media screen and (min-width: 0px) and (max-width: 799px) {
     #homePage-promo {display: none;}
 }
 
-@media screen and (min-width: 0px) and (max-width: 799px) {
+@media screen and (min-width: 600px) and (max-width: 799px) {
     #homePage-promo-mobile {display: flex;}
+
 }
 
 @media screen and (min-width: 800px) {

@@ -15,12 +15,12 @@ export default function HomePage() {
 
         <>
 
-        <div>
+        <div >
       <HomePageBanner />
 
 
         </div>
-        <div>
+        <div >
 
             <HomePagePromo />
 
