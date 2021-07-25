@@ -1,9 +1,10 @@
 import React from 'react';
 import { Grid } from '@material-ui/core'
+import './grid.css'
 
 export default function ImageGrid({images, onSelect, selected}){
     return (
-        <Grid container direction="column" spacing={3}>
+        <Grid container spacing={3} className="img-row-container">
             {images.map((image, idx) => (
                 <div key={idx} id="img_contain">
                 <img src={image} alt="beauty product" onClick ={()=> onSelect(idx)}

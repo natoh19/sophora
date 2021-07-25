@@ -17,6 +17,7 @@ import * as cartReducer from '../../store/cart'
 import * as session from '../../store/session';
 import CartModal from '../cart/cartModal';
 import LikedIcon from '../likeButton/LikeButton'
+import './grid.css'
 
 
 
@@ -111,24 +112,22 @@ export default function Product() {
 
   return (
 
-    <div className="outer-container" style={{ paddingTop: '14em' }}>
-      <Grid container spacing={1} style={{ maxWidth: 900, margin: '0 auto' }}>
+    <div className="outer-container">
+      <Grid container spacing={1} style={{ maxWidth: '80%', margin: '0 auto' }}>
 
-        <Grid item sm={1} >
-          <ImageGrid images={images} onSelect={setSelected} selected={selected} />
-        </Grid>
 
-        <Grid item sm={5}>
+
+
           <div id='mainImg-contain'>
             <img src={images[selected]} alt="beauty product" />
           </div>
-        </Grid>
-
-        <Grid item sm={6}>
-          <Grid container direction="column" style={{ height: '100%', justifyContent: 'center', marginLeft: '11em' }}>
 
 
-            <Box>
+        <div className="item-description">
+          <Grid container direction="column" style={{ height: '100%', justifyContent: 'center'}} className="item-details">
+
+
+            <Box className="product-container">
               <Typography variant="h4">{product.name}</Typography>
 
               <IconButton aria-label="love this item" onClick={handleLike}>
@@ -149,7 +148,9 @@ export default function Product() {
                 Add To Cart
                   </Button>
 
-
+                  <Grid >
+              <ImageGrid images={images} onSelect={setSelected} selected={selected} />
+              </Grid>
 
             </Box>
 
@@ -163,7 +164,7 @@ export default function Product() {
 
           </Grid>
 
-        </Grid>
+        </div>
 
       </Grid>
 
