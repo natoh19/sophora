@@ -1,21 +1,34 @@
-.outer-box {
-    background-color: black;
+.footer-outer-box{
+    background-color:#201c1c;
     margin-top: 1em;
     bottom: 0;
     width: 100%;
-    height: 2.5rem
+    height: 4em;
+    position: fixed;
 }
 
-.footer-link{
+/* .footer-link{
     color: white;
     text-decoration: none;
     padding-left: 1em;
     padding-right: 1em;
     align-self: center;
+} */
+
+
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5em;
 }
 
-#flexbox {
-    display: inline;
+div.footer-container > a {
+   margin: 0 1em;
+}
+
+/* #flexbox {
+    display: flex;
     justify-content: center;
 
-}
+} */

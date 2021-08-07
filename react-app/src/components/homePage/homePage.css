@@ -1,8 +1,7 @@
 
 .banner-flex-container{
     display: flex;
-    max-width: 1200px;
-
+    max-width: 1500px;
     justify-content: space-around;
     margin-top: 10em;
     margin-left: auto;
@@ -11,21 +10,16 @@
 
 #homePage-promo{
     display: flex;
+
     flex-direction: column;
     padding: 6em;
 
 }
 
 #homePage-promo-mobile {
-    display: flex;
     justify-content: center;
-
-    /* flex-direction: column; */
-    padding: 6em;
-
+    margin-top: 7em;
 }
-
-
 
 
 
