@@ -49,6 +49,8 @@ export const setItemsActionCreator = liked => ({
 
 
 
+
+
 const initialState = {
    user: null,
   //  likes: JSON.parse(localStorage.getItem('likes'))
@@ -154,6 +156,7 @@ export const getLastOrder = () => async (dispatch, getState) => {
     const data = await response.json()
     const lastOrder = data[0]
     dispatch(setLastOrder(lastOrder))
+
     return lastOrder
   }
 

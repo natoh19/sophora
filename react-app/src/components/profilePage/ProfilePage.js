@@ -11,16 +11,6 @@ export default function ProfilePage() {
     const dispatch = useDispatch();
     const likes = useSelector(state => state.session.liked)
 
-
-    useEffect(() => {
-        dispatch(session.getOrders())
-    }, [dispatch])
-
-    useEffect(() => {
-        dispatch(session.getLastOrder())
-    }, [dispatch])
-
-
     useEffect(() => {
         dispatch(session.getLoves())
     }, [dispatch])
@@ -29,55 +19,46 @@ export default function ProfilePage() {
         dispatch(session.removeLove(item))
     }
 
+
+
     return (
-        <div className="account-container">
-            <div className="account-subcontainer">
-                <div className="likes-container">
+        <>
 
-
-                    {Array.isArray(likes) && likes.map((like, idx) => {
-                        return <div key={idx}>
-                            <span>{like.name}</span><Button style={{ marginLeft: '8px' }} onClick={() => handleRemove(like.id)}>Remove</Button>
-                        </div>
-                    })}
-
-
+        <div className="headline-container">
+            <h3 className="headline">Your Liked Items and Account Info</h3>
+            <div className="account-info-container">
+                <div className="account-info">
+                    <span>Email</span>
                 </div>
-                <div className="account-info-container">
+                <div className="account-info">
+                <span>{user.email}</span>
+            </div>
+            </div>
+            </div>
 
-                    <h2 className="account-info-header">Account Information</h2>
+            <div className="likes-container">
 
-                    <div className="account-info-content">
-                        <div className="account-info-row">
-                            <div>
-                                Email:
-                        </div>
-                            <div>
-                                {user.email}
-                            </div>
-                            <div>
-                                Edit
-                        </div>
-                        </div>
-                        <div className="account-info-row">
-                            <div>
-                                Password:
-                        </div>
-                            <div>
-                                •••••••
-                        </div>
-                            <div>
-                                Edit
-                        </div>
 
+                {Array.isArray(likes) && likes.map((like, idx) => {
+                    return <div key={idx} className="like-container">
+                        <span
+                            className="like-name">{like.name}
+                        </span>
+                        <div className="like-image">
+                            <img src={like.image_url_main} alt={like.name}/>
                         </div>
-
+                        <Button
+                            className="remove-button"
+                            onClick={() => handleRemove(like.id)}>
+                            Remove
+                        </Button>
                     </div>
+                })}
 
-                </div>
+
 
             </div>
 
-        </div>
+        </>
     )
 }

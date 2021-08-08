@@ -1,56 +1,46 @@
 
-.account-container {
-    padding-top: 10em;
+
+.headline {
+    margin-top: 4em;
+    text-align: center;
+    border-bottom: 1px solid;
+    padding: .5em;
+    font-family: Oswald;
+
 }
 
-.account-subcontainer{
-    display: flex;
-    padding: 50px 20%;
-    height: 100vh;
+.headline-container {
+    margin: 0 auto;
+    max-width: 50%;
+}
+
+
+.likes-container {
+    margin: 0 auto;
+    /* grid-area: Likes; */
+    text-align: center;
+}
+
+
+.like-image {
+    max-width: 50px;
+    margin: 0 auto;
 
 }
 
-.likes-container{
+.like-container {
+    margin: 2em 0;
+}
 
-    width: 50%;
-    height: 50%;
+
+.account-info-container {
+    max-width: 50%;
+    margin: 0 auto;
     display: flex;
-    box-sizing: border-box;
-    border-right: 2px solid lightgrey;
     flex-direction: column;
-    padding-right: 2em;
-
-
-}
-
-.likes-container > div {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-
-}
-
-.account-info-container{
-    height: 50%;
-    width: 100%;
-    padding: 1.5rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.account-info-header{
-    font-size: 2.5rem;
-    padding-bottom: 0.8rem;;
-    border-bottom: 3px solid black;
-}
-
-.account-info-content{
-    margin-top: 2rem;
-}
-
-.account-info-row{
-    display: flex;
-    padding: 1rem 0;
-    justify-content: space-between;
-    border-bottom: 2px solid lightgrey;
+    background-color: #eee;
+    font-weight: 700;
+    margin-top: 1em;
+    padding: 1em;
 }
