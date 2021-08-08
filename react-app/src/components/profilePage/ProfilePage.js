@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './profilePage.css'
 import * as session from '../../store/session'
 import { useSelector, useDispatch } from "react-redux";
+import {useHistory} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 
 
@@ -10,6 +11,7 @@ export default function ProfilePage() {
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const likes = useSelector(state => state.session.liked)
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(session.getLoves())
@@ -44,7 +46,9 @@ export default function ProfilePage() {
                         <span
                             className="like-name">{like.name}
                         </span>
-                        <div className="like-image">
+                        <div className="like-image"
+                        onClick={() => history.push(`/products/${like.id}`)}
+                        >
                             <img src={like.image_url_main} alt={like.name}/>
                         </div>
                         <Button
