@@ -51,10 +51,10 @@ export default function CartModal(props) {
       >
         <Fade in={props.open}>
           <div className={classes.paper}>
-              <Grid container direction="column" style={{maxWith:'500px'}} >
+              <Grid container direction="column" style={{maxWidth:'500px'}} >
                   <Box mt={3}>
                       <div>
-                          <img src={props.product.image_url_main} style={{maxWidth: 250}} alt={props.product.name}/>
+                          <img src={props.product.image_url_main} alt={props.product.name}/>
                       </div>
                       <div>
                       <Typography variant="h4">{props.product.name}</Typography>
